@@ -7,7 +7,9 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Models\Produk;
 use App\Http\Controllers\Auth\LoginController;
 
-
+Route::get('/', function () {
+    return redirect()->route('user.dashboard');
+});
 
 Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.index');
 Route::get('/user/dashboard', [UserController::class, 'index'])->name('user.dashboard');
