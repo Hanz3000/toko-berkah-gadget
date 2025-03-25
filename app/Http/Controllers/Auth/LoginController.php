@@ -42,7 +42,7 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('login'); // Kembali ke halaman login setelah logout
+        return redirect()->route('user.dashboard');
     }
 
     // Menampilkan Form Registrasi
