@@ -10,15 +10,17 @@ use Illuminate\Support\Facades\Storage;
 class AdminController extends Controller
 {
 
+
+
     public function index()
     {
-        $produk = Produk::all(); // Ambil semua produk dari database
-        return view('admin.index');
+        $produk = Produk::all();
+        return view('admin.produk.index', compact('produk'));
     }
 
     public function create()
     {
-        return view('admin.produk.create'); // Menampilkan form tambah produk
+        return view('admin.produk.create');
     }
 
     public function store(Request $request)
@@ -33,7 +35,7 @@ class AdminController extends Controller
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
-        // Upload Gambar jika ada
+
         $gambarPath = null;
         if ($request->hasFile('gambar')) {
             $gambarPath = $request->file('gambar')->store('produk', 'public');
@@ -45,7 +47,7 @@ class AdminController extends Controller
             'deskripsi' => $request->deskripsi,
             'kekurangan' => $request->kekurangan,
             'kelengkapan' => $request->kelengkapan,
-            'gambar' => $gambarPath, // Simpan path gambar
+            'gambar' => $gambarPath,
         ]);
 
         return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil ditambahkan!');

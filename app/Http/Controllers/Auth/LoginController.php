@@ -24,28 +24,25 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
 
-            // Cek role
             if ($user->role === 'admin') {
-                return redirect()->route('admin.produk.index'); // Jika admin, ke halaman admin
+                return redirect()->route('admin.produk.index'); // Admin ke index admin
             } else {
-                return redirect()->route('user.dashboard'); // Jika user biasa, ke dashboard user
+                return redirect()->route('user.dashboard'); // User biasa ke dashboard user
             }
         }
 
-        // Jika login gagal
         return back()->withErrors([
             'email' => 'Email atau password salah.',
         ]);
     }
 
-    // Proses Logout
     public function logout(Request $request)
     {
         Auth::logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        return redirect()->route('user.dashboard'); // Arahkan kembali ke dashboard setelah logout
+        return redirect()->route('login'); // Kembali ke halaman login setelah logout
     }
 
     // Menampilkan Form Registrasi
