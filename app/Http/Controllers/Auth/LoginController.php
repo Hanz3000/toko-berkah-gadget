@@ -13,7 +13,7 @@ class LoginController extends Controller
     // Menampilkan Form Login
     public function showLoginForm()
     {
-        return view('auth.login'); // Pastikan file ini ada di `resources/views/auth/login.blade.php`
+        return view('auth.login');
     }
 
     // Proses Login
