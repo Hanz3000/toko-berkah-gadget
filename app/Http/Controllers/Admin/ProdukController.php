@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Produk;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class ProdukController extends Controller
 {
@@ -18,6 +20,29 @@ class ProdukController extends Controller
     public function create()
     {
         return view('admin.produk.create');
+    }
+
+    public function tambah_admin()
+    {
+        return view('admin.produk.tambah_admin');
+    }
+
+    public function storeAdmin(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|string|confirmed|min:6',
+        ]);
+
+        User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'role' => 'admin', // role otomatis admin
+        ]);
+
+        return redirect()->route('admin.produk.index')->with('success', 'Admin baru berhasil ditambahkan!');
     }
 
     public function store(Request $request)

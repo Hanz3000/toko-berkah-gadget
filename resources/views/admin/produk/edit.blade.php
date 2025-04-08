@@ -63,10 +63,10 @@
                 <input type="file" name="gambar" id="gambar"
                     class="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100">
                 @if ($produk->gambar)
-                    <img src="{{ asset('storage/' . $produk->gambar) }}" alt="{{ $produk->nama_produk }}"
-                        class="mt-2 w-24 h-24 object-cover rounded-md shadow-md">
+                <img src="{{ asset('storage/' . $produk->gambar) }}" alt="{{ $produk->nama_produk }}"
+                    class="mt-2 w-24 h-24 object-cover rounded-md shadow-md">
                 @else
-                    <p class="mt-2 text-gray-500">Tidak ada gambar</p>
+                <p class="mt-2 text-gray-500">Tidak ada gambar</p>
                 @endif
             </div>
 

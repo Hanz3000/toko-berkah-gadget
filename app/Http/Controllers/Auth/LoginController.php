@@ -24,10 +24,10 @@ class LoginController extends Controller
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
 
-            if ($user->role === 'admin') {
-                return redirect()->route('admin.produk.index'); // Admin ke index admin
+            if ($user->role === 'superadmin' || $user->role === 'admin') {
+                return redirect()->route('admin.produk.index');
             } else {
-                return redirect()->route('user.dashboard'); // User biasa ke dashboard user
+                return redirect()->route('user.dashboard');
             }
         }
 

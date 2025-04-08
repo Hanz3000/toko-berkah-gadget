@@ -18,10 +18,13 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(func
     Route::get('/produk', [AdminController::class, 'index'])->name('admin.produk.index');
 
     Route::get('/produk/create', [ProdukController::class, 'create'])->name('admin.produk.create');
+    Route::get('/produk/tambah_admin', [ProdukController::class, 'tambah_admin'])->name('admin.produk.tambah_admin');
     Route::post('/produk', [ProdukController::class, 'store'])->name('admin.produk.store');
     Route::get('/produk/{id}/edit', [ProdukController::class, 'edit'])->name('admin.produk.edit');
     Route::put('/produk/{id}', [ProdukController::class, 'update'])->name('admin.produk.update');
     Route::delete('/produk/{id}', [ProdukController::class, 'destroy'])->name('admin.produk.destroy');
+
+    Route::post('/admin/produk/tambah_admin', [ProdukController::class, 'storeAdmin'])->name('admin.produk.tambah_admin.store');
 });
 
 // User routes
