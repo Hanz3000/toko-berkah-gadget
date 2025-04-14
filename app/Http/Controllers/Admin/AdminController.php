@@ -6,17 +6,18 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Produk;
 use Illuminate\Support\Facades\Storage;
+use App\Models\User;
 
 class AdminController extends Controller
 {
-
-
-
     public function index()
     {
         $produk = Produk::all();
-        return view('admin.produk.index', compact('produk'));
+        $jumlahUser = User::where('role', 'user')->count();
+
+        return view('admin.produk.index', compact('produk', 'jumlahUser'));
     }
+
 
     public function create()
     {

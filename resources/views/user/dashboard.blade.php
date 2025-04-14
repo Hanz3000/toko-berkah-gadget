@@ -22,6 +22,58 @@
         .bg-gradient {
             background: linear-gradient(90deg, #4F46E5 0%, #9333EA 100%);
         }
+
+        /* Additional styles for the hero slider */
+        .hero-slider {
+            height: auto;
+            max-height: 500px;
+        }
+
+        .slider-container {
+            width: 100%;
+            height: 100%;
+        }
+
+        .slider-slide {
+            padding: 2rem 0;
+        }
+
+        /* Transition animation for smoother sliding */
+        .slider-container {
+            transition: transform 0.5s ease-in-out;
+        }
+
+        /* Improve dot indicators */
+        .slider-dot {
+            transition: opacity 0.3s ease;
+        }
+
+        .slider-dot.opacity-100 {
+            transform: scale(1.2);
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-slider {
+                max-height: 700px;
+            }
+
+            .slider-slide {
+                padding: 1rem 0;
+            }
+        }
+
+        /* Improve arrow button visibility */
+        .slider-prev,
+        .slider-next {
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .slider-prev:hover,
+        .slider-next:hover {
+            opacity: 1;
+        }
     </style>
 </head>
 
@@ -63,6 +115,11 @@
                             <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg hidden">
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Profil</a>
                                 <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Pesanan Saya</a>
+
+                                @if(auth()->user()->role === 'admin' || auth()->user()->role === 'superadmin')
+                                <a href="{{ route('admin.produk.index') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Halaman Admin</a>
+                                @endif
+
                                 <form action="{{ route('logout') }}" method="POST" class="block">
                                     @csrf
                                     <button type="submit" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-indigo-600 hover:text-white">Logout</button>
@@ -99,26 +156,177 @@
         </div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Slider -->
     <section class="pt-24 pb-12 bg-gradient">
         <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-8 md:mb-0">
-                    <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Temukan Gadget Impian Anda</h1>
-                    <p class="text-lg text-gray-100 mb-6">Koleksi terlengkap smartphone, laptop, dan aksesoris dengan harga terbaik dan garansi resmi.</p>
-                    <form class="flex">
-                        <input type="text" placeholder="Cari produk..." class="w-full px-4 py-3 rounded-l-md focus:outline-none">
-                        <button type="button" class="bg-yellow-500 text-white px-6 py-3 rounded-r-md hover:bg-yellow-600 focus:outline-none flex items-center">
-                            <i class="fas fa-search mr-2"></i> Cari
-                        </button>
-                    </form>
+            <!-- Slider container -->
+            <div class="hero-slider relative overflow-hidden rounded-lg shadow-lg">
+                <!-- Slides container -->
+                <div class="slider-container flex transition-transform duration-500 ease-in-out">
+                    <!-- Slide 1 -->
+                    <div class="slider-slide min-w-full">
+                        <div class="flex flex-col md:flex-row items-center">
+                            <div class="md:w-1/2 mb-8 md:mb-0">
+                                <img src="{{ asset('storage/images/slide1.png') }}" alt="Hero Image" class="rounded-lg shadow-lg">
+                            </div>
+                            <div class="md:w-1/2 px-4">
+                                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Temukan Gadget Impian Anda</h1>
+                                <p class="text-lg text-gray-100 mb-6">Koleksi terlengkap smartphone, laptop, dan aksesoris dengan harga terbaik dan garansi resmi.</p>
+                                <a href="#produk" class="px-6 py-3 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 inline-block">Lihat Produk</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 2 -->
+                    <div class="slider-slide min-w-full">
+                        <div class="flex flex-col md:flex-row items-center">
+                            <div class="md:w-1/2 mb-8 md:mb-0">
+                                <img src="{{ asset('storage/images/slide2.png') }}" alt="Promo Special" class="rounded-lg shadow-lg">
+                            </div>
+                            <div class="md:w-1/2 px-4">
+                                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Promo Spesial Bulan Ini</h1>
+                                <p class="text-lg text-gray-100 mb-6">Dapatkan diskon hingga 30% untuk pembelian smartphone terbaru.</p>
+                                <a href="#promo" class="px-6 py-3 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 inline-block">Lihat Promo</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Slide 3 -->
+                    <div class="slider-slide min-w-full">
+                        <div class="flex flex-col md:flex-row items-center">
+                            <div class="md:w-1/2 mb-8 md:mb-0">
+                                <img src="{{ asset('storage/images/slide3.jpg') }}" alt="Accessories" class="rounded-lg shadow-lg">
+                            </div>
+                            <div class="md:w-1/2 px-4">
+                                <h1 class="text-4xl md:text-5xl font-bold text-white mb-4">Aksesoris Premium</h1>
+                                <p class="text-lg text-gray-100 mb-6">Lengkapi gadget Anda dengan aksesoris berkualitas tinggi.</p>
+                                <a href="#aksesoris" class="px-6 py-3 bg-yellow-500 text-white rounded-md hover:bg-yellow-600 inline-block">Lihat Aksesoris</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="md:w-1/2 flex justify-center">
-                    <img src="{{ asset('storage/images/s.png') }}" alt="Hero Image" class="rounded-lg shadow-lg">
+
+                <!-- Slider controls -->
+                <div class="absolute bottom-4 left-0 right-0 flex justify-center space-x-2">
+                    <button class="slider-dot w-3 h-3 rounded-full bg-white opacity-50 focus:outline-none" data-slide="0"></button>
+                    <button class="slider-dot w-3 h-3 rounded-full bg-white opacity-50 focus:outline-none" data-slide="1"></button>
+                    <button class="slider-dot w-3 h-3 rounded-full bg-white opacity-50 focus:outline-none" data-slide="2"></button>
                 </div>
+
+                <!-- Prev/Next buttons -->
+                <button class="slider-prev absolute top-1/2 left-4 transform -translate-y-1/2 bg-white bg-opacity-20 rounded-full p-2 focus:outline-none hover:bg-opacity-30">
+                    <i class="fas fa-chevron-left text-white text-xl"></i>
+                </button>
+                <button class="slider-next absolute top-1/2 right-4 transform -translate-y-1/2 bg-white bg-opacity-20 rounded-full p-2 focus:outline-none hover:bg-opacity-30">
+                    <i class="fas fa-chevron-right text-white text-xl"></i>
+                </button>
             </div>
         </div>
     </section>
+
+    <!-- JavaScript for slider functionality -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sliderContainer = document.querySelector('.slider-container');
+            const slides = document.querySelectorAll('.slider-slide');
+            const dots = document.querySelectorAll('.slider-dot');
+            const prevButton = document.querySelector('.slider-prev');
+            const nextButton = document.querySelector('.slider-next');
+
+            let currentSlide = 0;
+            const slideCount = slides.length;
+
+            // Initialize the first dot as active
+            dots[0].classList.add('opacity-100');
+
+            // Function to go to a specific slide
+            function goToSlide(slideIndex) {
+                if (slideIndex < 0) {
+                    slideIndex = slideCount - 1;
+                } else if (slideIndex >= slideCount) {
+                    slideIndex = 0;
+                }
+
+                sliderContainer.style.transform = `translateX(-${slideIndex * 100}%)`;
+
+                // Update active dot
+                dots.forEach(dot => dot.classList.remove('opacity-100'));
+                dots[slideIndex].classList.add('opacity-100');
+
+                currentSlide = slideIndex;
+            }
+
+            // Event listeners for dots
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+            });
+
+            // Event listeners for prev/next buttons
+            prevButton.addEventListener('click', () => {
+                goToSlide(currentSlide - 1);
+            });
+
+            nextButton.addEventListener('click', () => {
+                goToSlide(currentSlide + 1);
+            });
+
+            // Touch events for swiping on mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
+
+            const heroSlider = document.querySelector('.hero-slider');
+
+            heroSlider.addEventListener('touchstart', e => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            heroSlider.addEventListener('touchend', e => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const swipeThreshold = 50; // minimum distance for swipe
+
+                if (touchStartX - touchEndX > swipeThreshold) {
+                    // Swiped left - go to next slide
+                    goToSlide(currentSlide + 1);
+                } else if (touchEndX - touchStartX > swipeThreshold) {
+                    // Swiped right - go to previous slide
+                    goToSlide(currentSlide - 1);
+                }
+            }
+
+            // Auto-slide functionality
+            let slideInterval = setInterval(() => {
+                goToSlide(currentSlide + 1);
+            }, 5000); // Change slide every 5 seconds
+
+            // Pause auto-slide when user interacts with slider
+            heroSlider.addEventListener('mouseenter', () => {
+                clearInterval(slideInterval);
+            });
+
+            heroSlider.addEventListener('mouseleave', () => {
+                slideInterval = setInterval(() => {
+                    goToSlide(currentSlide + 1);
+                }, 5000);
+            });
+
+            // Also pause on touch
+            heroSlider.addEventListener('touchstart', () => {
+                clearInterval(slideInterval);
+            });
+
+            heroSlider.addEventListener('touchend', () => {
+                slideInterval = setInterval(() => {
+                    goToSlide(currentSlide + 1);
+                }, 5000);
+            });
+        });
+    </script>
 
     <!-- Kategori Section -->
     <section class="py-12 bg-white">
@@ -152,18 +360,6 @@
             </div>
         </div>
     </section>
-
-    <!-- Admin Button -->
-    @if(Auth::check() && (Auth::user()->role === 'admin' || Auth::user()->role === 'superadmin'))
-    <div class="bg-gray-800 text-white text-center py-3">
-        <div class="container mx-auto px-4">
-            <p class="text-sm mb-2">Panel Admin</p>
-            <a href="{{ route('admin.produk.index') }}" class="inline-flex items-center px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700">
-                <i class="fas fa-cog mr-2"></i> Manajemen Produk
-            </a>
-        </div>
-    </div>
-    @endif
 
     <!-- Produk -->
     <section class="py-12">

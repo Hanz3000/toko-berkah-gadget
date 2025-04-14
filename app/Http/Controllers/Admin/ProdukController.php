@@ -72,6 +72,9 @@ class ProdukController extends Controller
             'gambar' => $gambarPath,
         ]);
 
+        session()->flash('success', 'Produk berhasil ditambahkan!');
+        return redirect()->route('admin.produk.index');
+
         return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil ditambahkan!');
     }
 
@@ -120,10 +123,15 @@ class ProdukController extends Controller
     public function destroy($id)
     {
         $produk = Produk::findOrFail($id);
+
+        // Hapus gambar dari storage kalau ada
         if ($produk->gambar) {
             Storage::delete('public/' . $produk->gambar);
         }
+
+        // Hapus dari database
         $produk->delete();
-        return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil dihapus!');
+
+        return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil dihapus.');
     }
 }

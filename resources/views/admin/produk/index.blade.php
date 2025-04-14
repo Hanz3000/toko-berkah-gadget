@@ -39,10 +39,84 @@
         .table-hover tr:hover {
             background-color: #f9fafb;
         }
+
+        /* Toast Animation */
+        .toast-enter {
+            animation: toastIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+        }
+
+        .toast-exit {
+            animation: toastOut 0.5s cubic-bezier(0.6, -0.28, 0.735, 0.045) forwards;
+        }
+
+        @keyframes toastIn {
+            0% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes toastOut {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            100% {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+        }
+
+        .shake-animation {
+            animation: shake 0.5s cubic-bezier(.36, .07, .19, .97) both;
+        }
+
+        @keyframes shake {
+
+            10%,
+            90% {
+                transform: translate3d(-1px, 0, 0);
+            }
+
+            20%,
+            80% {
+                transform: translate3d(2px, 0, 0);
+            }
+
+            30%,
+            50%,
+            70% {
+                transform: translate3d(-4px, 0, 0);
+            }
+
+            40%,
+            60% {
+                transform: translate3d(4px, 0, 0);
+            }
+        }
+
+        /* Make sure toast container is visible and on top */
+        #toastContainer {
+            z-index: 9999;
+            pointer-events: none;
+        }
+
+        #toastContainer>div {
+            pointer-events: auto;
+        }
     </style>
 </head>
 
 <body class="bg-gray-100 min-h-screen">
+    <!-- Toast Notification Container -->
+    <div id="toastContainer" class="fixed top-6 left-1/2 transform -translate-x-1/2 z-50 flex flex-col gap-4"></div>
+
     <div class="flex">
         <!-- Sidebar -->
         <div class="sidebar bg-gray-900 text-white w-64 min-h-screen fixed">
@@ -81,7 +155,7 @@
                         <p class="text-gray-500 text-xs uppercase tracking-wider mb-2">Pengguna</p>
                         <a href="#" class="flex items-center space-x-3 text-gray-300 p-2 rounded-md hover:bg-gray-800 hover:text-white">
                             <i class="fas fa-users"></i>
-                            <span>Daftar Pengguna</span>
+                            <span>Daftar user</span>
                         </a>
                         @if(Auth::user()->role === 'superadmin')
                         <a href="{{ route('admin.produk.tambah_admin') }}" class="flex items-center space-x-3 text-gray-300 p-2 rounded-md hover:bg-gray-800 hover:text-white">
@@ -89,14 +163,6 @@
                             <span>Tambah Admin</span>
                         </a>
                         @endif
-                    </div>
-
-                    <div class="mb-3">
-                        <p class="text-gray-500 text-xs uppercase tracking-wider mb-2">Laporan</p>
-                        <a href="#" class="flex items-center space-x-3 text-gray-300 p-2 rounded-md hover:bg-gray-800 hover:text-white">
-                            <i class="fas fa-chart-bar"></i>
-                            <span>Statistik Penjualan</span>
-                        </a>
                     </div>
                 </nav>
             </div>
@@ -168,41 +234,18 @@
                         <div class="flex items-center justify-between">
                             <div>
                                 <p class="text-gray-500 text-sm">Pengguna</p>
-                                <h3 class="text-2xl font-bold">45</h3>
+                                <h3 class="text-2xl font-bold">{{ $jumlahUser }}</h3>
                             </div>
                             <div class="bg-yellow-100 p-3 rounded-full">
                                 <i class="fas fa-users text-yellow-600"></i>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-white rounded-lg shadow p-5 card-hover">
-                        <div class="flex items-center justify-between">
-                            <div>
-                                <p class="text-gray-500 text-sm">Pesanan</p>
-                                <h3 class="text-2xl font-bold">123</h3>
-                            </div>
-                            <div class="bg-purple-100 p-3 rounded-full">
-                                <i class="fas fa-shopping-cart text-purple-600"></i>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
 
-                <!-- Action Buttons -->
                 <div class="flex items-center justify-between mb-6">
                     <h2 class="text-lg font-semibold">Kelola Produk</h2>
-                    <div class="flex space-x-3">
-                        <a href="{{ route('admin.produk.create') }}" class="flex items-center justify-center px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 btn-effect">
-                            <i class="fas fa-plus mr-2"></i>
-                            <span>Tambah Produk</span>
-                        </a>
-                        @if(Auth::user()->role === 'superadmin')
-                        <a href="{{ route('admin.produk.tambah_admin') }}" class="flex items-center justify-center px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 btn-effect">
-                            <i class="fas fa-user-plus mr-2"></i>
-                            <span>Tambah Admin</span>
-                        </a>
-                        @endif
-                    </div>
                 </div>
 
                 <!-- Product Table Card -->
@@ -233,7 +276,7 @@
                         <table class="min-w-full table-hover">
                             <thead>
                                 <tr class="bg-gray-50 text-gray-500 text-sm uppercase">
-                                    <th class="py-3 px-4 font-medium text-left">ID</th>
+                                    <th class="py-3 px-4 font-medium text-left">No</th>
                                     <th class="py-3 px-4 font-medium text-left">Produk</th>
                                     <th class="py-3 px-4 font-medium text-left">Kategori</th>
                                     <th class="py-3 px-4 font-medium text-left">Harga</th>
@@ -244,7 +287,7 @@
                             <tbody>
                                 @foreach ($produk as $item)
                                 <tr class="border-t border-gray-100">
-                                    <td class="py-3 px-4 text-sm">#{{ $item->id }}</td>
+                                    <td class="py-3 px-4 text-sm">{{ $loop->iteration }}</td>
                                     <td class="py-3 px-4">
                                         <div class="flex items-center">
                                             @if ($item->gambar)
@@ -256,7 +299,6 @@
                                             @endif
                                             <div>
                                                 <p class="font-medium">{{ $item->nama_produk }}</p>
-                                                <p class="text-gray-500 text-xs">ID: {{ $item->id }}</p>
                                             </div>
                                         </div>
                                     </td>
@@ -265,17 +307,17 @@
                                     </td>
                                     <td class="py-3 px-4 font-medium">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
                                     <td class="py-3 px-4">
-                                        <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">Aktif</span>
+                                        <span class="px-2 py-1 bg-green-100 text-green-800 rounded-full text-xs">tersedia</span>
                                     </td>
                                     <td class="py-3 px-4 text-right">
                                         <div class="flex items-center justify-end space-x-2">
                                             <a href="{{ route('admin.produk.edit', $item->id) }}" class="px-3 py-1 bg-amber-500 text-white rounded-md hover:bg-amber-600 text-sm btn-effect">
                                                 <i class="fas fa-edit"></i>
                                             </a>
-                                            <form action="{{ route('admin.produk.destroy', $item->id) }}" method="POST" class="inline">
+                                            <form action="{{ route('admin.produk.destroy', $item->id) }}" method="POST" class="inline delete-form">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 text-sm btn-effect" onclick="return confirm('Apakah Anda yakin ingin menghapus produk ini?')">
+                                                <button type="submit" class="px-3 py-1 bg-red-500 text-white rounded-md hover:bg-red-600 text-sm btn-effect delete-btn" data-name="{{ $item->nama_produk }}">
                                                     <i class="fas fa-trash"></i>
                                                 </button>
                                             </form>
@@ -309,6 +351,41 @@
         </div>
     </div>
 
+    <div id="toast" class="hidden fixed top-5 right-5 z-50 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg transition-opacity duration-300">
+        <span id="toast-message"></span>
+    </div>
+
+    @if(session('success'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            showToast("{{ session('success') }}", 'success');
+        });
+    </script>
+    @endif
+
+
+    <script>
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            const toastMessage = document.getElementById('toast-message');
+
+            toastMessage.textContent = message;
+            toast.classList.remove('hidden');
+            toast.classList.remove('bg-green-500', 'bg-red-500');
+
+            if (type === 'success') {
+                toast.classList.add('bg-green-500');
+            } else {
+                toast.classList.add('bg-red-500');
+            }
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+            }, 2000);
+        }
+    </script>
+
+
     <script>
         // Untuk fungsionalitas sidebar toggle
         document.addEventListener('DOMContentLoaded', function() {
@@ -328,6 +405,88 @@
                     mainContent.classList.remove('ml-20');
                     mainContent.classList.add('ml-64');
                 }
+            });
+
+            // Fungsi untuk menampilkan toast notification - FIXED
+            function showToast(message, type = 'success') {
+                const toastContainer = document.getElementById('toastContainer');
+
+                // Buat elemen toast
+                const toast = document.createElement('div');
+                toast.className = 'toast-enter flex items-center justify-between p-4 mb-3 rounded-lg shadow-lg max-w-md shake-animation';
+
+                // Set warna berdasarkan tipe
+                if (type === 'success') {
+                    toast.classList.add('bg-green-600', 'text-white');
+                } else if (type === 'error') {
+                    toast.classList.add('bg-red-600', 'text-white');
+                } else if (type === 'warning') {
+                    toast.classList.add('bg-yellow-500', 'text-white');
+                } else if (type === 'info') {
+                    toast.classList.add('bg-blue-600', 'text-white');
+                } else if (type === 'delete') {
+                    toast.classList.add('bg-red-600', 'text-white');
+                }
+
+                // Icon sesuai tipe
+                let icon = 'fa-check-circle';
+                if (type === 'error') icon = 'fa-times-circle';
+                if (type === 'warning') icon = 'fa-exclamation-triangle';
+                if (type === 'info') icon = 'fa-info-circle';
+                if (type === 'delete') icon = 'fa-trash-alt';
+
+                // Buat konten toast
+                toast.innerHTML = `
+                    <div class="flex items-center">
+                        <div class="bg-white bg-opacity-20 p-2 rounded-full mr-3">
+                            <i class="fas ${icon}"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-sm uppercase tracking-wider">Notifikasi</h4>
+                            <p>${message}</p>
+                        </div>
+                    </div>
+                    <button class="text-white focus:outline-none toast-close ml-3">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+
+                // Tambahkan toast ke container
+                toastContainer.appendChild(toast);
+
+                // Hapus toast setelah 3 detik
+                setTimeout(() => {
+                    toast.classList.remove('toast-enter');
+                    toast.classList.add('toast-exit');
+                    setTimeout(() => {
+                        toast.remove();
+                    }, 7000);
+                }, 7000);
+
+                // Tombol close
+                const closeButton = toast.querySelector('.toast-close');
+                closeButton.addEventListener('click', () => {
+                    toast.classList.remove('toast-enter');
+                    toast.classList.add('toast-exit');
+                    setTimeout(() => {
+                        toast.remove();
+                    }, 7000);
+                });
+            }
+
+            // Event listener untuk tombol hapus
+            const deleteForms = document.querySelectorAll('.delete-form');
+            deleteForms.forEach(form => {
+                form.addEventListener('submit', function(e) {
+                    const btn = this.querySelector('.delete-btn');
+                    const name = btn.getAttribute('data-name');
+
+                    if (!confirm(`Apakah Anda yakin ingin menghapus produk "${name}"?`)) {
+                        e.preventDefault(); // Hanya jika batal hapus
+                    } else {
+                        showToast(`Produk "${name}" berhasil dihapus dari sistem!`, 'delete');
+                    }
+                });
             });
         });
     </script>
