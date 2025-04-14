@@ -153,9 +153,9 @@
 
                     <div class="mb-3">
                         <p class="text-gray-500 text-xs uppercase tracking-wider mb-2">Pengguna</p>
-                        <a href="#" class="flex items-center space-x-3 text-gray-300 p-2 rounded-md hover:bg-gray-800 hover:text-white">
+                        <a href="{{ route('admin.users.index') }}" class="flex items-center space-x-3 text-gray-300 p-2 rounded-md hover:bg-gray-800 hover:text-white">
                             <i class="fas fa-users"></i>
-                            <span>Daftar user</span>
+                            <span>Daftar User</span>
                         </a>
                         @if(Auth::user()->role === 'superadmin')
                         <a href="{{ route('admin.produk.tambah_admin') }}" class="flex items-center space-x-3 text-gray-300 p-2 rounded-md hover:bg-gray-800 hover:text-white">
@@ -164,6 +164,7 @@
                         </a>
                         @endif
                     </div>
+
                 </nav>
             </div>
         </div>
