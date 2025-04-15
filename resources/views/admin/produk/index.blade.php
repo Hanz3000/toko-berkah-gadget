@@ -339,9 +339,10 @@
                             <div class="relative">
                                 <select class="bg-gray-50 text-sm rounded-lg pl-3 pr-8 py-2 border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 appearance-none">
                                     <option>Semua Kategori</option>
-                                    <option>Elektronik</option>
-                                    <option>Fashion</option>
-                                    <option>Makanan</option>
+                                    <option>Smartphone</option>
+                                    <option>Smartwatch</option>
+                                    <option>Aksesoris</option>
+                                    <option>Second</option>
                                 </select>
                                 <i class="fas fa-chevron-down text-xs absolute right-3 top-3 text-gray-500 pointer-events-none"></i>
                             </div>

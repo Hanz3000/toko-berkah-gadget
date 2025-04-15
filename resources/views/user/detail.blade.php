@@ -4,42 +4,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detail Produk</title>
+    <title>Detail Produk | Toko Berkah Gadget</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+    </style>
 </head>
 
-<body class="bg-gray-100">
-    <div class="container mx-auto px-4 py-8">
-        <a href="{{ route('user.dashboard') }}" class="bg-gray-500 text-white px-4 py-2 rounded hover:bg-gray-600 mb-4 inline-block">
-            Kembali ke Katalog
+<body class="bg-gradient-to-br from-indigo-100 to-purple-200 min-h-screen py-8">
+    <div class="max-w-5xl mx-auto px-4">
+        <a href="{{ route('user.dashboard') }}" class="inline-flex items-center mb-6 text-sm text-indigo-600 hover:text-indigo-800">
+            <i class="fas fa-arrow-left mr-2"></i> Kembali ke Katalog
         </a>
 
-        <div class="bg-white rounded-lg shadow-lg p-6 flex flex-col md:flex-row">
-            <div class="w-full md:w-1/2">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col md:flex-row">
+            <!-- Gambar Produk -->
+            <div class="md:w-1/2 p-4">
                 @if ($produk->gambar)
-                <img src="{{ asset('storage/' . $produk->gambar) }}" alt="{{ $produk->nama_produk }}" class="w-full h-96 object-cover rounded-lg">
+                <img src="{{ asset('storage/' . $produk->gambar) }}" alt="{{ $produk->nama_produk }}" class="rounded-xl w-full h-full object-cover">
                 @else
-                <span class="text-gray-500">Tidak ada gambar</span>
+                <div class="text-center text-gray-400 h-full flex items-center justify-center">Tidak ada gambar</div>
                 @endif
             </div>
 
-            <div class="w-full md:w-1/2 md:pl-6">
-                <h1 class="text-3xl font-bold mb-2">{{ $produk->nama_produk }}</h1>
-                <p class="text-gray-500 mb-2">{{ $produk->kategori }}</p>
-                <p class="text-xl font-bold text-red-600 mb-4">Rp {{ number_format($produk->harga, 0, ',', '.') }}</p>
+            <!-- Detail Produk -->
+            <div class="md:w-1/2 p-6">
+                <h1 class="text-3xl font-extrabold text-gray-800 mb-2">{{ $produk->nama_produk }}</h1>
+                <span class="inline-block bg-indigo-100 text-indigo-600 text-xs font-semibold px-3 py-1 rounded-full mb-4">{{ $produk->kategori }}</span>
 
-                <h2 class="text-lg font-semibold">Deskripsi:</h2>
-                <p class="text-gray-700 mb-4">{{ $produk->deskripsi }}</p>
+                <p class="text-2xl font-bold text-red-600 mb-4">Rp {{ number_format($produk->harga, 0, ',', '.') }}</p>
 
-                <h2 class="text-lg font-semibold">Kekurangan:</h2>
-                <p class="text-gray-700 mb-4">{{ $produk->kekurangan }}</p>
+                <div class="space-y-3 mb-6">
+                    <div>
+                        <h2 class="font-semibold text-gray-700">Deskripsi</h2>
+                        <p class="text-gray-600">{{ $produk->deskripsi }}</p>
+                    </div>
+                    <div>
+                        <h2 class="font-semibold text-gray-700">Kekurangan</h2>
+                        <p class="text-gray-600">{{ $produk->kekurangan }}</p>
+                    </div>
+                    <div>
+                        <h2 class="font-semibold text-gray-700">Kelengkapan</h2>
+                        <p class="text-gray-600">{{ $produk->kelengkapan }}</p>
+                    </div>
+                </div>
 
-                <h2 class="text-lg font-semibold">Kelengkapan:</h2>
-                <p class="text-gray-700 mb-4">{{ $produk->kelengkapan }}</p>
-
-                <a href="https://wa.me/62xxxxxxxxxx?text=Saya%20tertarik%20dengan%20{{ urlencode($produk->nama_produk) }}" target="_blank"
-                    class="bg-green-500 text-white px-4 py-2 rounded hover:bg-green-600 text-center block mt-4">
-                    Hubungi via WhatsApp
+                <a href="https://wa.me/62881036357795?text=Saya%20tertarik%20dengan%20{{ urlencode($produk->nama_produk) }}"
+                    target="_blank"
+                    class="inline-block w-full bg-green-500 text-white text-center py-3 rounded-lg hover:bg-green-600 transition-all font-semibold">
+                    <i class="fab fa-whatsapp mr-2"></i>Hubungi via WhatsApp
                 </a>
             </div>
         </div>

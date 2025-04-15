@@ -13,7 +13,7 @@
     <table class="min-w-full bg-white border border-gray-200 rounded shadow">
         <thead>
             <tr class="bg-gray-200 text-left">
-                <th class="p-3 border-b">#</th>
+                <th class="p-3 border-b">No</th>
                 <th class="p-3 border-b">Nama</th>
                 <th class="p-3 border-b">Email</th>
                 <th class="p-3 border-b">Role</th>

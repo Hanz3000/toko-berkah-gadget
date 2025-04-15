@@ -151,11 +151,9 @@
 <body>
     <div class="container">
         <div class="logo">
-            <!-- Placeholder for logo, replace with your actual logo -->
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="80" height="80">
-                <path fill="#6e8efb" d="M17 10.5V7c0-.55-.45-1-1-1H8c-.55 0-1 .45-1 1v3.5c-.55 0-1 .45-1 1v5c0 .55.45 1 1 1v.5c0 .55.45 1 1 1h8c.55 0 1-.45 1-1V17c.55 0 1-.45 1-1v-5c0-.55-.45-1-1-1zm-9-.5V7h8v3H8v-3zm2 9v-1h4v1h-4z" />
-            </svg>
+            <img src="{{ asset('storage/images/LOGO.jpg') }}" alt="Logo Toko Berkah Gadget">
         </div>
+
 
         <h1>Login Toko Berkah Gadget</h1>
 

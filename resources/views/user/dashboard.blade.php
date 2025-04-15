@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Toko Berkah Gadget</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
@@ -83,8 +84,9 @@
         <div class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
                 <div class="flex items-center space-x-2">
-                    <i class="fas fa-mobile-alt text-indigo-600 text-2xl"></i>
-                    <span class="font-bold text-xl text-indigo-600">Toko Berkah Gadget</span>
+                    <!-- Ganti dengan gambar logo -->
+                    <img src="{{ asset('storage/images/LOGO.jpg') }}" alt="Logo Toko Berkah Gadget" class="w-8 h-8">
+                    <span class="font-bold text-xl text-indigo-600">Berkah Gadget</span>
                 </div>
 
                 <div class="hidden md:flex items-center space-x-6">
@@ -341,21 +343,22 @@
                 </div>
                 <div class="bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition duration-300">
                     <div class="bg-indigo-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-laptop text-indigo-600 text-2xl"></i>
+                        <i class="fas fa-clock text-indigo-600 text-2xl"></i>
                     </div>
-                    <h3 class="font-medium">Laptop</h3>
+                    <h3 class="font-medium">Smartwatch</h3>
                 </div>
+
                 <div class="bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition duration-300">
                     <div class="bg-indigo-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
                         <i class="fas fa-headphones text-indigo-600 text-2xl"></i>
                     </div>
-                    <h3 class="font-medium">Audio</h3>
+                    <h3 class="font-medium">Aksesoris</h3>
                 </div>
                 <div class="bg-gray-50 rounded-lg p-4 text-center hover:shadow-md transition duration-300">
                     <div class="bg-indigo-100 w-16 h-16 mx-auto rounded-full flex items-center justify-center mb-4">
-                        <i class="fas fa-camera text-indigo-600 text-2xl"></i>
+                        <i class="fas fa-tablet-alt text-indigo-600 text-2xl"></i>
                     </div>
-                    <h3 class="font-medium">Kamera</h3>
+                    <h3 class="font-medium">Tablet</h3>
                 </div>
             </div>
         </div>
