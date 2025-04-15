@@ -14,19 +14,21 @@
         }
 
         body {
-            background: linear-gradient(135deg, #6e8efb, #a777e3);
-            height: 100vh;
+            background-color: #f5f8fa;
+            color: #333;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
         }
 
         .container {
-            background-color: rgba(255, 255, 255, 0.9);
-            border-radius: 20px;
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-            width: 400px;
-            max-width: 90%;
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 480px;
             padding: 40px;
             text-align: center;
         }
@@ -38,31 +40,30 @@
         .logo img {
             width: 80px;
             height: 80px;
+            border-radius: 50%;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
-            color: #333;
+            text-align: center;
             margin-bottom: 30px;
+            color: #2c3e50;
             font-size: 28px;
         }
 
-        .error-box {
+        .error-container {
             background-color: #fff5f5;
-            border-left: 4px solid #f56565;
-            padding: 12px;
-            margin-bottom: 20px;
-            text-align: left;
-            border-radius: 4px;
-        }
-
-        .error-box ul {
-            list-style-type: none;
-        }
-
-        .error-box li {
             color: #e53e3e;
-            font-size: 14px;
-            margin-bottom: 5px;
+            padding: 12px;
+            border-radius: 6px;
+            margin-bottom: 20px;
+            border-left: 4px solid #e53e3e;
+            text-align: left;
+        }
+
+        .error-container ul {
+            list-style-position: inside;
+            margin-left: 10px;
         }
 
         .form-group {
@@ -72,62 +73,59 @@
 
         label {
             display: block;
-            color: #4a5568;
             margin-bottom: 8px;
-            font-size: 16px;
             font-weight: 500;
+            color: #4a5568;
         }
 
         input {
             width: 100%;
-            padding: 15px;
-            border: 1px solid #e2e8f0;
-            border-radius: 10px;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
             font-size: 16px;
-            transition: all 0.3s ease;
+            transition: border-color 0.3s;
             background-color: #f8fafc;
         }
 
         input:focus {
             outline: none;
-            border-color: #6e8efb;
-            box-shadow: 0 0 0 3px rgba(110, 142, 251, 0.3);
+            border-color: #3498db;
+            box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
         }
 
         button {
-            width: 100%;
-            padding: 15px;
-            background: linear-gradient(135deg, #6e8efb, #a777e3);
-            border: none;
-            border-radius: 10px;
+            background-color: #3498db;
             color: white;
-            font-size: 18px;
+            width: 100%;
+            border: none;
+            border-radius: 6px;
+            padding: 14px;
+            font-size: 16px;
             font-weight: 600;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s;
             margin-top: 10px;
         }
 
         button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
+            background-color: #2980b9;
         }
 
         .register-link {
+            text-align: center;
             margin-top: 25px;
-            color: #4a5568;
-            font-size: 15px;
+            color: #718096;
         }
 
         .register-link a {
-            color: #6e8efb;
+            color: #3498db;
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s ease;
+            font-weight: 500;
         }
 
         .register-link a:hover {
-            color: #a777e3;
+            text-decoration: underline;
         }
 
         /* Responsive adjustments */
@@ -154,11 +152,10 @@
             <img src="{{ asset('storage/images/LOGO.jpg') }}" alt="Logo Toko Berkah Gadget">
         </div>
 
-
-        <h1>Login Toko Berkah Gadget</h1>
+        <h1>Berkah Gadget</h1>
 
         @if ($errors->any())
-        <div class="error-box">
+        <div class="error-container">
             <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>
@@ -171,8 +168,8 @@
             @csrf
 
             <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" name="email" id="email" required placeholder="Masukkan email Anda">
+                <label for="email">Alamat Email</label>
+                <input type="email" name="email" id="email" value="{{ old('email') }}" required placeholder="Masukkan email Anda" autofocus>
             </div>
 
             <div class="form-group">
