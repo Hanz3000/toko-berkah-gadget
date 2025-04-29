@@ -436,15 +436,13 @@
         </div>
     </section>
 
-    <!-- Subscribe -->
-    <section class="py-12 bg-indigo-600">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-2xl font-bold text-white mb-4">Dapatkan Penawaran Eksklusif</h2>
-            <p class="text-indigo-100 mb-6 max-w-2xl mx-auto">Berlangganan newsletter kami dan dapatkan info promo terbaru serta diskon eksklusif langsung ke email Anda</p>
-            <form class="max-w-md mx-auto flex">
-                <input type="email" placeholder="Alamat email Anda" class="flex-1 px-4 py-3 rounded-l-md focus:outline-none">
-                <button type="submit" class="bg-yellow-500 text-white px-6 py-3 rounded-r-md hover:bg-yellow-600 focus:outline-none">Langganan</button>
-            </form>
+    <!-- Section: Tentang Toko Kami -->
+    <section id="tentang" class="py-5 bg-indigo-600">
+        <div class="container text-center px-5 my-5 text-white">
+            <h2 class="text-2xl font-bold text-center mb-8">Tentang Toko Kami</h2>
+            <p class="mb-5 px-5 mx-5 py-5 text-white">
+                Toko Berkah Gadget Madiun adalah pusat penjualan gadget terpercaya di Madiun. Kami menyediakan berbagai produk berkualitas mulai dari smartphone, tablet, aksesoris, hingga kebutuhan teknologi lainnya. Dengan pelayanan yang ramah, harga bersaing, dan garansi resmi, kami berkomitmen untuk memberikan pengalaman belanja terbaik bagi pelanggan.
+            </p>
         </div>
     </section>
 

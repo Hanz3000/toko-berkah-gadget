@@ -16,6 +16,7 @@
             @csrf
             @method('PUT')
 
+
             <div>
                 <label for="nama_produk" class="block text-sm font-medium text-gray-700">Nama Produk:</label>
                 <input type="text" name="nama_produk" id="nama_produk" value="{{ $produk->nama_produk }}" required
