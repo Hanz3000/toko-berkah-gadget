@@ -6,7 +6,6 @@
 @section('header-subtitle', 'Tambahkan produk baru ke dalam sistem')
 
 @section('search-form')
-
 @endsection
 
 @section('content')

@@ -32,7 +32,7 @@
             <div class="bg-gradient-to-br from-indigo-50 to-white rounded-xl shadow-md p-6 border border-indigo-100 hover:shadow-lg transition-all duration-300">
                 <div class="flex items-center justify-between mb-4">
                     <h4 class="text-indigo-700 font-medium">Total Produk</h4>
-                    <div class="p-2 rounded-lg bg-indigo-600 text-white shadow-md">
+                    <div class=" w-9 h-9 flex items-center justify-center sp-2 rounded-lg bg-indigo-600 text-white shadow-md">
                         <i class="fas fa-box"></i>
                     </div>
                 </div>
@@ -57,7 +57,7 @@
             <div class="bg-gradient-to-br from-purple-50 to-white rounded-xl shadow-md p-6 border border-purple-100 hover:shadow-lg transition-all duration-300">
                 <div class="flex items-center justify-between mb-4">
                     <h4 class="text-purple-700 font-medium">Kategori</h4>
-                    <div class="p-2 rounded-lg bg-purple-600 text-white shadow-md">
+                    <div class=" w-9 h-9 flex items-center justify-center p-2 rounded-lg bg-purple-600 text-white shadow-md">
                         <i class="fas fa-tags"></i>
                     </div>
                 </div>
@@ -78,7 +78,7 @@
             <div class="bg-gradient-to-br from-amber-50 to-white rounded-xl shadow-md p-6 border border-amber-100 hover:shadow-lg transition-all duration-300">
                 <div class="flex items-center justify-between mb-4">
                     <h4 class="text-amber-700 font-medium">Total Pengguna</h4>
-                    <div class="p-2 rounded-lg bg-amber-600 text-white shadow-md">
+                    <div class="w-9 h-9 flex items-center justify-center p-2 rounded-lg bg-amber-600 text-white shadow-md">
                         <i class="fas fa-users"></i>
                     </div>
                 </div>
@@ -160,15 +160,17 @@
                         <td class="py-4 px-6 text-right">
                             <div class="flex items-center justify-end space-x-3">
                                 <a href="{{ route('admin.produk.edit', $item->id) }}"
-                                    class="p-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors shadow-sm">
-                                    <i class="fas fa-edit"></i>
+                                    class="w-9 h-9 flex items-center justify-center bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors shadow-sm">
+                                    <i class="fas fa-edit text-sm"></i>
                                 </a>
                                 <form action="{{ route('admin.produk.destroy', $item->id) }}" method="POST" class="inline">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" onclick="return confirm('Yakin ingin menghapus produk ini?')" class="p-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors shadow-sm">
-                                        <i class="fas fa-trash"></i>
+                                    <button type="submit" onclick="return confirm('Yakin ingin menghapus produk ini?')"
+                                        class="w-9 h-9 flex items-center justify-center bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors shadow-sm">
+                                        <i class="fas fa-trash text-sm"></i>
                                     </button>
+
                                 </form>
                             </div>
                         </td>

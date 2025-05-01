@@ -9,33 +9,38 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 
-<body class="bg-gray-50 min-h-screen">
-    <!-- Toast Notification Container -->
-    <div id="toastContainer" class="fixed top-6 right-6 z-50 flex flex-col gap-4"></div>
+<body x-data="{ isSidebarOpen: true }" class="bg-gray-50 antialiased">
+    <div class="min-h-screen bg-gray-100">
+        @include('layouts.partials.header')
 
-    <div class="flex">
-        <!-- Sidebar -->
         @include('layouts.partials.sidebar')
 
-        <!-- Main Content -->
-        <div class="ml-64 flex-1">
-            <!-- Navbar -->
-            @include('layouts.partials.header')
 
-            <!-- Content -->
-            <div class="p-6">
-                @yield('content')
+        <!-- Tombol Toggle Sidebar untuk Mobile -->
+        <button
+            @click="isSidebarOpen = !isSidebarOpen"
+            class="fixed bottom-4 right-4 z-50 p-3 rounded-full bg-indigo-600 text-white shadow-lg hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 md:hidden">
+            <svg
+                class="w-6 h-6"
+                :class="{'rotate-180': !isSidebarOpen}"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+        </button>
+
+        <main class="flex-1 transition-all duration-300" :class="{'ml-80': isSidebarOpen, 'ml-0': !isSidebarOpen}">
+            <div class="py-6">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    @yield('content')
+                </div>
             </div>
-
-            <!-- Footer -->
-            @include('layouts.partials.footer')
-        </div>
+        </main>
     </div>
-
-    <script src="{{ asset('js/app.js') }}"></script>
-    @yield('scripts')
 </body>
 
 </html>

@@ -16,6 +16,8 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <script src="//unpkg.com/alpinejs" defer></script>
+    <script src="{{ asset('js/sidebar.js') }}" defer></script>
 </head>
 
 <body>
