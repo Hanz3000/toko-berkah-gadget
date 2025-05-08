@@ -7,7 +7,9 @@
     <title>Berkah Gadget - Toko Gadget Modern</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -98,6 +100,71 @@
             width: 8px;
         }
 
+        /* Parallax effect */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
+        }
+
+        /* Custom animation classes */
+        [data-aos="custom-fade-up"] {
+            opacity: 0;
+            transform: translateY(100px);
+            transition-property: transform, opacity;
+        }
+
+        [data-aos="custom-fade-up"].aos-animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Staggered animation helper classes */
+        .stagger-item:nth-child(1) {
+            transition-delay: 100ms;
+        }
+
+        .stagger-item:nth-child(2) {
+            transition-delay: 200ms;
+        }
+
+        .stagger-item:nth-child(3) {
+            transition-delay: 300ms;
+        }
+
+        .stagger-item:nth-child(4) {
+            transition-delay: 400ms;
+        }
+
+        .stagger-item:nth-child(5) {
+            transition-delay: 500ms;
+        }
+
+        /* Custom Shape Divider */
+        .custom-shape-divider-bottom-1591961042 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+
+        .custom-shape-divider-bottom-1591961042 svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 95px;
+        }
+
+        .custom-shape-divider-bottom-1591961042 .shape-fill {
+            fill: #FFFFFF;
+        }
+
         ::-webkit-scrollbar-track {
             background: #f1f1f1;
             border-radius: 10px;
@@ -124,8 +191,6 @@
             background-clip: text;
             color: transparent;
         }
-
-
 
         .card-hover:hover {
             transform: translateY(-8px);
@@ -155,8 +220,6 @@
             background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             animation: btn-loading 1.5s infinite;
         }
-
-
 
         /* Floating animation */
         @keyframes float {
@@ -300,15 +363,16 @@
     <nav id="mainNav" class="navbar-glass fixed w-full z-50 backdrop-blur-md bg-white/70 transition-all duration-300 border-b border-gray-100 shadow-sm">
         <div class="container mx-auto px-4 py-3">
             <div class="flex justify-between items-center">
+
                 <!-- Logo -->
-                <div class="flex items-center justify-start">
+                <div class="flex items-center justify-start" data-aos="fade-right">
                     <span class="whitespace-nowrap text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 via-blue-500 to-green-500 mr-3 hover:scale-105 transition-transform duration-300">
                         Berkah Gadget
                     </span>
                 </div>
 
                 <!-- Desktop Navigation -->
-                <div class="hidden lg:flex items-center space-x-1">
+                <div class="hidden lg:flex items-center space-x-1" data-aos="fade-left" data-aos-delay="10">
                     <a href="#" class="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-all relative group rounded-md hover:bg-gray-50/80">
                         Beranda
                         <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-green-500 transition-all duration-300 group-hover:w-4/5"></span>
@@ -327,7 +391,7 @@
                         <!-- Mega Menu -->
                         <div class="absolute left-0 mt-2 w-screen max-w-5xl bg-white/95 backdrop-blur-md rounded-xl shadow-xl py-6 px-8 grid grid-cols-4 gap-8 invisible opacity-0 translate-y-4 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-50 border border-gray-100">
                             <!-- Smartphone -->
-                            <div class="transition-all duration-300 hover:bg-gray-50/70 p-4 rounded-lg">
+                            <div class="transition-all duration-300 hover:bg-gray-50/70 p-4 rounded-lg" data-aos="zoom-in" data-aos-delay="300">
                                 <h4 class="text-blue-600 font-semibold mb-3 flex items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
@@ -348,12 +412,12 @@
                             </div>
 
                             <!-- Laptop -->
-                            <div class="transition-all duration-300 hover:bg-gray-50/70 p-4 rounded-lg">
+                            <div class="transition-all duration-300 hover:bg-gray-50/70 p-4 rounded-lg" data-aos="zoom-in" data-aos-delay="300">
                                 <h4 class="text-blue-600 font-semibold mb-3 flex items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                                     </svg>
-                                    Laptop
+                                    Tablet
                                 </h4>
                                 <ul class="space-y-2">
                                     <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">Macbook</a></li>
@@ -369,7 +433,7 @@
                             </div>
 
                             <!-- Aksesoris -->
-                            <div class="transition-all duration-300 hover:bg-gray-50/70 p-4 rounded-lg">
+                            <div class="transition-all duration-300 hover:bg-gray-50/70 p-4 rounded-lg" data-aos="zoom-in" data-aos-delay="300">
                                 <h4 class="text-blue-600 font-semibold mb-3 flex items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
@@ -390,19 +454,7 @@
                                 </a>
                             </div>
 
-                            <!-- Featured -->
-                            <div class="bg-gradient-to-br from-gray-50 to-blue-50/30 rounded-xl p-4 shadow-sm border border-gray-100">
-                                <h4 class="text-blue-600 font-semibold mb-3">Promo Terbaru</h4>
-                                <div class="flex flex-col space-y-3">
-                                    <a href="#" class="group">
-                                        <div class="h-32 bg-gray-200 rounded-lg overflow-hidden mb-2 shadow-sm">
-                                            <img src="{{ asset('storage/images/slide1.png') }}" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
-                                        </div>
-                                        <h5 class="font-medium group-hover:text-blue-600 transition-all">Diskon Besar iPhone 14</h5>
-                                        <p class="text-sm text-gray-500">Berakhir dalam 3 hari</p>
-                                    </a>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
 
@@ -430,7 +482,7 @@
                 <!-- Right side icons -->
                 <div class="flex items-center space-x-4">
                     <!-- Search -->
-                    <div class="hidden md:block relative group">
+                    <div class="hidden md:block left-1 relative group">
                         <input type="text" placeholder="Cari produk..." class="pl-10 pr-4 py-2 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-64 transition-all bg-gray-50/70 group-hover:bg-white">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 group-hover:text-blue-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -699,7 +751,14 @@
         <div class="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/85 to-secondary-900/80 z-0"></div>
 
         <!-- Animated Particles Background -->
-        <div class="absolute inset-0 z-0 opacity-20" id="particles-js"></div>
+        <div class="absolute inset-0 z-0 opacity-90" id="particles-js"></div>
+
+        <!-- Custom Shape Divider Bottom -->
+        <div class="custom-shape-divider-bottom-1591961042">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
 
         <div class="container mx-auto px-4 relative z-10">
             <div class="flex flex-col lg:flex-row items-center gap-8">
@@ -768,76 +827,198 @@
                     </div>
                 </div>
 
-                <!-- Right Content - Dynamic Product Showcase -->
-                <div class="lg:w-1/2">
-                    <div class="relative">
-                        <!-- Carousel Container -->
-                        <div class="carousel-container overflow-hidden relative">
-                            <!-- Slides -->
-                            <div class="slides-container flex transition-transform duration-500 ease-in-out">
-                                <!-- Slide 1 -->
-                                <div class="slide min-w-full">
-                                    <div class="relative z-10 animate-float">
-                                        <img src="{{ asset('storage/images/slide1.png') }}" alt="Featured Product 1" class="w-full max-w-lg mx-auto drop-shadow-2xl animate-glow">
-                                        <!-- Decorative Elements -->
-                                        <div class="absolute -bottom-5 left-1/2 transform -translate-x-1/2 w-3/4 h-8 bg-gradient-to-t from-primary-400/20 to-transparent blur-lg"></div>
-                                        <div class="absolute top-1/3 left-1/4 h-20 w-20 bg-primary-400/20 rounded-full animate-pulse-slow blur-xl"></div>
-                                        <div class="absolute bottom-1/3 right-1/4 h-16 w-16 bg-secondary-400/20 rounded-full animate-pulse-slow blur-xl" style="animation-delay: 1s"></div>
+                <!-- Right Content - Enhanced Dynamic Product Showcase -->
+                <div class="lg:w-1/2 relative z-10">
+                    <!-- Decorative Background Elements -->
+                    <div class="absolute -z-10 top-0 right-0 w-64 h-64 bg-gradient-to-br from-accent-400/30 to-primary-500/20 rounded-full filter blur-3xl animate-pulse-slow"></div>
+                    <div class="absolute -z-10 bottom-10 left-10 w-40 h-40 bg-gradient-to-tr from-secondary-500/30 to-primary-400/20 rounded-full filter blur-3xl animate-pulse-slow" style="animation-delay: 1.5s"></div>
+
+                    <!-- 3D Perspective Container -->
+                    <div class="relative perspective-1000 transform-gpu">
+                        <!-- Floating Card with Glass Effect -->
+                        <div class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-4 shadow-2xl hover:shadow-primary-500/30 transition-all duration-500 transform hover:-rotate-1 hover:scale-103">
+                            <!-- Carousel Container with Improved Styling -->
+                            <div class="carousel-container overflow-hidden relative rounded-2xl">
+                                <!-- Progress Bar -->
+                                <div class="absolute top-0 left-0 right-0 z-30 h-1 bg-white/20">
+                                    <div class="carousel-progress h-full bg-gradient-to-r from-primary-400 to-accent-500 w-1/3 transition-all duration-300"></div>
+                                </div>
+
+                                <!-- Slides Container with Smoother Transition -->
+                                <div class="slides-container flex transition-transform duration-700 ease-out">
+                                    <!-- Slide 1 -->
+                                    <div class="slide min-w-full p-4">
+                                        <div class="relative z-10 transform-gpu">
+                                            <!-- Product Highlight Badge -->
+                                            <div class="absolute -top-3 -left-3 bg-accent-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-20 animate-bounce-slow">New!</div>
+
+                                            <!-- Product Image with Enhanced Effects -->
+                                            <div class="relative group">
+                                                <img src="https://www.spark.co.nz/content/dam/spark/images/product-images/devices/phones/samsung/s25-series/s25-ultra/titanium-silver-blue/s25-ultra-titanium-silver-blue-1.png" alt="Featured Product 1" class="w-full max-w-md mx-auto drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
+                                                <!-- Interactive Light Reflections -->
+                                                <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                                            </div>
+
+                                            <!-- Product Quick Info -->
+                                            <div class="mt-4 text-center">
+                                                <h3 class="text-white font-bold text-xl">Galaxy S25 Ultra</h3>
+                                                <div class="flex items-center justify-center mt-1 mb-2">
+                                                    <div class="flex text-amber-400">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                        </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                        </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                        </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                        </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                        </svg>
+                                                    </div>
+                                                    <span class="text-gray-200 text-xs ml-2">(459 reviews)</span>
+                                                </div>
+                                                <p class="text-primary-200 font-medium"><span class="line-through text-gray-400 text-sm">Rp18.999.000</span> <span class="text-white">Rp15.999.000</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 2 -->
+                                    <div class="slide min-w-full p-4">
+                                        <div class="relative z-10 transform-gpu">
+                                            <!-- Product Highlight Badge -->
+                                            <div class="absolute -top-3 -left-3 bg-primary-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-20 animate-pulse">HOT</div>
+
+                                            <!-- Product Image with Enhanced Effects -->
+                                            <div class="relative group">
+                                                <img src="https://www.apple.com/newsroom/images/2023/10/apple-unveils-new-macbook-pro-featuring-m3-chips/tile/Apple-MacBook-Pro-2up-231030.jpg.og.jpg?202503110420" alt="Featured Product 2" class="w-full max-w-md mx-auto drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
+
+                                                <!-- Interactive Light Reflections -->
+                                                <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                                            </div>
+
+                                            <!-- Product Quick Info -->
+                                            <div class="mt-4 text-center">
+                                                <h3 class="text-white font-bold text-xl">MacBook Pro M3</h3>
+                                                <div class="flex items-center justify-center mt-1 mb-2">
+                                                    <div class="flex text-amber-400">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                        </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                        </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                        </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                        </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                        </svg>
+                                                    </div>
+                                                    <span class="text-gray-200 text-xs ml-2">(328 reviews)</span>
+                                                </div>
+                                                <p class="text-primary-200 font-medium"><span class="line-through text-gray-400 text-sm">Rp24.999.000</span> <span class="text-white">Rp21.499.000</span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Slide 3 -->
+                                    <div class="slide min-w-full p-4">
+                                        <div class="relative z-10 transform-gpu">
+                                            <!-- Product Highlight Badge -->
+                                            <div class="absolute -top-3 -left-3 bg-secondary-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-20">30% OFF</div>
+
+                                            <!-- Product Image with Enhanced Effects -->
+                                            <div class="relative group">
+                                                <img src="https://images.fonearena.com/blog/wp-content/uploads/2023/10/Xiaomi-14-Pro-IP68-1024x946.jpg" alt="Featured Product 3" class="w-full max-w-md mx-auto drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
+
+                                                <!-- Interactive Light Reflections -->
+                                                <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+                                            </div>
+
+                                            <!-- Product Quick Info -->
+                                            <div class="mt-4 text-center">
+                                                <h3 class="text-white font-bold text-xl">Xiaomi 14 Pro</h3>
+                                                <div class="flex items-center justify-center mt-1 mb-2">
+                                                    <div class="flex text-amber-400">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                        </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                        </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                        </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
+                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                        </svg>
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                                        </svg>
+                                                    </div>
+                                                    <span class="text-gray-200 text-xs ml-2">(215 reviews)</span>
+                                                </div>
+                                                <p class="text-primary-200 font-medium"><span class="line-through text-gray-400 text-sm">Rp12.999.000</span> <span class="text-white">Rp8.999.000</span></p>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
 
-                                <!-- Slide 2 -->
-                                <div class="slide min-w-full">
-                                    <div class="relative z-10 animate-float" style="animation-delay: 0.3s">
-                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMKZ3vDmQE5s-89FVWcgQD35P79P-wGh5w-g&s" alt="Featured Product 2" class="w-full max-w-lg mx-auto drop-shadow-2xl animate-glow">
-                                        <!-- Decorative Elements -->
-                                        <div class="absolute -bottom-5 left-1/2 transform -translate-x-1/2 w-3/4 h-8 bg-gradient-to-t from-secondary-400/20 to-transparent blur-lg"></div>
-                                        <div class="absolute top-1/4 right-1/4 h-20 w-20 bg-secondary-400/20 rounded-full animate-pulse-slow blur-xl"></div>
-                                        <div class="absolute bottom-1/4 left-1/4 h-16 w-16 bg-primary-400/20 rounded-full animate-pulse-slow blur-xl" style="animation-delay: 1.5s"></div>
-                                    </div>
-                                </div>
+                                <!-- Enhanced Navigation Arrows -->
+                                <button class="carousel-arrow prev absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/10 hover:bg-white/90 text-primary-600 rounded-full p-3 shadow-lg z-20 transition-all duration-300 backdrop-blur-sm hover:scale-110 border border-white/30">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                                    </svg>
+                                </button>
+                                <button class="carousel-arrow next absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/10 hover:bg-white/90 text-primary-600 rounded-full p-3 shadow-lg z-20 transition-all duration-300 backdrop-blur-sm hover:scale-110 border border-white/30">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </button>
 
-                                <!-- Slide 3 -->
-                                <div class="slide min-w-full">
-                                    <div class="relative z-10 animate-float" style="animation-delay: 0.6s">
-                                        <img src="https://asset-2.tstatic.net/shopping/foto/bank/images/ilustrasi-hp-xiaomi-yang-sedang-promo-1212.jpg" alt="Featured Product 3" class="w-full max-w-lg mx-auto drop-shadow-2xl animate-glow">
-                                        <!-- Decorative Elements -->
-                                        <div class="absolute -bottom-5 left-1/2 transform -translate-x-1/2 w-3/4 h-8 bg-gradient-to-t from-accent-400/20 to-transparent blur-lg"></div>
-                                        <div class="absolute top-1/3 right-1/3 h-20 w-20 bg-accent-400/20 rounded-full animate-pulse-slow blur-xl"></div>
-                                        <div class="absolute bottom-1/3 left-1/3 h-16 w-16 bg-primary-400/20 rounded-full animate-pulse-slow blur-xl" style="animation-delay: 2s"></div>
-                                    </div>
+                                <!-- Enhanced Slide Indicators -->
+                                <div class="slide-indicators absolute -bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
+                                    <button class="indicator w-10 h-2 rounded-full bg-white/20 hover:bg-primary-500 transition-all indicator-active"></button>
+                                    <button class="indicator w-10 h-2 rounded-full bg-white/20 hover:bg-primary-500 transition-all"></button>
+                                    <button class="indicator w-10 h-2 rounded-full bg-white/20 hover:bg-primary-500 transition-all"></button>
                                 </div>
                             </div>
-                            <!-- Navigation Arrows -->
-                            <button class="carousel-arrow prev absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-primary-600 rounded-full p-2 shadow-md z-20 transition-all">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </button>
-                            <button class="carousel-arrow next absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/80 hover:bg-white text-primary-600 rounded-full p-2 shadow-md z-20 transition-all">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
 
-                            <!-- Slide Indicators -->
-                            <div class="slide-indicators absolute bottom-0 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
-                                <button class="indicator w-3 h-3 rounded-full bg-gray-300 hover:bg-primary-500 transition-all indicator-active"></button>
-                                <button class="indicator w-3 h-3 rounded-full bg-gray-300 hover:bg-primary-500 transition-all"></button>
-                                <button class="indicator w-3 h-3 rounded-full bg-gray-300 hover:bg-primary-500 transition-all"></button>
+                            <!-- Quick Action Buttons -->
+                            <div class="flex gap-3 mt-4 justify-center">
+                                <button class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full text-white text-sm flex items-center space-x-1 backdrop-blur-sm transition-all duration-300 border border-white/10 hover:border-white/30 shadow-lg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                                    </svg>
+                                    <span>Add to Cart</span>
+                                </button>
+                                <button class="px-4 py-2 bg-primary-500 hover:bg-primary-600 rounded-full text-white text-sm flex items-center space-x-1 transition-all duration-300 shadow-lg hover:shadow-primary-500/50">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                                    </svg>
+                                    <span>Wishlist</span>
+                                </button>
+                                <button class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full text-white text-sm flex items-center space-x-1 backdrop-blur-sm transition-all duration-300 border border-white/10 hover:border-white/30 shadow-lg">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                                    </svg>
+                                    <span>Share</span>
+                                </button>
                             </div>
+
+
+
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- Improved Wave Animation at Bottom - Lower Height and Better Integration -->
-        <div class="absolute bottom-0 left-0 right-0 overflow-hidden z-20">
-            <svg viewBox="0 0 1200 90" preserveAspectRatio="none" class="w-full h-16 md:h-20">
-                <path d="M0,0V30c150,55,350,66,500,30C650,30,700,10,800,10c160,0,300,40,400,80v0H0Z" class="fill-white"></path>
-            </svg>
-        </div>
     </section>
 
     <!-- Add Particles.js script -->
@@ -1025,39 +1206,9 @@
         });
     </script>
 
-    <!-- Features Section -->
-    <section class="py-12 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 animate-fade-in">
-                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-                        <i class="fas fa-shipping-fast text-primary-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-center mb-2">Gratis Ongkir</h3>
-                    <p class="text-gray-600 text-center">Gratis pengiriman untuk semua pesanan di atas Rp 500.000</p>
-                </div>
 
-                <!-- Feature 2 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 animate-fade-in animation-delay-200">
-                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-                        <i class="fas fa-shield-alt text-primary-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-center mb-2">Garansi Resmi</h3>
-                    <p class="text-gray-600 text-center">Semua produk kami bergaransi resmi dari distributor</p>
-                </div>
 
-                <!-- Feature 3 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 animate-fade-in animation-delay-400">
-                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-                        <i class="fas fa-headset text-primary-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-center mb-2">Dukungan 24/7</h3>
-                    <p class="text-gray-600 text-center">Tim support kami siap membantu kapan saja</p>
-                </div>
-            </div>
-        </div>
-    </section>
+
 
     <!-- Categories Section -->
     <section id="kategori" class="py-12 bg-gray-50">
@@ -1114,67 +1265,102 @@
     <!-- Products Section -->
     <section id="produk" class="py-12 bg-white">
         <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row justify-between items-center mb-8 animate-fade-in">
-                <div>
-                    <h2 class="text-3xl font-bold mb-2">Produk Terbaru</h2>
+            <!-- Header Section with Enhanced Animation -->
+            <div class="flex flex-col md:flex-row justify-between items-center mb-12 opacity-0 animate-fade-in">
+                <div class="relative">
+                    <h2 class="text-3xl font-bold mb-2 relative">
+                        Produk Terbaru
+                        <span class="absolute bottom-0 left-0 w-1/3 h-1 bg-primary-600 rounded-full transform origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+                    </h2>
                     <p class="text-gray-600">Koleksi produk terbaru dengan kualitas terbaik</p>
                 </div>
+                <!-- Perbaikan button Lihat Semua Produk -->
                 <div class="mt-4 md:mt-0">
-                    <a href="#" class="px-6 py-2 border border-primary-600 text-primary-600 rounded-full hover:bg-primary-600 hover:text-white transition-all btn-hover">
-                        Lihat Semua Produk
+                    <a href="#" class="group inline-flex items-center px-8 py-3 border-2 border-primary-600 text-primary-600 rounded-full hover:text-white transition-all duration-300 relative overflow-hidden">
+                        <span class="relative z-10 transition-transform duration-300 group-hover:transform">
+                            Lihat Semua Produk
+                        </span>
+                        <!-- Mengubah cara animasi slide -->
+                        <div class="absolute inset-0 rounded-full bg-primary-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
                     </a>
                 </div>
             </div>
 
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Products Grid with Enhanced Animations -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 @foreach ($produk as $item)
-                <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 card-hover product-card relative animate-slide-up" style="animation-delay: {{ $loop->index * 100 }}ms">
-                    <!-- Badge -->
+                <div class="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 product-card relative opacity-0 animate-slide-up"
+                    data-aos="fade-up"
+                    data-aos-delay="{{ $loop->index * 100 }}"
+                    style="animation-delay: {{ $loop->index * 100 }}ms">
+
+                    <!-- Enhanced New Badge -->
                     @if($item->is_new)
-                    <div class="absolute top-3 left-3 bg-accent-500 text-white text-xs font-bold px-2 py-1 rounded-full z-10">
-                        Baru!
+                    <div class="absolute top-4 left-4 z-20">
+                        <div class="relative">
+                            <div class="absolute inset-0 bg-accent-500 rounded-full animate-pulse opacity-30"></div>
+                            <span class="relative bg-accent-500 text-white text-xs font-bold px-3 py-1.5 rounded-full inline-block transform hover:scale-105 transition-transform duration-300">
+                                Baru!
+                            </span>
+                        </div>
                     </div>
                     @endif
 
-                    <!-- Product Image -->
-                    <div class="relative h-48 overflow-hidden">
+                    <!-- Enhanced Product Image Container -->
+                    <div class="relative h-56 overflow-hidden">
                         @if ($item->gambar)
-                        <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->nama_produk }}" class="w-full h-full object-cover transition-all duration-500 hover:scale-110">
+                        <img src="{{ asset('storage/' . $item->gambar) }}"
+                            alt="{{ $item->nama_produk }}"
+                            class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         @else
-                        <div class="w-full h-full bg-gray-100 flex items-center justify-center text-gray-400">
-                            <i class="fas fa-image text-4xl"></i>
+                        <div class="w-full h-full bg-gray-50 flex items-center justify-center">
+                            <i class="fas fa-image text-4xl text-gray-300 transition-all duration-300 group-hover:scale-110"></i>
                         </div>
                         @endif
-                        <!-- Quick View Button -->
-                        <div class="absolute inset-0 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300 bg-black/30">
-                            <a href="{{ route('user.produk.detail', $item->id) }}" class="px-4 py-2 bg-white text-primary-600 rounded-full font-medium hover:bg-primary-600 hover:text-white transition-all">
-                                Lihat Detail
+
+                        <!-- Enhanced Quick View Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+                            <a href="{{ route('user.produk.detail', $item->id) }}"
+                                class="px-6 py-3 bg-white/90 text-primary-600 rounded-full font-medium transform -translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 hover:bg-primary-600 hover:text-white">
+                                <i class="fas fa-eye mr-2"></i>Lihat Detail
                             </a>
                         </div>
                     </div>
 
-                    <!-- Product Info -->
-                    <div class="p-4">
-                        <div class="flex justify-between items-start mb-2">
+                    <!-- Enhanced Product Info -->
+                    <div class="p-6">
+                        <div class="flex justify-between items-start mb-3">
                             <div>
-                                <span class="text-xs text-primary-600 bg-primary-100 px-2 py-1 rounded-full">{{ $item->kategori }}</span>
-                                <h3 class="font-semibold text-lg mt-1 text-gray-800">{{ $item->nama_produk }}</h3>
+                                <span class="inline-block text-xs text-primary-600 bg-primary-50 px-3 py-1 rounded-full font-medium transform hover:scale-105 transition-transform duration-300">
+                                    {{ $item->kategori }}
+                                </span>
+                                <h3 class="font-bold text-lg mt-2 text-gray-800 group-hover:text-primary-600 transition-colors duration-300">
+                                    {{ $item->nama_produk }}
+                                </h3>
                             </div>
-                            <!-- Wishlist Button -->
-                            <button class="text-gray-400 hover:text-accent-500 transition-all">
-                                <i class="far fa-heart"></i>
+
+                            <!-- Enhanced Wishlist Button -->
+                            <button class="w-10 h-10 rounded-full flex items-center justify-center group/wishlist hover:bg-primary-50 transition-all duration-300">
+                                <i class="far fa-heart text-gray-400 group-hover/wishlist:text-primary-600 transform group-hover/wishlist:scale-110 transition-all duration-300"></i>
                             </button>
                         </div>
 
+                        <!-- Enhanced Price and Cart Section -->
                         <div class="flex items-center justify-between mt-4">
-                            <div>
-                                <p class="text-xl font-bold text-primary-600">Rp {{ number_format($item->harga, 0, ',', '.') }}</p>
+                            <div class="space-y-1">
+                                <p class="text-xl font-bold text-primary-600">
+                                    Rp {{ number_format($item->harga, 0, ',', '.') }}
+                                </p>
                                 @if($item->harga_diskon)
-                                <p class="text-sm text-gray-500 line-through">Rp {{ number_format($item->harga_diskon, 0, ',', '.') }}</p>
+                                <p class="text-sm text-gray-400 line-through">
+                                    Rp {{ number_format($item->harga_diskon, 0, ',', '.') }}
+                                </p>
                                 @endif
                             </div>
-                            <button class="btn-loading w-10 h-10 bg-primary-600 text-white rounded-full flex items-center justify-center hover:bg-primary-700 transition-all btn-hover">
-                                <i class="fas fa-shopping-cart"></i>
+
+                            <!-- Enhanced Cart Button -->
+                            <button class="w-12 h-12 bg-primary-600 text-white rounded-full flex items-center justify-center group/cart hover:bg-primary-700 transition-all duration-300 transform hover:scale-105">
+                                <i class="fas fa-shopping-cart transform group-hover/cart:rotate-12 transition-transform duration-300"></i>
                             </button>
                         </div>
                     </div>
@@ -1184,34 +1370,36 @@
         </div>
     </section>
 
-    <!-- Promo Banner -->
-    <section id="promo" class="py-12 bg-gradient-to-r from-primary-600 to-secondary-600">
+
+    <!-- Features Section -->
+    <section class="py-12 bg-white">
         <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center justify-between">
-                <div class="text-center md:text-left mb-6 md:mb-0 animate-fade-in">
-                    <h2 class="text-3xl font-bold text-white mb-2">Promo Spesial Hari Ini!</h2>
-                    <p class="text-gray-100 mb-4">Dapatkan diskon hingga 30% untuk produk pilihan</p>
-                    <div class="flex items-center justify-center md:justify-start space-x-2">
-                        <div class="bg-white/20 text-white px-3 py-1 rounded-lg">
-                            <span class="font-bold text-xl">12</span>
-                            <span class="text-sm">Hari</span>
-                        </div>
-                        <div class="bg-white/20 text-white px-3 py-1 rounded-lg">
-                            <span class="font-bold text-xl">23</span>
-                            <span class="text-sm">Jam</span>
-                        </div>
-                        <div class="bg-white/20 text-white px-3 py-1 rounded-lg">
-                            <span class="font-bold text-xl">45</span>
-                            <span class="text-sm">Menit</span>
-                        </div>
-                        <div class="bg-white/20 text-white px-3 py-1 rounded-lg">
-                            <span class="font-bold text-xl">30</span>
-                            <span class="text-sm">Detik</span>
-                        </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 animate-fade-in">
+                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-shipping-fast text-primary-600 text-2xl"></i>
                     </div>
+                    <h3 class="text-xl font-semibold text-center mb-2">Gratis Ongkir</h3>
+                    <p class="text-gray-600 text-center">Gratis pengiriman untuk semua pesanan di atas Rp 500.000</p>
                 </div>
-                <div class="animate-float">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMKZ3vDmQE5s-89FVWcgQD35P79P-wGh5w-g&s" alt="Promo" class="w-full max-w-xs md:max-w-sm">
+
+                <!-- Feature 2 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 animate-fade-in animation-delay-200">
+                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-shield-alt text-primary-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-2">Garansi Resmi</h3>
+                    <p class="text-gray-600 text-center">Semua produk kami bergaransi resmi dari distributor</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 animate-fade-in animation-delay-400">
+                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4 mx-auto">
+                        <i class="fas fa-headset text-primary-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold text-center mb-2">Dukungan 24/7</h3>
+                    <p class="text-gray-600 text-center">Tim support kami siap membantu kapan saja</p>
                 </div>
             </div>
         </div>
@@ -1779,6 +1967,14 @@
                                     mobileMenu.classList.toggle('hidden');
                                 });
                             }
+                        });
+                    </script>
+                    <script>
+                        AOS.init({
+                            duration: 1000,
+                            once: true,
+                            offset: 100,
+                            delay: 100
                         });
                     </script>
 </body>
