@@ -46,3 +46,9 @@ Route::get('/register', [LoginController::class, 'showRegisterForm'])->name('reg
 Route::post('/register', [LoginController::class, 'register']);
 
 Route::delete('/admin/produk/{id}', [ProdukController::class, 'destroy'])->name('admin.produk.destroy');
+Route::get('/search', [ProdukController::class, 'search'])->name('produk.search');
+
+Route::get('/user/dashboard', function () {
+    $produk = Produk::all();
+    return view('user.dashboard', compact('produk'));
+})->name('user.dashboard');

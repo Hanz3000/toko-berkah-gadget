@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+
     <script>
         tailwind.config = {
             theme: {
@@ -146,7 +147,7 @@
         /* Custom Shape Divider */
         .custom-shape-divider-bottom-1591961042 {
             position: absolute;
-            bottom: 0;
+            bottom: -2px;
             left: 0;
             width: 100%;
             overflow: hidden;
@@ -154,11 +155,12 @@
             transform: rotate(180deg);
         }
 
+        /* gelombang */
         .custom-shape-divider-bottom-1591961042 svg {
             position: relative;
             display: block;
             width: calc(100% + 1.3px);
-            height: 95px;
+            height: 90px;
         }
 
         .custom-shape-divider-bottom-1591961042 .shape-fill {
@@ -334,7 +336,8 @@
 
         .indicator-active {
             transform: scale(1.2);
-            background-color: theme('colors.primary.500');
+            background-color: rgb(14 165 233);
+            /* primary-500 color value */
         }
 
         /* Touch-friendly styles */
@@ -389,7 +392,7 @@
                         </button>
 
                         <!-- Mega Menu -->
-                        <div class="absolute left-0 mt-2 w-screen max-w-5xl bg-white/95 backdrop-blur-md rounded-xl shadow-xl py-6 px-8 grid grid-cols-4 gap-8 invisible opacity-0 translate-y-4 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-50 border border-gray-100">
+                        <div class="absolute left-0 mt-2 bg-white/95 backdrop-blur-md rounded-xl shadow-xl py-6 px-8 grid grid-cols-3 gap-8 invisible opacity-0 translate-y-4 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-300 z-50 border border-gray-100 min-w-[768px] max-w-max">
                             <!-- Smartphone -->
                             <div class="transition-all duration-300 hover:bg-gray-50/70 p-4 rounded-lg" data-aos="zoom-in" data-aos-delay="300">
                                 <h4 class="text-blue-600 font-semibold mb-3 flex items-center">
@@ -399,19 +402,24 @@
                                     Smartphone
                                 </h4>
                                 <ul class="space-y-2">
-                                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">iPhone</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">Samsung</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">Xiaomi</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">OPPO</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">Vivo</a></li>
+                                    <li><a href="{{ route('produk.search', ['query' => 'iphone', 'kategori' => 'smartphone|second']) }}#produk" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">iPhone</a></li>
+                                    <li><a href="{{ route('produk.search', ['query' => 'samsung', 'kategori' => 'smartphone|second']) }}#produk" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">Samsung</a></li>
+                                    <li><a href="{{ route('produk.search', ['query' => 'Xiaomi', 'kategori' => 'smartphone|second']) }}#produk" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">Xiaomi</a></li>
+                                    <li><a href="{{ route('produk.search', ['query' => 'OPPO', 'kategori' => 'smartphone|second']) }}#produk" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">OPPO</a></li>
+                                    <li><a href="{{ route('produk.search', ['query' => 'Vivo', 'kategori' => 'smartphone|second']) }}#produk" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">Vivo</a></li>
                                 </ul>
-                                <a href="#" class="mt-4 inline-block text-sm text-blue-600 hover:text-green-500 hover:underline transition-all group">
+
+
+
+                                </ul>
+                                <a href="#produk" class="mt-4 inline-block text-sm text-blue-600 hover:text-green-500 hover:underline transition-all group">
                                     Lihat Semua
                                     <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
                                 </a>
+
                             </div>
 
-                            <!-- Laptop -->
+                            <!-- tablet -->
                             <div class="transition-all duration-300 hover:bg-gray-50/70 p-4 rounded-lg" data-aos="zoom-in" data-aos-delay="300">
                                 <h4 class="text-blue-600 font-semibold mb-3 flex items-center">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -420,13 +428,14 @@
                                     Tablet
                                 </h4>
                                 <ul class="space-y-2">
-                                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">Macbook</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">Asus</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">Lenovo</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">HP</a></li>
-                                    <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">Acer</a></li>
+                                    <li><a href="{{ route('produk.search', ['query' => 'iphone', 'kategori' => 'tablet']) }}#produk" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">iPhone</a></li>
+                                    <li><a href="{{ route('produk.search', ['query' => 'samsung', 'kategori' => 'tablet']) }}#produk" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">Samsung</a></li>
+                                    <li><a href="{{ route('produk.search', ['query' => 'Xiaomi', 'kategori' => 'tablet']) }}#produk" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">Xiaomi</a></li>
+                                    <li><a href="{{ route('produk.search', ['query' => 'OPPO', 'kategori' => 'tablet']) }}#produk" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">OPPO</a></li>
+                                    <li><a href="{{ route('produk.search', ['query' => 'Vivo', 'kategori' => 'tablet']) }}#produk" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">Vivo</a></li>
                                 </ul>
-                                <a href="#" class="mt-4 inline-block text-sm text-blue-600 hover:text-green-500 hover:underline transition-all group">
+
+                                <a href="#produk" class="mt-4 inline-block text-sm text-blue-600 hover:text-green-500 hover:underline transition-all group">
                                     Lihat Semua
                                     <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
                                 </a>
@@ -448,13 +457,11 @@
                                     <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">Power Bank</a></li>
                                     <li><a href="#" class="text-gray-600 hover:text-blue-600 transition-all hover:translate-x-1 inline-block">Screen Protector</a></li>
                                 </ul>
-                                <a href="#" class="mt-4 inline-block text-sm text-blue-600 hover:text-green-500 hover:underline transition-all group">
+                                <a href="#produk" class="mt-4 inline-block text-sm text-blue-600 hover:text-green-500 hover:underline transition-all group">
                                     Lihat Semua
                                     <span class="inline-block transition-transform duration-300 group-hover:translate-x-1">→</span>
                                 </a>
                             </div>
-
-
                         </div>
                     </div>
 
@@ -483,10 +490,14 @@
                 <div class="flex items-center space-x-4">
                     <!-- Search -->
                     <div class="hidden md:block left-1 relative group">
-                        <input type="text" placeholder="Cari produk..." class="pl-10 pr-4 py-2 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-64 transition-all bg-gray-50/70 group-hover:bg-white">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 group-hover:text-blue-500 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                        </svg>
+                        <form action="{{ route('produk.search') }}#produk" method="GET">
+                            <input type="text" name="query" placeholder="Cari produk..." class="pl-10 pr-4 py-2 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-64 transition-all bg-gray-50/70 group-hover:bg-white">
+                            <button type="submit" class="absolute right-3 top-1/2 -translate-y-1/2 text-gray-400 group-hover:text-blue-500 transition-colors">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </button>
+                        </form>
                     </div>
 
                     <!-- User and Cart -->
@@ -574,17 +585,6 @@
                     </div>
                 </div>
             </div>
-
-            <!-- Mobile search -->
-            <div class="mt-3 lg:hidden">
-                <div class="relative">
-                    <input type="text" placeholder="Cari produk..." class="pl-10 pr-4 py-2 rounded-full border border-gray-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent w-full transition-all bg-gray-50/70">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                    </svg>
-                </div>
-            </div>
-        </div>
     </nav>
 
     <!-- Mobile Navigation Menu (Hidden by default) -->
@@ -748,14 +748,14 @@
     <!-- Hero Section -->
     <section class="relative flex items-center pt-16 pb-20 md:pt-24 md:pb-20 overflow-hidden">
         <!-- Dynamic Background with Gradient Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/85 to-secondary-900/80 z-0"></div>
+        <div class="absolute inset-0 bg-gradient-to-br from-primary-900/90 via-primary-800/85 to-secondary-900/80 z-0" style="height: -600px;"></div>
 
         <!-- Animated Particles Background -->
         <div class="absolute inset-0 z-0 opacity-90" id="particles-js"></div>
 
         <!-- Custom Shape Divider Bottom -->
         <div class="custom-shape-divider-bottom-1591961042">
-            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+            <svg data-name="Layer 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 140" preserveAspectRatio="none" width="2400" height="280">
                 <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
             </svg>
         </div>
@@ -782,14 +782,20 @@
 
                     <!-- Search Bar -->
                     <div class="relative mb-8 max-w-lg mx-auto lg:mx-0 animate-slide-up opacity-0" style="animation-delay: 0.5s">
-                        <input type="text" placeholder="Cari produk atau brand favorit Anda..."
-                            class="w-full px-5 py-4 pr-12 rounded-full bg-white/90 backdrop-blur-sm border-0 focus:ring-2 focus:ring-primary-400 shadow-lg text-gray-700 placeholder-gray-400">
-                        <button class="absolute right-3 top-1/2 transform -translate-y-1/2 text-primary-500 hover:text-primary-700 transition-all">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                            </svg>
-                        </button>
+                        <form action="{{ route('produk.search') }}#produk" method="GET">
+                            <input
+                                type="text"
+                                name="query"
+                                placeholder="Cari produk atau brand favorit Anda..."
+                                class="w-full px-5 py-4 pr-12 rounded-full bg-white/90 backdrop-blur-sm border-0 focus:ring-2 focus:ring-primary-400 shadow-lg text-gray-700 placeholder-gray-400">
+                            <button type="submit" class="absolute right-3 top-1/2 transform -translate-y-1/2 text-primary-500 hover:text-primary-700 transition-all">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                </svg>
+                            </button>
+                        </form>
                     </div>
+
 
                     <!-- CTA Buttons -->
                     <div class="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4 justify-center lg:justify-start animate-slide-up opacity-0" style="animation-delay: 0.7s">
@@ -828,10 +834,10 @@
                 </div>
 
                 <!-- Right Content - Enhanced Dynamic Product Showcase -->
-                <div class="lg:w-1/2 relative z-10">
-                    <!-- Decorative Background Elements -->
+                <div class="lg:w-1/3 relative z-10 transform translate-x-16">
+                    <!-- Decorative Background Elements animasi -->
                     <div class="absolute -z-10 top-0 right-0 w-64 h-64 bg-gradient-to-br from-accent-400/30 to-primary-500/20 rounded-full filter blur-3xl animate-pulse-slow"></div>
-                    <div class="absolute -z-10 bottom-10 left-10 w-40 h-40 bg-gradient-to-tr from-secondary-500/30 to-primary-400/20 rounded-full filter blur-3xl animate-pulse-slow" style="animation-delay: 1.5s"></div>
+                    <div class="absolute -z-10 bottom-20 left-10 w-40 h-40 bg-gradient-to-tr from-secondary-500/30 to-primary-400/20 rounded-full filter blur-3xl animate-pulse-slow" style="animation-delay: 1.5s"></div>
 
                     <!-- 3D Perspective Container -->
                     <div class="relative perspective-1000 transform-gpu">
@@ -847,14 +853,14 @@
                                 <!-- Slides Container with Smoother Transition -->
                                 <div class="slides-container flex transition-transform duration-700 ease-out">
                                     <!-- Slide 1 -->
-                                    <div class="slide min-w-full p-4">
+                                    <div class="slide min-w-full p-8">
                                         <div class="relative z-10 transform-gpu">
                                             <!-- Product Highlight Badge -->
                                             <div class="absolute -top-3 -left-3 bg-accent-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-20 animate-bounce-slow">New!</div>
 
-                                            <!-- Product Image with Enhanced Effects -->
+                                            <!-- Product Image with Enhanced Effects - UKURAN DIKECILKAN -->
                                             <div class="relative group">
-                                                <img src="https://www.spark.co.nz/content/dam/spark/images/product-images/devices/phones/samsung/s25-series/s25-ultra/titanium-silver-blue/s25-ultra-titanium-silver-blue-1.png" alt="Featured Product 1" class="w-full max-w-md mx-auto drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
+                                                <img src="https://www.spark.co.nz/content/dam/spark/images/product-images/devices/phones/samsung/s25-series/s25-ultra/titanium-silver-blue/s25-ultra-titanium-silver-blue-1.png" alt="Featured Product 1" class="w-full max-w-xs mx-auto drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
                                                 <!-- Interactive Light Reflections -->
                                                 <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                                             </div>
@@ -888,14 +894,14 @@
                                     </div>
 
                                     <!-- Slide 2 -->
-                                    <div class="slide min-w-full p-4">
+                                    <div class="slide min-w-full p-8">
                                         <div class="relative z-10 transform-gpu">
                                             <!-- Product Highlight Badge -->
                                             <div class="absolute -top-3 -left-3 bg-primary-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-20 animate-pulse">HOT</div>
 
-                                            <!-- Product Image with Enhanced Effects -->
+                                            <!-- Product Image with Enhanced Effects - UKURAN DIKECILKAN -->
                                             <div class="relative group">
-                                                <img src="https://www.apple.com/newsroom/images/2023/10/apple-unveils-new-macbook-pro-featuring-m3-chips/tile/Apple-MacBook-Pro-2up-231030.jpg.og.jpg?202503110420" alt="Featured Product 2" class="w-full max-w-md mx-auto drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
+                                                <img src="https://www.apple.com/newsroom/images/2023/10/apple-unveils-new-macbook-pro-featuring-m3-chips/tile/Apple-MacBook-Pro-2up-231030.jpg.og.jpg?202503110420" alt="Featured Product 2" class="w-full max-w-xs mx-auto drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
 
                                                 <!-- Interactive Light Reflections -->
                                                 <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
@@ -930,14 +936,14 @@
                                     </div>
 
                                     <!-- Slide 3 -->
-                                    <div class="slide min-w-full p-4">
+                                    <div class="slide min-w-full p-8">
                                         <div class="relative z-10 transform-gpu">
                                             <!-- Product Highlight Badge -->
                                             <div class="absolute -top-3 -left-3 bg-secondary-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-20">30% OFF</div>
 
-                                            <!-- Product Image with Enhanced Effects -->
+                                            <!-- Product Image with Enhanced Effects - UKURAN DIKECILKAN -->
                                             <div class="relative group">
-                                                <img src="https://images.fonearena.com/blog/wp-content/uploads/2023/10/Xiaomi-14-Pro-IP68-1024x946.jpg" alt="Featured Product 3" class="w-full max-w-md mx-auto drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
+                                                <img src="https://images.fonearena.com/blog/wp-content/uploads/2023/10/Xiaomi-14-Pro-IP68-1024x946.jpg" alt="Featured Product 3" class="w-full max-w-xs mx-auto drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
 
                                                 <!-- Interactive Light Reflections -->
                                                 <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
@@ -1274,16 +1280,16 @@
                     </h2>
                     <p class="text-gray-600">Koleksi produk terbaru dengan kualitas terbaik</p>
                 </div>
-                <!-- Perbaikan button Lihat Semua Produk -->
+                <!-- button Lihat Semua Produk -->
                 <div class="mt-4 md:mt-0">
-                    <a href="#" class="group inline-flex items-center px-8 py-3 border-2 border-primary-600 text-primary-600 rounded-full hover:text-white transition-all duration-300 relative overflow-hidden">
+                    <a href="{{ route('user.dashboard') }}#produk" class="group inline-flex items-center px-8 py-3 border-2 border-primary-600 text-primary-600 rounded-full hover:text-white transition-all duration-300 relative overflow-hidden">
                         <span class="relative z-10 transition-transform duration-300 group-hover:transform">
                             Lihat Semua Produk
                         </span>
-                        <!-- Mengubah cara animasi slide -->
                         <div class="absolute inset-0 rounded-full bg-primary-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
                     </a>
                 </div>
+
             </div>
 
             <!-- Products Grid with Enhanced Animations -->
@@ -1292,7 +1298,7 @@
                 <div class="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 product-card relative opacity-0 animate-slide-up"
                     data-aos="fade-up"
                     data-aos-delay="{{ $loop->index * 100 }}"
-                    style="animation-delay: {{ $loop->index * 100 }}ms">
+
 
                     <!-- Enhanced New Badge -->
                     @if($item->is_new)
@@ -1975,6 +1981,16 @@
                             once: true,
                             offset: 100,
                             delay: 100
+                        });
+                    </script>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            if (document.getElementById('search-results')) {
+                                document.getElementById('search-results').scrollIntoView({
+                                    behavior: 'smooth'
+                                });
+                            }
                         });
                     </script>
 </body>

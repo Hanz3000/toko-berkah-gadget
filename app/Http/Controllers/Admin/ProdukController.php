@@ -134,4 +134,32 @@ class ProdukController extends Controller
 
         return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil dihapus.');
     }
+
+    public function search(Request $request)
+    {
+        $query = $request->query('query');
+        $kategori = $request->query('kategori');
+
+        // Pisahkan kategori jika ada lebih dari satu, atau set kategori menjadi array kosong jika tidak ada kategori
+        $kategoriArr = $kategori ? explode('|', $kategori) : [];
+
+        // Cari produk yang sesuai dengan query
+        $produkQuery = Produk::where('nama_produk', 'like', '%' . $query . '%');
+
+        // Jika ada kategori, filter produk berdasarkan kategori
+        if (!empty($kategoriArr)) {
+            $produkQuery->whereIn('kategori', $kategoriArr);
+        }
+
+        // Ambil produk yang sesuai
+        $produk = $produkQuery->get();
+
+        return view('user.dashboard', compact('produk'));
+    }
+
+    public function showDashboard()
+    {
+        $produk = produk::all(); // or any query to fetch products
+        return view('user.dashboard', compact('produk'));
+    }
 }
