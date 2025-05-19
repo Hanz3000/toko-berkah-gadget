@@ -19,6 +19,22 @@ class UserController extends Controller
     public function show($id)
     {
         $produk = Produk::findOrFail($id);
-        return view('user.detail', compact('produk'));
+
+        $related_produks = Produk::where('id', '!=', $produk->id)
+            ->where(function ($query) use ($produk) {
+                $query->where('kategori', $produk->kategori)
+                    ->orWhere('nama_produk', 'LIKE', '%' . explode(' ', $produk->nama_produk)[0] . '%');
+            })
+            ->limit(4)
+            ->get();
+
+        if ($related_produks->isEmpty()) {
+            $related_produks = Produk::where('id', '!=', $produk->id)
+                ->inRandomOrder()
+                ->limit(4)
+                ->get();
+        }
+
+        return view('user.detail', compact('produk', 'related_produks'));
     }
 }

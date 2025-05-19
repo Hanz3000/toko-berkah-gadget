@@ -19,6 +19,9 @@
 @endsection
 
 @section('content')
+<!-- Toast Notification Container -->
+<div id="toast-container" class="fixed top-4 right-4 z-50 flex flex-col gap-3 max-w-xs"></div>
+
 <!-- Main Content Container -->
 <div class="bg-gradient-to-br from-indigo-100 to-blue-50 min-h-screen p-6 rounded-xl">
     <!-- Overview Section -->
@@ -163,14 +166,13 @@
                                     class="w-9 h-9 flex items-center justify-center bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors shadow-sm">
                                     <i class="fas fa-edit text-sm"></i>
                                 </a>
-                                <form action="{{ route('admin.produk.destroy', $item->id) }}" method="POST" class="inline">
+                                <form action="{{ route('admin.produk.destroy', $item->id) }}" method="POST" class="inline delete-form" data-product-name="{{ $item->nama_produk }}">
                                     @csrf
                                     @method('DELETE')
-                                    <button type="submit" onclick="return confirm('Yakin ingin menghapus produk ini?')"
+                                    <button type="button" onclick="confirmDelete(this)"
                                         class="w-9 h-9 flex items-center justify-center bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors shadow-sm">
                                         <i class="fas fa-trash text-sm"></i>
                                     </button>
-
                                 </form>
                             </div>
                         </td>
@@ -181,7 +183,31 @@
         </div>
     </div>
 </div>
+
+<!-- Delete Confirmation Modal -->
+<div id="deleteModal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
+    <div class="absolute inset-0 bg-black bg-opacity-30 backdrop-blur-sm" onclick="closeDeleteModal()"></div>
+    <div class="bg-white rounded-xl shadow-lg p-6 max-w-md w-full mx-4 relative transform transition-all">
+        <div class="text-center mb-4">
+            <div class="w-16 h-16 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <i class="fas fa-exclamation-triangle text-red-500 text-2xl"></i>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-2">Konfirmasi Hapus</h3>
+            <p class="text-gray-600" id="deleteConfirmationText">Apakah Anda yakin ingin menghapus produk ini?</p>
+        </div>
+        <div class="flex space-x-3">
+            <button onclick="closeDeleteModal()" class="flex-1 py-2 px-4 bg-gray-100 text-gray-700 rounded-lg font-medium hover:bg-gray-200 transition-colors">
+                Batal
+            </button>
+            <button id="confirmDeleteBtn" class="flex-1 py-2 px-4 bg-red-600 text-white rounded-lg font-medium hover:bg-red-700 transition-colors">
+                Ya, Hapus
+            </button>
+        </div>
+    </div>
+</div>
+
 <script>
+    // Filter products by category
     function filterProduk() {
         const kategori = document.getElementById('kategoriFilter').value.trim();
         const rows = document.querySelectorAll('tbody tr');
@@ -201,5 +227,109 @@
             }
         });
     }
+
+    // Toast notification function
+    function showToast(message, type = 'success') {
+        const toastContainer = document.getElementById('toast-container');
+
+        // Create toast element
+        const toast = document.createElement('div');
+        toast.className = 'flex items-center p-4 mb-3 rounded-lg shadow-lg transform transition-all duration-300 opacity-0 translate-y-2 max-w-xs';
+
+        // Set background and icon based on type
+        let iconClass, bgClass, borderClass;
+
+        if (type === 'success') {
+            bgClass = 'bg-gradient-to-r from-green-50 to-green-100';
+            borderClass = 'border-l-4 border-green-500';
+            iconClass = 'text-green-500 fas fa-check-circle';
+        } else if (type === 'error') {
+            bgClass = 'bg-gradient-to-r from-red-50 to-red-100';
+            borderClass = 'border-l-4 border-red-500';
+            iconClass = 'text-red-500 fas fa-exclamation-circle';
+        } else if (type === 'warning') {
+            bgClass = 'bg-gradient-to-r from-yellow-50 to-yellow-100';
+            borderClass = 'border-l-4 border-yellow-500';
+            iconClass = 'text-yellow-500 fas fa-exclamation-triangle';
+        } else {
+            bgClass = 'bg-gradient-to-r from-blue-50 to-blue-100';
+            borderClass = 'border-l-4 border-blue-500';
+            iconClass = 'text-blue-500 fas fa-info-circle';
+        }
+
+        toast.classList.add(...bgClass.split(' '), ...borderClass.split(' '));
+
+        // Toast content
+        toast.innerHTML = `
+            <div class="flex items-center justify-between w-full">
+                <div class="flex items-center">
+                    <i class="${iconClass} text-xl mr-3"></i>
+                    <p class="text-gray-800 font-medium text-sm">${message}</p>
+                </div>
+                <button onclick="this.parentElement.parentElement.remove()" class="text-gray-400 hover:text-gray-600 transition-colors ml-2">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        `;
+
+        // Add to container
+        toastContainer.appendChild(toast);
+
+        // Trigger animation
+        setTimeout(() => {
+            toast.classList.remove('opacity-0', 'translate-y-2');
+            toast.classList.add('opacity-100', 'translate-y-0');
+        }, 10);
+
+        // Auto remove after timeout
+        setTimeout(() => {
+            toast.classList.add('opacity-0', '-translate-y-2');
+            setTimeout(() => {
+                toast.remove();
+            }, 300);
+        }, 5000);
+    }
+
+    // Show delete confirmation modal
+    function confirmDelete(button) {
+        const form = button.closest('.delete-form');
+        const productName = form.dataset.productName;
+        const modal = document.getElementById('deleteModal');
+
+        // Update confirmation text with product name
+        document.getElementById('deleteConfirmationText').textContent = `Apakah Anda yakin ingin menghapus produk "${productName}"?`;
+
+        // Set up the confirm button
+        document.getElementById('confirmDeleteBtn').onclick = function() {
+            // Submit the form
+            form.submit();
+
+            // Hide modal
+            closeDeleteModal();
+
+            // Show toast - this won't actually show until after redirect, so for real implementation
+            // you would need backend flash message to show toast after redirect
+            showToast(`Produk "${productName}" berhasil dihapus!`, 'success');
+        };
+
+        // Show modal
+        modal.classList.remove('hidden');
+    }
+
+    // Close delete confirmation modal
+    function closeDeleteModal() {
+        const modal = document.getElementById('deleteModal');
+        modal.classList.add('hidden');
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        @if(session('success'))
+        showToast(@json(session('success')), 'success');
+        @endif
+
+        @if(session('error'))
+        showToast(@json(session('error')), 'error');
+        @endif
+    });
 </script>
 @endsection

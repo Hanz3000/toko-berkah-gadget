@@ -1019,10 +1019,8 @@
                                     <span>Share</span>
                                 </button>
                             </div>
-
-
-
                         </div>
+
                     </div>
                 </div>
     </section>

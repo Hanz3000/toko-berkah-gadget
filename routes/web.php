@@ -22,16 +22,16 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(func
     Route::put('/produk/{id}', [ProdukController::class, 'update'])->name('admin.produk.update');
     Route::delete('/produk/{id}', [ProdukController::class, 'destroy'])->name('admin.produk.destroy');
     Route::post('/admin/produk/tambah_admin', [ProdukController::class, 'storeAdmin'])->name('admin.produk.tambah_admin.store');
-
     Route::get('/users', [AdminController::class, 'userList'])->name('admin.users.index');
 });
 
 
 // User routes
-Route::middleware(['auth'])->group(function () {
-    Route::get('/user/dashboard', [UserController::class, 'index'])->name('user.dashboard');
+Route::middleware(['auth'])->prefix('user')->group(function () {
+    Route::get('/dashboard', [UserController::class, 'index'])->name('user.dashboard');
     Route::get('/produk/{id}', [UserController::class, 'show'])->name('user.produk.detail');
 });
+
 
 Route::get('/user/dashboard', function () {
     $produk = Produk::all();
@@ -47,8 +47,4 @@ Route::post('/register', [LoginController::class, 'register']);
 
 Route::delete('/admin/produk/{id}', [ProdukController::class, 'destroy'])->name('admin.produk.destroy');
 Route::get('/search', [ProdukController::class, 'search'])->name('produk.search');
-
-Route::get('/user/dashboard', function () {
-    $produk = Produk::all();
-    return view('user.dashboard', compact('produk'));
-})->name('user.dashboard');
+// Route::get('/produk/{id}', [ProdukController::class, 'show'])->name('user.produk.detail');
