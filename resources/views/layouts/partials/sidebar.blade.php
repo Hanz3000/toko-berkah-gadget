@@ -81,7 +81,26 @@
                         </svg>
                     </div>
                     <span class="font-medium">Tambah Produk</span>
+
                 </a>
+
+                <a href="{{ route('admin.carousels.index') }}"
+                    class="relative flex items-center space-x-3 p-3 rounded-lg transition-all duration-300
+   {{ request()->routeIs('admin.carousels.index') ? 'bg-indigo-700/70 backdrop-blur-sm ring-1 ring-white/10 text-yellow-300 shadow-lg shadow-indigo-700/50' : 'text-white hover:bg-indigo-700/50 hover:text-yellow-300' }}">
+                    @if(request()->routeIs('admin.carousels.index'))
+                    <span class="w-1 h-6 bg-yellow-400 rounded-full absolute left-0 top-1/2 -translate-y-1/2"></span>
+                    @endif
+                    <div
+                        class="w-8 h-8 flex items-center justify-center rounded-lg transform hover:scale-110 transition-transform duration-300
+        {{ request()->routeIs('admin.carousels.index') ? 'bg-indigo-600' : 'bg-indigo-700/70' }}">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                        </svg>
+                    </div>
+                    <span class="font-medium">Carousel</span>
+                </a>
+
             </div>
 
             <!-- Management User -->

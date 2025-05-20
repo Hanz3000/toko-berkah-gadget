@@ -745,6 +745,8 @@
         });
     </script>
 
+
+
     <!-- Hero Section -->
     <section class="relative flex items-center pt-16 pb-20 md:pt-24 md:pb-20 overflow-hidden">
         <!-- Dynamic Background with Gradient Overlay -->
@@ -859,11 +861,13 @@
                                             <div class="absolute -top-3 -left-3 bg-accent-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-20 animate-bounce-slow">New!</div>
 
                                             <!-- Product Image with Enhanced Effects - UKURAN DIKECILKAN -->
+                                            @foreach($carousels as $carousel)
                                             <div class="relative group">
-                                                <img src="https://www.spark.co.nz/content/dam/spark/images/product-images/devices/phones/samsung/s25-series/s25-ultra/titanium-silver-blue/s25-ultra-titanium-silver-blue-1.png" alt="Featured Product 1" class="w-full max-w-xs mx-auto drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
-                                                <!-- Interactive Light Reflections -->
+                                                <img src="{{ asset('storage/' . $carousel->gambar) }}" alt="{{ $carousel->judul }}" class="w-full max-w-xs mx-auto drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
                                                 <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                                             </div>
+                                            @endforeach
+
 
                                             <!-- Product Quick Info -->
                                             <div class="mt-4 text-center">
@@ -892,6 +896,8 @@
                                             </div>
                                         </div>
                                     </div>
+
+
 
                                     <!-- Slide 2 -->
                                     <div class="slide min-w-full p-8">
@@ -1266,6 +1272,48 @@
         </div>
     </section>
 
+    <!-- Carousel Section
+    <div class="container mx-auto px-4 py-8">
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div class="relative">
+                @if(isset($carousels) && count($carousels) > 0)
+                <div class="swiper-container">
+                    <div class="swiper-wrapper">
+                        @foreach($carousels as $carousel)
+                        <div class="swiper-slide">
+                            <div class="relative">
+                                <img src="{{ asset('storage/' . $carousel->gambar) }}" alt="{{ $carousel->judul }}" class="w-full h-[400px] object-cover">
+
+                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
+                                    <h3 class="text-white text-2xl font-bold">{{ $carousel->judul }}</h3>
+                                    @if($carousel->harga_diskon)
+                                    <div class="flex items-center gap-2 mt-2">
+                                        <span class="text-gray-300 line-through">Rp {{ number_format($carousel->harga_normal, 0, ',', '.') }}</span>
+                                        <span class="text-yellow-400 font-bold text-xl">Rp {{ number_format($carousel->harga_diskon, 0, ',', '.') }}</span>
+                                    </div>
+                                    @else
+                                    <div class="mt-2">
+                                        <span class="text-yellow-400 font-bold text-xl">Rp {{ number_format($carousel->harga_normal, 0, ',', '.') }}</span>
+                                    </div>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                        @endforeach
+                    </div>
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+                @else
+                <div class="p-6 text-center text-gray-500">
+                    Tidak ada carousel yang tersedia.
+                </div>
+                @endif
+            </div>
+        </div>
+    </div> -->
+
     <!-- Products Section -->
     <section id="produk" class="py-12 bg-white">
         <div class="container mx-auto px-4">
@@ -1321,6 +1369,7 @@
                             <i class="fas fa-image text-4xl text-gray-300 transition-all duration-300 group-hover:scale-110"></i>
                         </div>
                         @endif
+
 
                         <!-- Enhanced Quick View Overlay -->
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
@@ -1991,6 +2040,28 @@
                             }
                         });
                     </script>
+
+                    <!-- Inisialisasi Swiper -->
+                    @push('scripts')
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            new Swiper('.swiper-container', {
+                                loop: true,
+                                autoplay: {
+                                    delay: 5000,
+                                },
+                                pagination: {
+                                    el: '.swiper-pagination',
+                                    clickable: true,
+                                },
+                                navigation: {
+                                    nextEl: '.swiper-button-next',
+                                    prevEl: '.swiper-button-prev',
+                                },
+                            });
+                        });
+                    </script>
+                    @endpush
 </body>
 
 </html>

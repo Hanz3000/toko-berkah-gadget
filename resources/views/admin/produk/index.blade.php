@@ -322,13 +322,14 @@
         modal.classList.add('hidden');
     }
 
+    // Check for success/error messages from session flash
     document.addEventListener('DOMContentLoaded', function() {
         @if(session('success'))
-        showToast(@json(session('success')), 'success');
+        showToast("{{ session('success') }}", 'success');
         @endif
 
         @if(session('error'))
-        showToast(@json(session('error')), 'error');
+        showToast("{{ session('error') }}", 'error');
         @endif
     });
 </script>

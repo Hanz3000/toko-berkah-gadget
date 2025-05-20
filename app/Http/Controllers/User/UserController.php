@@ -4,17 +4,18 @@ namespace App\Http\Controllers\User;
 
 use App\Models\Produk;
 use App\Http\Controllers\Controller;
+use App\Models\Carousel;
 
 class UserController extends Controller
 {
     public function index()
     {
-        $produk = Produk::all(); // Ambil semua data produk dari database
-        return view('user.dashboard', compact('produk'));
-
-        $produk = \App\Models\Produk::all();
-        return view('user.dashboard', ['products' => $products]);
+        $produk = Produk::all();
+        $carousels = Carousel::all(); // ← ini penting
+        return view('user.dashboard', compact('produk', 'carousels'));
     }
+
+
 
     public function show($id)
     {

@@ -7,6 +7,8 @@ use App\Http\Controllers\Admin\AdminController;
 use App\Models\Produk;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Middleware\AdminMiddleware;
+use App\Http\Controllers\CarouselController;
+use App\Models\Carousel;
 
 Route::get('/', function () {
     return redirect()->route('user.dashboard');
@@ -23,6 +25,17 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(func
     Route::delete('/produk/{id}', [ProdukController::class, 'destroy'])->name('admin.produk.destroy');
     Route::post('/admin/produk/tambah_admin', [ProdukController::class, 'storeAdmin'])->name('admin.produk.tambah_admin.store');
     Route::get('/users', [AdminController::class, 'userList'])->name('admin.users.index');
+
+    Route::get('/admin/carousels', [CarouselController::class, 'index'])->name('admin.carousels.index');
+    Route::get('/admin/carousels/create', [CarouselController::class, 'create'])->name('admin.carousels.create');
+    Route::post('/admin/carousels', [CarouselController::class, 'store'])->name('admin.carousels.store');
+    Route::get('/admin/carousels/{carousel}/edit', [CarouselController::class, 'edit'])->name('admin.carousels.edit');
+    Route::delete('/admin/carousels/{carousel}', [CarouselController::class, 'destroy'])->name('admin.carousels.destroy');
+    Route::put('/admin/carousels/{carousel}', [CarouselController::class, 'update'])->name('admin.carousels.update');
+
+
+
+    // Anda mungkin juga membutuhkan rute lain untuk membuat, mengedit, menghapus, dll.
 });
 
 
@@ -33,9 +46,11 @@ Route::middleware(['auth'])->prefix('user')->group(function () {
 });
 
 
+
 Route::get('/user/dashboard', function () {
     $produk = Produk::all();
-    return view('user.dashboard', compact('produk'));
+    $carousels = Carousel::all(); // Tambahkan ini
+    return view('user.dashboard', compact('produk', 'carousels'));
 })->name('user.dashboard');
 
 // Auth routes
@@ -47,4 +62,3 @@ Route::post('/register', [LoginController::class, 'register']);
 
 Route::delete('/admin/produk/{id}', [ProdukController::class, 'destroy'])->name('admin.produk.destroy');
 Route::get('/search', [ProdukController::class, 'search'])->name('produk.search');
-// Route::get('/produk/{id}', [ProdukController::class, 'show'])->name('user.produk.detail');
