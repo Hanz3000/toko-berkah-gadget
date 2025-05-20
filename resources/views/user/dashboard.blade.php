@@ -841,156 +841,89 @@
                     <div class="absolute -z-10 top-0 right-0 w-64 h-64 bg-gradient-to-br from-accent-400/30 to-primary-500/20 rounded-full filter blur-3xl animate-pulse-slow"></div>
                     <div class="absolute -z-10 bottom-20 left-10 w-40 h-40 bg-gradient-to-tr from-secondary-500/30 to-primary-400/20 rounded-full filter blur-3xl animate-pulse-slow" style="animation-delay: 1.5s"></div>
 
-                    <!-- 3D Perspective Container -->
+                    <!-- 3D Perspective Container dengan efek lebih halus -->
                     <div class="relative perspective-1000 transform-gpu">
-                        <!-- Floating Card with Glass Effect -->
-                        <div class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-4 shadow-2xl hover:shadow-primary-500/30 transition-all duration-500 transform hover:-rotate-1 hover:scale-103">
-                            <!-- Carousel Container with Improved Styling -->
+                        <!-- Floating Card dengan Glass Effect yang ditingkatkan -->
+                        <div class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-4 shadow-2xl hover:shadow-primary-500/30 transition-all duration-700 ease-in-out transform hover:-rotate-2 hover:scale-105 hover:translate-y-[-10px]">
+                            <!-- Carousel Container dengan Styling yang Ditingkatkan -->
                             <div class="carousel-container overflow-hidden relative rounded-2xl">
                                 <!-- Progress Bar -->
                                 <div class="absolute top-0 left-0 right-0 z-30 h-1 bg-white/20">
-                                    <div class="carousel-progress h-full bg-gradient-to-r from-primary-400 to-accent-500 w-1/3 transition-all duration-300"></div>
+                                    <div class="carousel-progress h-full bg-gradient-to-r from-primary-400 to-accent-500 w-1/3 transition-all duration-1000 ease-in-out"></div>
                                 </div>
 
-                                <!-- Slides Container with Smoother Transition -->
-                                <div class="slides-container flex transition-transform duration-700 ease-out">
-                                    <!-- Slide 1 -->
-                                    <div class="slide min-w-full p-8">
-                                        <div class="relative z-10 transform-gpu">
-                                            <!-- Product Highlight Badge -->
-                                            <div class="absolute -top-3 -left-3 bg-accent-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-20 animate-bounce-slow">New!</div>
-
-                                            <!-- Product Image with Enhanced Effects - UKURAN DIKECILKAN -->
-                                            @foreach($carousels as $key => $carousel)
-                                            @if($key == 0)
-                                            <div class="relative group">
-                                                <img src="{{ asset('storage/' . $carousel->gambar) }}" alt="{{ $carousel->judul }}" class="w-full max-w-xs mx-auto drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
-                                                <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                                            </div>
-                                            @endif
-                                            @endforeach
-
-
-                                            <!-- Product Quick Info -->
-                                            <div class="mt-4 text-center">
-                                                @if(isset($carousel))
-                                                <h3 class="text-white font-bold text-xl">{{ $carousel->judul }}</h3>
-                                                @endif
-
-                                                <div class="flex items-center justify-center mt-1 mb-2">
-                                                    <div class="flex text-amber-400">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                        </svg>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                        </svg>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                        </svg>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                        </svg>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                        </svg>
+                                <!-- Slides Container dengan Transisi yang Lebih Halus -->
+                                <div class="slides-container flex transition-all duration-1000 ease-[cubic-bezier(0.45,0.05,0.55,0.95)]">
+                                    @foreach($carousels as $key => $carousel)
+                                    <div class="slide min-w-full p-8 h-[550px] flex items-center justify-center transition-opacity duration-500">
+                                        <div class="relative z-10 transform-gpu max-w-xs w-full transition-all duration-500 ease-out">
+                                            <!-- Product Image dengan Tag New dan Promo -->
+                                            <div class="relative group h-72 flex items-center justify-center overflow-hidden">
+                                                <!-- Tag New -->
+                                                <div class="absolute top-0 left-0 z-20">
+                                                    <div class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-br-lg rounded-tl-lg shadow-lg animate-pulse">
+                                                        New!
                                                     </div>
-                                                    <span class="text-gray-200 text-xs ml-2">(459 reviews)</span>
                                                 </div>
-                                                <p class="text-primary-200 font-medium"><span class="line-through text-gray-400 text-sm">Rp18.999.000</span> <span class="text-white">Rp15.999.000</span></p>
+                                                <!-- Poduct Image dengan Enhanced Effects -->
+                                                <img src="{{ asset('storage/' . $carousel->gambar) }}" alt="{{ $carousel->judul }}"
+                                                    class="max-h-64 max-w-xs mx-auto drop-shadow-2xl transition-all duration-700 ease-out transform group-hover:scale-110 group-hover:rotate-1 object-contain">
                                             </div>
-                                        </div>
-                                    </div>
 
+                                            <!-- Product Info dengan Animasi yang Lebih Halus -->
+                                            <div class="mt-4 text-center transform transition-all duration-500 ease-out">
+                                                <h3 class="text-white font-bold text-xl hover:text-primary-300 transition-colors duration-300">{{ $carousel->judul }}</h3>
 
+                                                <!-- Rating Stars dengan Efek Hover -->
+                                                <div class="flex items-center justify-center mt-2">
+                                                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                    </svg>
+                                                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                    </svg>
+                                                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                    </svg>
+                                                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
+                                                    </svg>
+                                                    <span class="ml-2 text-white text-sm">(400 reviews)</span>
+                                                </div>
 
-                                    <!-- Slide 2 -->
-                                    <div class="slide min-w-full p-8">
-                                        <div class="relative z-10 transform-gpu">
-                                            <!-- Product Highlight Badge -->
-                                            <div class="absolute -top-3 -left-3 bg-primary-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-20 animate-pulse">HOT</div>
-
-                                            <!-- Product Image with Enhanced Effects - UKURAN DIKECILKAN -->
-                                            @foreach($carousels as $key => $carousel)
-                                            @if($key == 1)
-                                            <div class="relative group">
-                                                <img src="{{ asset('storage/' . $carousel->gambar) }}" alt="{{ $carousel->judul }}" class="w-full max-w-xs mx-auto drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
-                                                <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                                            </div>
-                                            @endif
-                                            @endforeach
-
-                                            <!-- Product Quick Info -->
-                                            <div class="mt-4 text-center">
-                                                <h3 class="text-white font-bold text-xl">MacBook Pro M3</h3>
-                                                <div class="flex items-center justify-center mt-1 mb-2">
-                                                    <div class="flex text-amber-400">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                        </svg>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                        </svg>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                        </svg>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                        </svg>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                        </svg>
+                                                <!-- Price dengan Animasi dan Tag Diskon -->
+                                                <div class="mt-3 mb-4 relative">
+                                                    <!-- Diskon Tag -->
+                                                    <div class="absolute -top-3 -right-2 bg-gradient-to-r from-pink-500 to-red-500 text-white text-xs font-bold px-2 py-1 rounded-full transform rotate-12 shadow-lg">
+                                                        -{{ round((($carousel->harga_normal - $carousel->harga_diskon) / $carousel->harga_normal) * 100) }}%
                                                     </div>
-                                                    <span class="text-gray-200 text-xs ml-2">(328 reviews)</span>
+                                                    <span class="text-gray-300 line-through text-sm">Rp{{ number_format($carousel->harga_normal, 0, ',', '.') }}</span>
+                                                    <span class="text-white font-bold text-xl ml-2 bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">Rp{{ number_format($carousel->harga_diskon, 0, ',', '.') }}</span>
                                                 </div>
-                                                <p class="text-primary-200 font-medium"><span class="line-through text-gray-400 text-sm">Rp24.999.000</span> <span class="text-white">Rp21.499.000</span></p>
-                                            </div>
-                                        </div>
-                                    </div>
 
-                                    <!-- Slide 3 -->
-                                    <div class="slide min-w-full p-8">
-                                        <div class="relative z-10 transform-gpu">
-                                            <!-- Product Highlight Badge -->
-                                            <div class="absolute -top-3 -left-3 bg-secondary-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-20">30% OFF</div>
-
-                                            <!-- Product Image with Enhanced Effects - UKURAN DIKECILKAN -->
-                                            @foreach($carousels as $key => $carousel)
-                                            @if($key == 2)
-                                            <div class="relative group">
-                                                <img src="{{ asset('storage/' . $carousel->gambar) }}" alt="{{ $carousel->judul }}" class="w-full max-w-xs mx-auto drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
-                                                <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-                                            </div>
-                                            @endif
-                                            @endforeach
-
-                                            <!-- Product Quick Info -->
-                                            <div class="mt-4 text-center">
-                                                <h3 class="text-white font-bold text-xl">Xiaomi 14 Pro</h3>
-                                                <div class="flex items-center justify-center mt-1 mb-2">
-                                                    <div class="flex text-amber-400">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                        </svg>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                        </svg>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                        </svg>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
-                                                            <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                                                        </svg>
+                                                <!-- Action Buttons for each slide -->
+                                                <div class="flex items-center justify-center space-x-3 mt-4">
+                                                    <!-- Wishlist Button -->
+                                                    <button class="min-w-[100px] px-4 py-2 bg-primary-500 hover:bg-primary-600 rounded-full text-white text-sm flex items-center justify-center space-x-1 transition-all duration-300 shadow-lg hover:shadow-primary-500/50">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                                         </svg>
-                                                    </div>
-                                                    <span class="text-gray-200 text-xs ml-2">(215 reviews)</span>
+                                                        <span>Wishlist</span>
+                                                    </button>
+
+                                                    <!-- Share Button -->
+                                                    <button class="min-w-[100px] px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full text-white text-sm flex items-center justify-center space-x-1 backdrop-blur-sm transition-all duration-300 border border-white/10 hover:border-white/30 shadow-lg">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                                                        </svg>
+                                                        <span>Share</span>
+                                                    </button>
                                                 </div>
-                                                <p class="text-primary-200 font-medium"><span class="line-through text-gray-400 text-sm">Rp12.999.000</span> <span class="text-white">Rp8.999.000</span></p>
+
                                             </div>
                                         </div>
                                     </div>
+                                    @endforeach
                                 </div>
 
                                 <!-- Enhanced Navigation Arrows -->
@@ -1004,39 +937,104 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                                     </svg>
                                 </button>
-
-                                <!-- Enhanced Slide Indicators -->
-                                <div class="slide-indicators absolute -bottom-6 left-1/2 transform -translate-x-1/2 flex space-x-3 z-20">
-                                    <button class="indicator w-10 h-2 rounded-full bg-white/20 hover:bg-primary-500 transition-all indicator-active"></button>
-                                    <button class="indicator w-10 h-2 rounded-full bg-white/20 hover:bg-primary-500 transition-all"></button>
-                                    <button class="indicator w-10 h-2 rounded-full bg-white/20 hover:bg-primary-500 transition-all"></button>
-                                </div>
-                            </div>
-
-                            <!-- Quick Action Buttons -->
-                            <div class="flex gap-3 mt-4 justify-center">
-                                <button class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full text-white text-sm flex items-center space-x-1 backdrop-blur-sm transition-all duration-300 border border-white/10 hover:border-white/30 shadow-lg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                    </svg>
-                                    <span>Add to Cart</span>
-                                </button>
-                                <button class="px-4 py-2 bg-primary-500 hover:bg-primary-600 rounded-full text-white text-sm flex items-center space-x-1 transition-all duration-300 shadow-lg hover:shadow-primary-500/50">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                                    </svg>
-                                    <span>Wishlist</span>
-                                </button>
-                                <button class="px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full text-white text-sm flex items-center space-x-1 backdrop-blur-sm transition-all duration-300 border border-white/10 hover:border-white/30 shadow-lg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                                    </svg>
-                                    <span>Share</span>
-                                </button>
                             </div>
                         </div>
-
                     </div>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            let currentSlide = 0;
+                            const slides = document.querySelectorAll('.slide');
+                            const totalSlides = slides.length;
+                            const slidesContainer = document.querySelector('.slides-container');
+                            const progressBar = document.querySelector('.carousel-progress');
+                            const prevButton = document.querySelector('.carousel-arrow.prev');
+                            const nextButton = document.querySelector('.carousel-arrow.next');
+                            let slidingDirection = 1; // 1 for forward, -1 for backward
+                            let autoSlideInterval;
+
+                            function updateSlidePosition() {
+                                slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+                                progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+                            }
+
+                            function moveSlide(direction) {
+                                // Store the current direction
+                                slidingDirection = direction;
+
+                                // Update current slide with direction
+                                currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+
+                                // Update UI
+                                updateSlidePosition();
+                            }
+
+                            function startAutoSlide() {
+                                // Clear any existing interval
+                                clearInterval(autoSlideInterval);
+
+                                // Set new interval - goes through all slides from start to end, then back to start
+                                autoSlideInterval = setInterval(() => {
+                                    // If we're at the last slide and going forward, change direction
+                                    if (currentSlide === totalSlides - 1 && slidingDirection === 1) {
+                                        slidingDirection = -1;
+                                    }
+                                    // If we're at the first slide and going backward, change direction
+                                    else if (currentSlide === 0 && slidingDirection === -1) {
+                                        slidingDirection = 1;
+                                    }
+
+                                    // Move in the current direction
+                                    moveSlide(slidingDirection);
+                                }, 7000); // Longer interval (7 seconds) for better viewing experience
+                            }
+
+                            // Add event listeners to arrows
+                            prevButton.addEventListener('click', function() {
+                                moveSlide(-1);
+                                slidingDirection = -1; // Update direction when manually clicked
+                            });
+
+                            nextButton.addEventListener('click', function() {
+                                moveSlide(1);
+                                slidingDirection = 1; // Update direction when manually clicked
+                            });
+
+                            // Start the auto-slide
+                            startAutoSlide();
+
+                            // Pause auto-slide when interacting with arrows
+                            prevButton.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+                            nextButton.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+
+                            // Resume auto-slide when mouse leaves
+                            prevButton.addEventListener('mouseleave', startAutoSlide);
+                            nextButton.addEventListener('mouseleave', startAutoSlide);
+
+                            // Touch events for mobile
+                            let touchStartX = 0;
+                            let touchEndX = 0;
+
+                            slidesContainer.addEventListener('touchstart', e => {
+                                touchStartX = e.changedTouches[0].screenX;
+                                // Pause auto-slide on touch
+                                clearInterval(autoSlideInterval);
+                            });
+
+                            slidesContainer.addEventListener('touchend', e => {
+                                touchEndX = e.changedTouches[0].screenX;
+                                if (touchStartX - touchEndX > 50) {
+                                    moveSlide(1); // Slide right
+                                    slidingDirection = 1; // Update direction
+                                } else if (touchEndX - touchStartX > 50) {
+                                    moveSlide(-1); // Slide left
+                                    slidingDirection = -1; // Update direction
+                                }
+                                // Resume auto-slide after touch
+                                startAutoSlide();
+                            });
+                        });
+                    </script>
                 </div>
     </section>
 
@@ -1224,9 +1222,6 @@
             updateIndicators();
         });
     </script>
-
-
-
 
 
     <!-- Categories Section -->
