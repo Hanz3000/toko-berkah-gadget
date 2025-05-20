@@ -11,10 +11,9 @@ class UserController extends Controller
     public function index()
     {
         $produk = Produk::all();
-        $carousels = Carousel::all(); // ← ini penting
+        $carousels = Carousel::all();
         return view('user.dashboard', compact('produk', 'carousels'));
     }
-
 
 
     public function show($id)

@@ -95,10 +95,10 @@
         {{ request()->routeIs('admin.carousels.index') ? 'bg-indigo-600' : 'bg-indigo-700/70' }}">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                                d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                         </svg>
                     </div>
-                    <span class="font-medium">Carousel</span>
+                    <span class="font-medium">Konten</span>
                 </a>
 
             </div>
@@ -117,7 +117,7 @@
                         {{ request()->routeIs('admin.users.index') ? 'bg-indigo-600' : 'bg-indigo-700/70' }}">
                         <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 4.354a4 4 0 110 5.292M15 14.364a4 4 0 10-2.364 2.364L10.994 13.5a3 3 0 01-1.414-1.414l-2.06-2.06a4 4 0 105.656-5.656l-2.06 2.06a3 3 0 01-1.414 1.414l2.364 2.364a4 4 0 11-6.728 6.728l-2.06-2.06a3 3 0 01-1.414-1.414l2.364 2.364a4 4 0 10-5.656-5.656l2.06 2.06a3 3 0 011.414 1.414l-2.364 2.364a4 4 0 110 5.292z" />
+                                d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                     </div>
                     <span class="font-medium">Daftar User</span>

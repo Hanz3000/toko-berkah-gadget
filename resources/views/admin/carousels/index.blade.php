@@ -2,16 +2,16 @@
 
 @section('title', 'Panel Admin - Daftar Carousel')
 
-@section('header-title', 'Daftar Carousel')
-@section('header-subtitle', 'Kelola semua carousel untuk halaman utama')
+@section('header-title', 'Daftar Konten')
+@section('header-subtitle', 'Kelola semua konten untuk halaman utama')
 
 @section('content')
 <!-- Carousel Management Section -->
 <div class="bg-white rounded-xl shadow-md border border-indigo-100 overflow-hidden hover:shadow-lg transition-all duration-300">
     <div class="flex items-center justify-between p-6 border-b border-indigo-100 bg-gradient-to-r from-indigo-50 to-white">
         <div>
-            <h3 class="font-semibold text-indigo-900">Daftar Carousel</h3>
-            <p class="text-sm text-indigo-600 mt-1">Kelola dan monitor semua carousel untuk halaman utama</p>
+            <h3 class="font-semibold text-indigo-900">Daftar Konten</h3>
+            <p class="text-sm text-indigo-600 mt-1">Kelola dan monitor semua Konten untuk halaman utama</p>
         </div>
         <div class="flex items-center space-x-3">
             <a href="{{ route('admin.carousels.create') }}" class="px-4 py-2 bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm rounded-lg hover:from-indigo-700 hover:to-blue-700 btn-effect flex items-center space-x-1 shadow-md">
@@ -29,6 +29,8 @@
                     <th class="py-4 px-6 font-medium text-left">No</th>
                     <th class="py-4 px-6 font-medium text-left">Judul</th>
                     <th class="py-4 px-6 font-medium text-left">Gambar</th>
+                    <th class="py-4 px-6 font-medium text-left">Harga Normal</th>
+                    <th class="py-4 px-6 font-medium text-left">Harga Diskon</th>
                     <th class="py-4 px-6 font-medium text-right">Aksi</th>
                 </tr>
             </thead>
@@ -41,7 +43,10 @@
                     <td class="py-4 px-6">
                         <img src="{{ asset('storage/' . $carousel->gambar) }}" alt="{{ $carousel->judul }}" class="w-24 h-16 object-cover rounded-lg border border-indigo-100 shadow-sm">
                     </td>
+                    <td class="py-4 px-6 font-medium text-indigo-900">Rp {{ number_format($carousel->harga_normal, 0, ',', '.') }}</td>
+                    <td class="py-4 px-6 font-medium text-green-600">Rp {{ number_format($carousel->harga_diskon, 0, ',', '.') }}</td>
                     <td class="py-4 px-6 text-right">
+
                         <div class="flex items-center justify-end space-x-3">
                             <a href="{{ route('admin.carousels.edit', $carousel->id) }}" class="w-9 h-9 flex items-center justify-center bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors shadow-sm">
                                 <i class="fas fa-edit text-sm"></i>

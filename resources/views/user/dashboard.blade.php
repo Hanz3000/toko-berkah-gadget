@@ -861,17 +861,22 @@
                                             <div class="absolute -top-3 -left-3 bg-accent-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-20 animate-bounce-slow">New!</div>
 
                                             <!-- Product Image with Enhanced Effects - UKURAN DIKECILKAN -->
-                                            @foreach($carousels as $carousel)
+                                            @foreach($carousels as $key => $carousel)
+                                            @if($key == 0)
                                             <div class="relative group">
                                                 <img src="{{ asset('storage/' . $carousel->gambar) }}" alt="{{ $carousel->judul }}" class="w-full max-w-xs mx-auto drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
                                                 <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                                             </div>
+                                            @endif
                                             @endforeach
 
 
                                             <!-- Product Quick Info -->
                                             <div class="mt-4 text-center">
-                                                <h3 class="text-white font-bold text-xl">Galaxy S25 Ultra</h3>
+                                                @if(isset($carousel))
+                                                <h3 class="text-white font-bold text-xl">{{ $carousel->judul }}</h3>
+                                                @endif
+
                                                 <div class="flex items-center justify-center mt-1 mb-2">
                                                     <div class="flex text-amber-400">
                                                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
@@ -906,12 +911,14 @@
                                             <div class="absolute -top-3 -left-3 bg-primary-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-20 animate-pulse">HOT</div>
 
                                             <!-- Product Image with Enhanced Effects - UKURAN DIKECILKAN -->
+                                            @foreach($carousels as $key => $carousel)
+                                            @if($key == 1)
                                             <div class="relative group">
-                                                <img src="https://www.apple.com/newsroom/images/2023/10/apple-unveils-new-macbook-pro-featuring-m3-chips/tile/Apple-MacBook-Pro-2up-231030.jpg.og.jpg?202503110420" alt="Featured Product 2" class="w-full max-w-xs mx-auto drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
-
-                                                <!-- Interactive Light Reflections -->
+                                                <img src="{{ asset('storage/' . $carousel->gambar) }}" alt="{{ $carousel->judul }}" class="w-full max-w-xs mx-auto drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
                                                 <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                                             </div>
+                                            @endif
+                                            @endforeach
 
                                             <!-- Product Quick Info -->
                                             <div class="mt-4 text-center">
@@ -948,12 +955,14 @@
                                             <div class="absolute -top-3 -left-3 bg-secondary-500 text-white text-xs font-bold px-3 py-1 rounded-full shadow-lg z-20">30% OFF</div>
 
                                             <!-- Product Image with Enhanced Effects - UKURAN DIKECILKAN -->
+                                            @foreach($carousels as $key => $carousel)
+                                            @if($key == 2)
                                             <div class="relative group">
-                                                <img src="https://images.fonearena.com/blog/wp-content/uploads/2023/10/Xiaomi-14-Pro-IP68-1024x946.jpg" alt="Featured Product 3" class="w-full max-w-xs mx-auto drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
-
-                                                <!-- Interactive Light Reflections -->
+                                                <img src="{{ asset('storage/' . $carousel->gambar) }}" alt="{{ $carousel->judul }}" class="w-full max-w-xs mx-auto drop-shadow-2xl transition-transform duration-500 group-hover:scale-105">
                                                 <div class="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/30 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                                             </div>
+                                            @endif
+                                            @endforeach
 
                                             <!-- Product Quick Info -->
                                             <div class="mt-4 text-center">

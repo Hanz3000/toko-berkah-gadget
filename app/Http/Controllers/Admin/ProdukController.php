@@ -8,6 +8,7 @@ use App\Models\Produk;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
+use App\Models\Carousel;
 
 class ProdukController extends Controller
 {
@@ -139,6 +140,8 @@ class ProdukController extends Controller
     {
         $query = $request->query('query');
         $kategori = $request->query('kategori');
+        $carousels = Carousel::all();
+
 
         // Pisahkan kategori jika ada lebih dari satu, atau set kategori menjadi array kosong jika tidak ada kategori
         $kategoriArr = $kategori ? explode('|', $kategori) : [];
@@ -154,7 +157,10 @@ class ProdukController extends Controller
         // Ambil produk yang sesuai
         $produk = $produkQuery->get();
 
-        return view('user.dashboard', compact('produk'));
+        return view('user.dashboard', [
+            'carousels' => $carousels,
+            'produk' => $produk, // ✅ BETUL
+        ]);
     }
 
     public function showDashboard()
