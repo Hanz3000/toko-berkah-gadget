@@ -522,13 +522,13 @@
                                     <p class="text-sm text-gray-500">Selamat datang,</p>
                                     <p class="font-medium text-gray-800 truncate">{{ Auth::user()->name }}</p>
                                 </div>
-                                <a href="#" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">
+                                <a href="{{ route('pesanan.index') }}" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                                     </svg>
                                     Profil Saya
                                 </a>
-                                <a href="#" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">
+                                <a href="{{ route('pesanan.index') }}" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                                     </svg>
@@ -1276,131 +1276,106 @@
         </div>
     </section>
 
-    <!-- Carousel Section
-    <div class="container mx-auto px-4 py-8">
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
-            <div class="relative">
-                @if(isset($carousels) && count($carousels) > 0)
-                <div class="swiper-container">
-                    <div class="swiper-wrapper">
-                        @foreach($carousels as $carousel)
-                        <div class="swiper-slide">
-                            <div class="relative">
-                                <img src="{{ asset('storage/' . $carousel->gambar) }}" alt="{{ $carousel->judul }}" class="w-full h-[400px] object-cover">
-
-                                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-6">
-                                    <h3 class="text-white text-2xl font-bold">{{ $carousel->judul }}</h3>
-                                    @if($carousel->harga_diskon)
-                                    <div class="flex items-center gap-2 mt-2">
-                                        <span class="text-gray-300 line-through">Rp {{ number_format($carousel->harga_normal, 0, ',', '.') }}</span>
-                                        <span class="text-yellow-400 font-bold text-xl">Rp {{ number_format($carousel->harga_diskon, 0, ',', '.') }}</span>
-                                    </div>
-                                    @else
-                                    <div class="mt-2">
-                                        <span class="text-yellow-400 font-bold text-xl">Rp {{ number_format($carousel->harga_normal, 0, ',', '.') }}</span>
-                                    </div>
-                                    @endif
-                                </div>
-                            </div>
-                        </div>
-                        @endforeach
-                    </div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-button-next"></div>
-                    <div class="swiper-button-prev"></div>
-                </div>
-                @else
-                <div class="p-6 text-center text-gray-500">
-                    Tidak ada carousel yang tersedia.
-                </div>
-                @endif
-            </div>
-        </div>
-    </div> -->
 
     <!-- Products Section -->
-    <section id="produk" class="py-12 bg-white">
-        <div class="container mx-auto px-4">
+    <section id="produk" class="py-16 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 bg-gradient-to-br from-gray-50 via-white to-primary-50 opacity-80 z-0"></div>
+        <div class="absolute top-0 left-0 w-full h-64 bg-pattern-dots opacity-5 z-0"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-blob opacity-10 z-0"></div>
+        <div class="absolute -left-12 top-1/3 w-48 h-48 rounded-full bg-accent-100 opacity-20 blur-2xl z-0"></div>
+        <div class="absolute -right-16 bottom-1/4 w-64 h-64 rounded-full bg-primary-100 opacity-20 blur-3xl z-0"></div>
+
+        <div class="container mx-auto px-4 relative z-10">
             <!-- Header Section with Enhanced Animation -->
-            <div class="flex flex-col md:flex-row justify-between items-center mb-12 opacity-0 animate-fade-in">
+            <div class="flex flex-col md:flex-row justify-between items-center mb-16 opacity-0 animate-fade-in">
                 <div class="relative">
-                    <h2 class="text-3xl font-bold mb-2 relative">
-                        Produk Terbaru
-                        <span class="absolute bottom-0 left-0 w-1/3 h-1 bg-primary-600 rounded-full transform origin-left transition-transform duration-300 group-hover:scale-x-100"></span>
+                    <span class="absolute -left-3 -top-3 w-12 h-12 rounded-lg bg-primary-100 opacity-50 transform rotate-12"></span>
+                    <span class="absolute -right-2 bottom-0 w-8 h-8 rounded-full bg-accent-100 opacity-70"></span>
+
+                    <h2 class="text-4xl font-bold mb-3 relative z-10">
+                        Katalog Produk
                     </h2>
-                    <p class="text-gray-600">Koleksi produk terbaru dengan kualitas terbaik</p>
                 </div>
-                <!-- button Lihat Semua Produk -->
-                <div class="mt-4 md:mt-0">
-                    <a href="{{ route('user.dashboard') }}#produk" class="group inline-flex items-center px-8 py-3 border-2 border-primary-600 text-primary-600 rounded-full hover:text-white transition-all duration-300 relative overflow-hidden">
-                        <span class="relative z-10 transition-transform duration-300 group-hover:transform">
+
+                <!-- Filter & Sort Controls -->
+                <div class="flex flex-col sm:flex-row gap-4 mt-6 md:mt-0">
+
+                    <!-- View Button -->
+                    <a href="{{ route('user.dashboard') }}#produk" class="group flex items-center justify-center h-12 px-8 py-3 border-2 border-primary-600 text-primary-600 rounded-full hover:text-white transition-all duration-300 relative overflow-hidden font-medium shadow-sm hover:shadow-md">
+                        <span class="relative z-10 transition-transform duration-300 group-hover:transform flex items-center">
                             Lihat Semua Produk
+                            <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
                         </span>
                         <div class="absolute inset-0 rounded-full bg-primary-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
                     </a>
                 </div>
-
             </div>
 
             <!-- Products Grid with Enhanced Animations -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
                 @foreach ($produk as $item)
-                <div class="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 product-card relative opacity-0 animate-slide-up"
+                <div class="group bg-white rounded-2xl overflow-hidden product-card relative opacity-0 animate-slide-up transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl shadow-md"
                     data-aos="fade-up"
-                    data-aos-delay="{{ $loop->index * 100 }}"
+                    data-aos-delay="{{ $loop->index * 100 }}">
 
-
-                    <!-- Enhanced New Badge -->
+                    <!-- Ribbon (for special items) -->
                     @if($item->is_new)
-                    <div class="absolute top-4 left-4 z-20">
-                        <div class="relative">
-                            <div class="absolute inset-0 bg-accent-500 rounded-full animate-pulse opacity-30"></div>
-                            <span class="relative bg-accent-500 text-white text-xs font-bold px-3 py-1.5 rounded-full inline-block transform hover:scale-105 transition-transform duration-300">
-                                Baru!
-                            </span>
+                    <div class="absolute -right-12 top-6 z-20 w-40 transform rotate-45">
+                        <div class="py-1 bg-accent-500 text-white text-xs font-bold text-center shadow-md">
+                            Baru!
                         </div>
                     </div>
                     @endif
 
                     <!-- Enhanced Product Image Container -->
-                    <div class="relative h-56 overflow-hidden">
+                    <div class="relative h-64 overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
                         @if ($item->gambar)
                         <img src="{{ asset('storage/' . $item->gambar) }}"
                             alt="{{ $item->nama_produk }}"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         @else
-                        <div class="w-full h-full bg-gray-50 flex items-center justify-center">
-                            <i class="fas fa-image text-4xl text-gray-300 transition-all duration-300 group-hover:scale-110"></i>
+                        <div class="w-full h-full bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
+                            <i class="fas fa-image text-4xl text-gray-300"></i>
                         </div>
                         @endif
 
-
-                        <!-- Enhanced Quick View Overlay -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
+                        <!-- Quick Actions Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center gap-3">
                             <a href="{{ route('user.produk.detail', $item->id) }}"
-                                class="px-6 py-3 bg-white/90 text-primary-600 rounded-full font-medium transform -translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 hover:bg-primary-600 hover:text-white">
+                                class="px-6 py-3 bg-white/90 text-primary-600 rounded-full font-medium transform -translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 hover:bg-primary-600 hover:text-white shadow-lg">
                                 <i class="fas fa-eye mr-2"></i>Lihat Detail
                             </a>
+
+                            <div class="flex gap-3 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                                <button class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-primary-50 transition-all duration-300 shadow-md">
+                                    <i class="far fa-heart text-gray-700 hover:text-primary-600"></i>
+                                </button>
+                                <button class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-primary-50 transition-all duration-300 shadow-md">
+                                    <i class="fas fa-share-alt text-gray-700 hover:text-primary-600"></i>
+                                </button>
+                                <button class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-primary-50 transition-all duration-300 shadow-md">
+                                    <i class="fas fa-random text-gray-700 hover:text-primary-600"></i>
+                                </button>
+                            </div>
                         </div>
+                        <!-- Overlay shadow for better text readability on image-->
+                        <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
                     </div>
 
                     <!-- Enhanced Product Info -->
-                    <div class="p-6">
-                        <div class="flex justify-between items-start mb-3">
+                    <div class="p-6 bg-white border-t border-gray-50">
+                        <div class="flex justify-between items-start mb-2">
                             <div>
-                                <span class="inline-block text-xs text-primary-600 bg-primary-50 px-3 py-1 rounded-full font-medium transform hover:scale-105 transition-transform duration-300">
+                                <span class="inline-block text-xs text-primary-600 bg-primary-50 px-3 py-1 rounded-full font-medium hover:bg-primary-100 transition-colors duration-300 shadow-sm">
                                     {{ $item->kategori }}
                                 </span>
-                                <h3 class="font-bold text-lg mt-2 text-gray-800 group-hover:text-primary-600 transition-colors duration-300">
+                                <h3 class="font-bold text-lg mt-2 text-gray-800 group-hover:text-primary-600 transition-colors duration-300 line-clamp-2">
                                     {{ $item->nama_produk }}
                                 </h3>
                             </div>
-
-                            <!-- Enhanced Wishlist Button -->
-                            <button class="w-10 h-10 rounded-full flex items-center justify-center group/wishlist hover:bg-primary-50 transition-all duration-300">
-                                <i class="far fa-heart text-gray-400 group-hover/wishlist:text-primary-600 transform group-hover/wishlist:scale-110 transition-all duration-300"></i>
-                            </button>
                         </div>
+
 
                         <!-- Enhanced Price and Cart Section -->
                         <div class="flex items-center justify-between mt-4">
@@ -1409,23 +1384,105 @@
                                     Rp {{ number_format($item->harga, 0, ',', '.') }}
                                 </p>
                                 @if($item->harga_diskon)
-                                <p class="text-sm text-gray-400 line-through">
-                                    Rp {{ number_format($item->harga_diskon, 0, ',', '.') }}
-                                </p>
+                                <div class="flex items-center">
+                                    <p class="text-sm text-gray-400 line-through">
+                                        Rp {{ number_format($item->harga_diskon, 0, ',', '.') }}
+                                    </p>
+                                    <span class="ml-2 text-xs font-bold bg-accent-500/10 text-accent-600 px-2 py-0.5 rounded">
+                                        -{{ round((1 - $item->harga/$item->harga_diskon) * 100) }}%
+                                    </span>
+                                </div>
                                 @endif
                             </div>
 
-                            <!-- Enhanced Cart Button -->
-                            <button class="w-12 h-12 bg-primary-600 text-white rounded-full flex items-center justify-center group/cart hover:bg-primary-700 transition-all duration-300 transform hover:scale-105">
-                                <i class="fas fa-shopping-cart transform group-hover/cart:rotate-12 transition-transform duration-300"></i>
+                            <!-- Add to Cart Button -->
+                            <button class="flex items-center justify-center w-12 h-12 bg-primary-600 text-white rounded-full group/cart hover:bg-primary-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-primary-100/50">
+                                <i class="fas fa-shopping-cart text-sm transform group-hover/cart:rotate-12 transition-transform duration-300"></i>
                             </button>
+                        </div>
+
+                        <!-- Stock and Shipping Info -->
+                        <div class="mt-2 pt-2 border-t border-gray-100 flex justify-between text-xs text-gray-500">
+                            <div class="flex items-center">
+                                <span class="inline-block w-2 h-2 rounded-full bg-green-500 mr-2"></span>
+                                <span>Stok Tersedia</span>
+                            </div>
                         </div>
                     </div>
                 </div>
                 @endforeach
             </div>
+
+            <!-- Pagination / Load More -->
+            <div class="mt-16 text-center">
+                <button class="px-8 py-3 bg-white border border-gray-200 text-gray-600 rounded-full hover:bg-gray-50 hover:border-primary-100 hover:text-primary-600 transition-all duration-300 font-medium shadow-sm flex items-center mx-auto">
+                    <span>Tampilkan Lebih Banyak</span>
+                    <i class="fas fa-chevron-down ml-2"></i>
+                </button>
+
+                <!-- Alternative Pagination -->
+                <div class="hidden mt-12 flex justify-center">
+                    <nav class="flex items-center space-x-2">
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:border-primary-300 hover:text-primary-600 transition-all">
+                            <i class="fas fa-chevron-left text-sm"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-primary-600 flex items-center justify-center text-white font-medium">1</a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:border-primary-300 hover:text-primary-600 transition-all">2</a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:border-primary-300 hover:text-primary-600 transition-all">3</a>
+                        <span class="w-10 h-10 rounded-full flex items-center justify-center text-gray-400">...</span>
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:border-primary-300 hover:text-primary-600 transition-all">9</a>
+                        <a href="#" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:border-primary-300 hover:text-primary-600 transition-all">
+                            <i class="fas fa-chevron-right text-sm"></i>
+                        </a>
+                    </nav>
+                </div>
+            </div>
         </div>
+
+        <!-- SVG Patterns and Shapes (hidden by default, add as needed) -->
+        <svg width="0" height="0" class="hidden">
+            <defs>
+                <pattern id="pattern-dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                    <circle cx="3" cy="3" r="1" fill="currentColor" />
+                </pattern>
+                <path id="blob" d="M48.4,-64.5C62.9,-55.4,74.8,-41.6,79.8,-25.9C84.8,-10.2,83,7.4,76.9,22.9C70.9,38.4,60.7,51.9,47.1,60.5C33.4,69.1,16.7,72.9,0,72.9C-16.7,72.9,-33.4,69.1,-47.7,60.4C-62,51.7,-73.8,38,-80.3,21.1C-86.8,4.3,-87.8,-15.8,-80.9,-32.3C-74,-48.9,-59.1,-61.8,-43.4,-70.4C-27.6,-79,-13.8,-83.2,1,-84.4C15.8,-85.7,31.5,-83,48.4,-64.5Z" />
+            </defs>
+        </svg>
     </section>
+
+    <!-- CSS to inject into your stylesheet -->
+    <style>
+        .bg-pattern-dots {
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .bg-blob {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23F472B6' d='M48.4,-64.5C62.9,-55.4,74.8,-41.6,79.8,-25.9C84.8,-10.2,83,7.4,76.9,22.9C70.9,38.4,60.7,51.9,47.1,60.5C33.4,69.1,16.7,72.9,0,72.9C-16.7,72.9,-33.4,69.1,-47.7,60.4C-62,51.7,-73.8,38,-80.3,21.1C-86.8,4.3,-87.8,-15.8,-80.9,-32.3C-74,-48.9,-59.1,-61.8,-43.4,-70.4C-27.6,-79,-13.8,-83.2,1,-84.4C15.8,-85.7,31.5,-83,48.4,-64.5Z' transform='translate(100 100)'/%3E%3C/svg%3E");
+        }
+
+        @keyframes slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-slide-up {
+            animation: slide-up 0.6s ease forwards;
+        }
+
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+    </style>
 
 
     <!-- Features Section -->
@@ -1688,7 +1745,7 @@
         </div>
     </section>
 
-    <!-- Footer -->
+
     <!-- Footer Baru dengan Peningkatan UI dan UX -->
     <footer class="bg-gradient-to-b from-gray-800 to-gray-900 text-gray-300 py-16">
         <div class="container mx-auto px-4">

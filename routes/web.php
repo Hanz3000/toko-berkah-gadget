@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\CarouselController;
 use App\Models\Carousel;
+use App\Http\Controllers\WishlistController;
 
 Route::get('/', function () {
     return redirect()->route('user.dashboard');
@@ -32,10 +33,6 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(func
     Route::get('/admin/carousels/{carousel}/edit', [CarouselController::class, 'edit'])->name('admin.carousels.edit');
     Route::delete('/admin/carousels/{carousel}', [CarouselController::class, 'destroy'])->name('admin.carousels.destroy');
     Route::put('/admin/carousels/{carousel}', [CarouselController::class, 'update'])->name('admin.carousels.update');
-
-
-
-    // Anda mungkin juga membutuhkan rute lain untuk membuat, mengedit, menghapus, dll.
 });
 
 
@@ -43,6 +40,11 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(func
 Route::middleware(['auth'])->prefix('user')->group(function () {
     Route::get('/dashboard', [UserController::class, 'index'])->name('user.dashboard');
     Route::get('/produk/{id}', [UserController::class, 'show'])->name('user.produk.detail');
+    Route::get('/pesanan', [UserController::class, 'pesanan'])->name('pesanan.index');
+
+    // Tambahkan route wishlist
+    Route::get('/wishlist', [WishlistController::class, 'index'])->name('user.wishlist');
+    Route::post('/wishlist/toggle', [WishlistController::class, 'toggle'])->name('wishlist.toggle');
 });
 
 

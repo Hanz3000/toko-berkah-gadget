@@ -5,6 +5,8 @@ namespace App\Http\Controllers\User;
 use App\Models\Produk;
 use App\Http\Controllers\Controller;
 use App\Models\Carousel;
+use App\Models\Pesanan;
+
 
 class UserController extends Controller
 {
