@@ -7,7 +7,9 @@ use Illuminate\Http\Request;
 use App\Models\Produk;
 use Illuminate\Support\Facades\Storage;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth; // Tambahkan baris ini
+use Illuminate\Support\Facades\Auth;
+use App\Models\Carousel;
+
 
 
 class AdminController extends Controller
@@ -15,10 +17,14 @@ class AdminController extends Controller
     public function index()
     {
         $produk = Produk::all();
-        $jumlahUser = User::where('role', 'user')->count();
+        $produkTerbaru = Produk::orderBy('updated_at', 'desc')->first();
+        $carousels = Carousel::all();
+        $jumlahUser = User::count();
+        $jumlahCarousel = Carousel::count();
 
-        return view('admin.produk.index', compact('produk', 'jumlahUser'));
+        return view('admin.produk.index', compact('produk', 'carousels', 'jumlahUser', 'jumlahCarousel', 'produkTerbaru'));
     }
+
 
 
     public function create()

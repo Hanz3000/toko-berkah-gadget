@@ -25,12 +25,10 @@
         <form action="{{ route('admin.produk.store') }}" method="POST" enctype="multipart/form-data" id="productForm" class="space-y-8">
             @csrf
 
-            <!-- Progress indicator -->
             <div class="w-full bg-gray-100 rounded-full h-2 mb-6">
                 <div id="formProgress" class="bg-indigo-600 h-2 rounded-full w-0 transition-all duration-300"></div>
             </div>
 
-            <!-- Basic Info Section -->
             <div class="p-6 border border-gray-100 rounded-xl bg-gray-50">
                 <h3 class="font-semibold text-lg text-gray-700 mb-4 flex items-center">
                     <span class="bg-indigo-600 text-white rounded-full w-6 h-6 flex items-center justify-center mr-2 text-sm">1</span>
@@ -98,7 +96,6 @@
                 </div>
             </div>
 
-            <!-- Description Section -->
             <div class="p-6 border border-gray-100 rounded-xl bg-gray-50">
                 <h3 class="font-semibold text-lg text-gray-700 mb-4 flex items-center">
                     <span class="bg-indigo-600 text-white rounded-full w-6 h-6 flex items-center justify-center mr-2 text-sm">2</span>
@@ -138,7 +135,6 @@
                 </div>
             </div>
 
-            <!-- Image Upload Section -->
             <div class="p-6 border border-gray-100 rounded-xl bg-gray-50">
                 <h3 class="font-semibold text-lg text-gray-700 mb-4 flex items-center">
                     <span class="bg-indigo-600 text-white rounded-full w-6 h-6 flex items-center justify-center mr-2 text-sm">3</span>
@@ -205,7 +201,6 @@
                 </script>
             </div>
 
-            <!-- Submit Section -->
             <div class="flex justify-between items-center pt-6 border-t border-gray-200">
                 <button type="button" onclick="resetForm()" class="px-6 py-2.5 border border-gray-300 rounded-lg hover:bg-gray-50 transition text-gray-700 font-medium flex items-center gap-2">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -376,7 +371,7 @@
 
             // Add image to calculation
             if (inputFile.files.length > 0) {
-                filled += 0.5;
+                filled += 0.5; // Mengasumsikan gambar memiliki bobot 0.5 untuk progress
             }
 
             const progress = Math.min(100, Math.round((filled / total) * 100));
@@ -388,7 +383,7 @@
                 submitBtn.disabled = false;
             } else {
                 submitBtn.classList.add('opacity-70');
-                // Don't disable to allow form validation to show errors
+                // Jangan nonaktifkan untuk memungkinkan validasi formulir menampilkan kesalahan
             }
         }
 
@@ -449,7 +444,6 @@
                 // Submit form
                 this.submit();
             } else {
-                showToast('Mohon isi semua field yang wajib diisi', 'error');
                 // Scroll to first error
                 const firstError = document.querySelector('.border-red-300');
                 if (firstError) {
@@ -480,51 +474,8 @@
                 });
 
                 updateProgress();
-                showToast('Form telah direset', 'info');
             }
         });
-
-        // Toast notification
-        function showToast(message, type = 'success') {
-            // Create toast element
-            const toast = document.createElement('div');
-            toast.className = `fixed top-4 right-4 px-6 py-3 rounded-lg shadow-lg text-white z-50 animate-fadeIn`;
-
-            // Set style based on type
-            if (type === 'error') {
-                toast.classList.add('bg-red-500');
-            } else if (type === 'info') {
-                toast.classList.add('bg-blue-500');
-            } else {
-                toast.classList.add('bg-green-500');
-            }
-
-            toast.innerHTML = `
-                <div class="flex items-center gap-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        ${type === 'error' ? 
-                            '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />' : 
-                            (type === 'info' ? 
-                                '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />' : 
-                                '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />'
-                            )
-                        }
-                    </svg>
-                    <span>${message}</span>
-                </div>
-            `;
-
-            // Add to DOM
-            document.body.appendChild(toast);
-
-            // Remove after 3 seconds
-            setTimeout(() => {
-                toast.classList.add('animate-fadeOut');
-                setTimeout(() => {
-                    document.body.removeChild(toast);
-                }, 300);
-            }, 3000);
-        }
 
         // Initialize progress
         updateProgress();

@@ -21,73 +21,174 @@
 @section('content')
 <!-- Toast Notification Container -->
 <div id="toast-container" class="fixed top-4 right-4 z-50 flex flex-col gap-3 max-w-xs"></div>
-
 <!-- Main Content Container -->
 <div class="bg-gradient-to-br from-indigo-100 to-blue-50 min-h-screen p-6 rounded-xl">
     <!-- Overview Section -->
-    <div class="mb-8">
-        <div class="flex items-center justify-between mb-6">
-            <h3 class="text-lg font-semibold text-indigo-900">Ringkasan</h3>
+    <div class="mb-10">
+        <div class="flex items-center justify-between mb-8">
+            <div>
+                <h3 class="text-xl font-bold text-indigo-900">Dashboard Overview</h3>
+                <p class="text-sm text-indigo-600 mt-1">Statistik dan ringkasan data terkini</p>
+            </div>
+            {{-- Tampilkan info produk terbaru --}}
+            @if($produkTerbaru)
+            <div class="mb-4 p-4 bg-indigo-100 rounded-md text-indigo-700 flex items-center space-x-2">
+                <i class="fas fa-clock text-sm"></i>
+                <span class="text-sm font-semibold">
+                    Produk terbaru diperbarui pada
+                    {{ \Carbon\Carbon::parse($produkTerbaru->updated_at)
+                ->locale('id')
+                ->timezone('Asia/Jakarta')
+                ->translatedFormat('d F Y, H:i') }}
+                </span>
+            </div>
+            @else
+            <p class="mb-4 text-gray-500">Belum ada produk terbaru.</p>
+            @endif
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <!-- Card 1 -->
-            <div class="bg-gradient-to-br from-indigo-50 to-white rounded-xl shadow-md p-6 border border-indigo-100 hover:shadow-lg transition-all duration-300">
-                <div class="flex items-center justify-between mb-4">
-                    <h4 class="text-indigo-700 font-medium">Total Produk</h4>
-                    <div class=" w-9 h-9 flex items-center justify-center sp-2 rounded-lg bg-indigo-600 text-white shadow-md">
-                        <i class="fas fa-box"></i>
-                    </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-8">
+            <!-- Card 1 - Total Produk -->
+            <div class="bg-gradient-to-br from-indigo-50 via-white to-indigo-50 rounded-2xl shadow-lg p-8 border border-indigo-100 hover:shadow-xl hover:scale-105 transition-all duration-300 group relative overflow-hidden">
+                <!-- Background Pattern -->
+                <div class="absolute inset-0 opacity-5">
+                    <div class="absolute -top-4 -right-4 w-20 h-20 bg-indigo-600 rounded-full"></div>
+                    <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-indigo-400 rounded-full"></div>
                 </div>
-                <div class="flex items-end justify-between">
-                    <div>
-                        <h3 class="text-3xl font-bold text-indigo-900">{{ count($produk) }}</h3>
+
+                <div class="relative z-10">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h4 class="text-indigo-700 font-semibold text-sm">Total Produk</h4>
+                            <p class="text-xs text-indigo-500 mt-1">Semua kategori</p>
+                        </div>
+                        <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-indigo-600 to-indigo-700 text-white shadow-lg group-hover:shadow-xl transition-all duration-300">
+                            <i class="fas fa-box text-lg"></i>
+                        </div>
                     </div>
-                    <div class="h-16 w-24">
-                        <div class="flex items-end justify-between h-full">
-                            <div class="w-3 bg-indigo-200 rounded-t-sm h-6"></div>
-                            <div class="w-3 bg-indigo-300 rounded-t-sm h-8"></div>
-                            <div class="w-3 bg-indigo-400 rounded-t-sm h-10"></div>
-                            <div class="w-3 bg-indigo-500 rounded-t-sm h-7"></div>
-                            <div class="w-3 bg-indigo-600 rounded-t-sm h-12"></div>
-                            <div class="w-3 bg-indigo-700 rounded-t-sm h-14"></div>
+
+                    <div class="flex items-end justify-between">
+                        <div>
+                            <h3 class="text-3xl font-bold text-indigo-900 mb-1">{{ count($produk) }}</h3>
+
+                        </div>
+                        <div class="h-14 w-20">
+                            <div class="flex items-end justify-between h-full space-x-1">
+                                <div class="w-2.5 bg-gradient-to-t from-indigo-200 to-indigo-300 rounded-t-sm h-5"></div>
+                                <div class="w-2.5 bg-gradient-to-t from-indigo-300 to-indigo-400 rounded-t-sm h-7"></div>
+                                <div class="w-2.5 bg-gradient-to-t from-indigo-400 to-indigo-500 rounded-t-sm h-9"></div>
+                                <div class="w-2.5 bg-gradient-to-t from-indigo-500 to-indigo-600 rounded-t-sm h-6"></div>
+                                <div class="w-2.5 bg-gradient-to-t from-indigo-600 to-indigo-700 rounded-t-sm h-11"></div>
+                                <div class="w-2.5 bg-gradient-to-t from-indigo-700 to-indigo-800 rounded-t-sm h-14"></div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 2 -->
-            <div class="bg-gradient-to-br from-purple-50 to-white rounded-xl shadow-md p-6 border border-purple-100 hover:shadow-lg transition-all duration-300">
-                <div class="flex items-center justify-between mb-4">
-                    <h4 class="text-purple-700 font-medium">Kategori</h4>
-                    <div class=" w-9 h-9 flex items-center justify-center p-2 rounded-lg bg-purple-600 text-white shadow-md">
-                        <i class="fas fa-tags"></i>
-                    </div>
+            <!-- Card 2 - Kategori -->
+            <div class="bg-gradient-to-br from-purple-50 via-white to-purple-50 rounded-2xl shadow-lg p-8 border border-purple-100 hover:shadow-xl hover:scale-105 transition-all duration-300 group relative overflow-hidden">
+                <!-- Background Pattern -->
+                <div class="absolute inset-0 opacity-5">
+                    <div class="absolute -top-4 -right-4 w-20 h-20 bg-purple-600 rounded-full"></div>
+                    <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-purple-400 rounded-full"></div>
                 </div>
-                <div class="flex items-end justify-between">
-                    <div>
-                        <h3 class="text-3xl font-bold text-purple-900">8</h3>
+
+                <div class="relative z-10">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h4 class="text-purple-700 font-semibold text-sm">Kategori</h4>
+                            <p class="text-xs text-purple-500 mt-1">Kategori aktif</p>
+                        </div>
+                        <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-purple-600 to-purple-700 text-white shadow-lg group-hover:shadow-xl transition-all duration-300">
+                            <i class="fas fa-tags text-lg"></i>
+                        </div>
                     </div>
-                    <div class="flex -space-x-2">
-                        <div class="h-8 w-8 rounded-full bg-red-500 text-white flex items-center justify-center text-xs shadow-md">S</div>
-                        <div class="h-8 w-8 rounded-full bg-green-500 text-white flex items-center justify-center text-xs shadow-md">T</div>
-                        <div class="h-8 w-8 rounded-full bg-blue-500 text-white flex items-center justify-center text-xs shadow-md">S</div>
-                        <div class="h-8 w-8 rounded-full bg-yellow-500 text-white flex items-center justify-center text-xs shadow-md">+5</div>
+
+                    <div class="flex items-end justify-between">
+                        <div>
+                            <h3 class="text-3xl font-bold text-purple-900 mb-1">8</h3>
+
+                        </div>
+                        <div class="flex -space-x-1">
+                            <div class="h-8 w-8 rounded-full bg-gradient-to-br from-red-400 to-red-600 text-white flex items-center justify-center text-xs shadow-lg border-2 border-white">S</div>
+                            <div class="h-8 w-8 rounded-full bg-gradient-to-br from-green-400 to-green-600 text-white flex items-center justify-center text-xs shadow-lg border-2 border-white">T</div>
+                            <div class="h-8 w-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 text-white flex items-center justify-center text-xs shadow-lg border-2 border-white">S</div>
+                            <div class="h-8 w-8 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 text-white flex items-center justify-center text-xs shadow-lg border-2 border-white">+5</div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- Card 3 -->
-            <div class="bg-gradient-to-br from-amber-50 to-white rounded-xl shadow-md p-6 border border-amber-100 hover:shadow-lg transition-all duration-300">
-                <div class="flex items-center justify-between mb-4">
-                    <h4 class="text-amber-700 font-medium">Total Pengguna</h4>
-                    <div class="w-9 h-9 flex items-center justify-center p-2 rounded-lg bg-amber-600 text-white shadow-md">
-                        <i class="fas fa-users"></i>
+            <!-- Card 3 - Total Pengguna -->
+            <div class="bg-gradient-to-br from-amber-50 via-white to-amber-50 rounded-2xl shadow-lg p-8 border border-amber-100 hover:shadow-xl hover:scale-105 transition-all duration-300 group relative overflow-hidden">
+                <!-- Background Pattern -->
+                <div class="absolute inset-0 opacity-5">
+                    <div class="absolute -top-4 -right-4 w-20 h-20 bg-amber-600 rounded-full"></div>
+                    <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-amber-400 rounded-full"></div>
+                </div>
+
+                <div class="relative z-10">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h4 class="text-amber-700 font-semibold text-sm">Total Pengguna</h4>
+                            <p class="text-xs text-amber-500 mt-1">Pengguna terdaftar</p>
+                        </div>
+                        <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-amber-600 to-amber-700 text-white shadow-lg group-hover:shadow-xl transition-all duration-300">
+                            <i class="fas fa-users text-lg"></i>
+                        </div>
+                    </div>
+
+                    <div class="flex items-end justify-between">
+                        <div>
+                            <h3 class="text-3xl font-bold text-amber-900 mb-1">{{ $jumlahUser }}</h3>
+
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <div class="h-10 w-10 rounded-full bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center shadow-lg border-2 border-white">
+                                <i class="fas fa-user text-white text-sm"></i>
+                            </div>
+                            <div class="h-8 w-8 rounded-full bg-gradient-to-br from-amber-300 to-amber-500 flex items-center justify-center shadow-lg border-2 border-white">
+                                <i class="fas fa-user text-white text-xs"></i>
+                            </div>
+                            <div class="h-6 w-6 rounded-full bg-gradient-to-br from-amber-200 to-amber-400 shadow-lg border-2 border-white"></div>
+                        </div>
                     </div>
                 </div>
-                <div class="flex items-end justify-between">
-                    <div>
-                        <h3 class="text-3xl font-bold text-amber-900">{{ $jumlahUser }}</h3>
+            </div>
+
+            <!-- Card 4 - Total Konten -->
+            <div class="bg-gradient-to-br from-green-50 via-white to-green-50 rounded-2xl shadow-lg p-8 border border-green-100 hover:shadow-xl hover:scale-105 transition-all duration-300 group relative overflow-hidden">
+                <!-- Background Pattern -->
+                <div class="absolute inset-0 opacity-5">
+                    <div class="absolute -top-4 -right-4 w-20 h-20 bg-green-600 rounded-full"></div>
+                    <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-green-400 rounded-full"></div>
+                </div>
+
+                <div class="relative z-10">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h4 class="text-green-700 font-semibold text-sm">Total Konten</h4>
+                            <p class="text-xs text-green-500 mt-1">Media carousel</p>
+                        </div>
+                        <div class="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-green-600 to-green-700 text-white shadow-lg group-hover:shadow-xl transition-all duration-300">
+                            <i class="fas fa-images text-lg"></i>
+                        </div>
+                    </div>
+
+                    <div class="flex items-end justify-between">
+                        <div>
+                            <h3 class="text-3xl font-bold text-green-900 mb-1">{{ count($carousels ?? []) }}</h3>
+
+
+                        </div>
+                        <div class="flex -space-x-1">
+                            <div class="h-8 w-8 rounded-full bg-gradient-to-br from-red-400 to-red-600 text-white flex items-center justify-center text-xs shadow-lg border-2 border-white">K1</div>
+                            <div class="h-8 w-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 text-white flex items-center justify-center text-xs shadow-lg border-2 border-white">K2</div>
+                            <div class="h-8 w-8 rounded-full bg-gradient-to-br from-yellow-400 to-yellow-600 text-white flex items-center justify-center text-xs shadow-lg border-2 border-white">K3</div>
+                            <div class="h-8 w-8 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 text-white flex items-center justify-center text-xs shadow-lg border-2 border-white">+{{ max(0, count($carousels ?? []) - 3) }}
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -107,6 +208,7 @@
                         <option value="semua">Semua Kategori</option>
                         <option value="Smartphone">Smartphone</option>
                         <option value="Smartwatch">Smartwatch</option>
+                        <option value="Tablet">Tablet</option>
                         <option value="Aksesoris">Aksesoris</option>
                         <option value="Second">Second</option>
                     </select>
@@ -307,7 +409,6 @@
             // Hide modal
             closeDeleteModal();
 
-            // Show toast - this won't actually show until after redirect, so for real implementation
             // you would need backend flash message to show toast after redirect
             showToast(`Produk "${productName}" berhasil dihapus!`, 'success');
         };
@@ -316,21 +417,21 @@
         modal.classList.remove('hidden');
     }
 
-    // Close delete confirmation modal
     function closeDeleteModal() {
         const modal = document.getElementById('deleteModal');
         modal.classList.add('hidden');
     }
+    const successMessage = "{{ session('success') }}";
+    const errorMessage = "{{ session('error') }}";
 
-    // Check for success/error messages from session flash
     document.addEventListener('DOMContentLoaded', function() {
-        @if(session('success'))
-        showToast("{{ session('success') }}", 'success');
-        @endif
+        if (successMessage) {
+            showToast(successMessage, 'success');
+        }
 
-        @if(session('error'))
-        showToast("{{ session('error') }}", 'error');
-        @endif
+        if (errorMessage) {
+            showToast(errorMessage, 'error');
+        }
     });
 </script>
 @endsection

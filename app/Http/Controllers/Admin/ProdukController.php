@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Carousel;
+use Carbon\Carbon;
 
 class ProdukController extends Controller
 {
@@ -159,13 +160,13 @@ class ProdukController extends Controller
 
         return view('user.dashboard', [
             'carousels' => $carousels,
-            'produk' => $produk, // ✅ BETUL
+            'produk' => $produk,
         ]);
     }
 
     public function showDashboard()
     {
-        $produk = produk::all(); // or any query to fetch products
+        $produk = produk::all();
         return view('user.dashboard', compact('produk'));
     }
 }

@@ -40,18 +40,13 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(func
 Route::middleware(['auth'])->prefix('user')->group(function () {
     Route::get('/dashboard', [UserController::class, 'index'])->name('user.dashboard');
     Route::get('/produk/{id}', [UserController::class, 'show'])->name('user.produk.detail');
-    Route::get('/pesanan', [UserController::class, 'pesanan'])->name('pesanan.index');
-
-    // Tambahkan route wishlist
-    Route::get('/wishlist', [WishlistController::class, 'index'])->name('user.wishlist');
-    Route::post('/wishlist/toggle', [WishlistController::class, 'toggle'])->name('wishlist.toggle');
 });
 
 
 
 Route::get('/user/dashboard', function () {
     $produk = Produk::all();
-    $carousels = Carousel::all(); // Tambahkan ini
+    $carousels = Carousel::all();
     return view('user.dashboard', compact('produk', 'carousels'));
 })->name('user.dashboard');
 
