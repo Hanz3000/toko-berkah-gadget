@@ -397,7 +397,7 @@
 
                             <!-- Action Buttons -->
                             <div class="grid grid-cols-12 gap-2">
-                                <a href="#" class="col-span-8 bg-gradient-to-r from-green-500 to-green-600 text-white text-center py-3 px-4 rounded-lg hover:shadow-lg transition-all font-semibold flex items-center justify-center pulse-animation">
+                                <a href="https://wa.me/62881036357795?text=Halo,%20saya%20tertarik%20dengan%20produk%20iPhone%2013%20Pro%20Max%20dengan%20harga%20Rp%2015.000.000.%20Mohon%20informasi%20lebih%20lanjut." class="col-span-8 bg-gradient-to-r from-green-500 to-green-600 text-white text-center py-3 px-4 rounded-lg hover:shadow-lg transition-all font-semibold flex items-center justify-center pulse-animation">
                                     <i class="fab fa-whatsapp mr-2 text-xl"></i>
                                     <span>Hubungi via WhatsApp</span>
                                 </a>
@@ -414,82 +414,202 @@
             <!-- Tabs Section -->
             <div class="mt-8">
                 <div class="flex border-b border-gray-200 mb-4">
-                    <button class="px-6 py-3 font-medium text-blue-600 border-b-2 border-blue-600">Detail</button>
-                    <button class="px-6 py-3 font-medium text-gray-500 hover:text-gray-700">Spesifikasi</button>
-                    <button class="px-6 py-3 font-medium text-gray-500 hover:text-gray-700">Ulasan (120)</button>
+                    <button id="detail-tab" class="px-6 py-3 font-medium text-blue-600 border-b-2 border-blue-600 transition-colors duration-200">Detail</button>
+                    <button id="specs-tab" class="px-6 py-3 font-medium text-gray-500 hover:text-gray-700 transition-colors duration-200">Cara Order</button>
+
                 </div>
 
-                <div class="bg-white rounded-xl shadow-md p-6">
-                    <div class="mb-8">
-                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Detail Produk</h3>
-                        <p class="text-gray-600 mb-4">
-                            iPhone 13 Pro Max hadir dengan layar Super Retina XDR 6.7 inci yang menakjubkan dengan ProMotion untuk respons yang lebih cepat dan lebih halus. Sistem kamera Pro yang telah didesain ulang dengan kamera Wide, Ultra Wide, dan Telephoto yang baru. Chip A15 Bionic yang luar biasa cepat dengan beberapa inti Neural Engine. Hingga 28 jam pemutaran video. Mode Cinematic yang secara otomatis menambahkan fokus yang dangkal dan menggeser fokus dalam video Anda. Mode Malam pada semua kamera. Fotografi makro. Smart HDR 4. Apple ProRAW. ProRes video recording. Kontrol Gaya Fotografi. Layar Super Retina XDR 6,7 inci dengan ProMotion untuk pengalaman visual yang lebih cepat dan responsif.
-                        </p>
+                <div class="relative overflow-hidden">
+                    <!-- Detail Content -->
+                    <div id="detail-content" class="bg-white rounded-xl shadow-md p-6 transition-all duration-300 transform translate-x-0">
+                        <div class="mb-8">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Detail Produk</h3>
+                            <p class="text-gray-600 mb-4">
+                                <?php echo htmlspecialchars($produk['deskripsi'] ?? 'Deskripsi produk tidak tersedia'); ?>
+                            </p>
+
+                            <?php if (!empty($produk['kekurangan'])): ?>
+                                <div class="mt-6">
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Kekurangan:</h4>
+                                    <p class="text-gray-600"><?php echo htmlspecialchars($produk['kekurangan']); ?></p>
+                                </div>
+                            <?php endif; ?>
+
+                            <?php if (!empty($produk['kelengkapan'])): ?>
+                                <div class="mt-6">
+                                    <h4 class="text-lg font-semibold text-gray-800 mb-2">Kelengkapan:</h4>
+                                    <p class="text-gray-600"><?php echo htmlspecialchars($produk['kelengkapan']); ?></p>
+                                </div>
+                            <?php endif; ?>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Spesifikasi Umum</h3>
+                                <ul class="space-y-2">
+                                    <li class="flex justify-between pb-2 border-b border-gray-100">
+                                        <span class="text-gray-600">Nama Produk</span>
+                                        <span class="font-medium text-gray-800"><?php echo htmlspecialchars($produk['nama_produk'] ?? 'N/A'); ?></span>
+                                    </li>
+                                    <li class="flex justify-between pb-2 border-b border-gray-100">
+                                        <span class="text-gray-600">Kategori</span>
+                                        <span class="font-medium text-gray-800"><?php echo htmlspecialchars($produk['kategori'] ?? 'N/A'); ?></span>
+                                    </li>
+
+                                    <li class="flex justify-between pb-2 border-b border-gray-100">
+                                        <span class="text-gray-600">Tanggal Update</span>
+                                        <span class="font-medium text-gray-800"><?php echo date('d M Y', strtotime($produk['updated_at'] ?? 'now')); ?></span>
+                                    </li>
+                                </ul>
+                            </div>
+
+                            <!-- Bagian yang diubah - menambahkan margin kiri -->
+                            <div class="ml-8">
+                                <h3 class="text-lg font-semibold text-gray-800 mb-4">Informasi Tambahan</h3>
+                                <div class="space-y-3">
+                                    <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                        </svg>
+                                        <div>
+                                            <h4 class="font-medium text-gray-800">Garansi Personal 1 Bulan</h4>
+                                            <p class="text-sm text-gray-600">Berlaku untuk kerusakan fungsi utama</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                                        </svg>
+                                        <div>
+                                            <h4 class="font-medium text-gray-800">Cicilan 0%</h4>
+                                            <p class="text-sm text-gray-600">Tersedia untuk kartu kredit tertentu</p>
+                                        </div>
+                                    </div>
+
+                                    <div class="flex items-center p-3 bg-gray-50 rounded-lg">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                        </svg>
+                                        <div>
+                                            <h4 class="font-medium text-gray-800">Pengiriman Cepat</h4>
+                                            <p class="text-sm text-gray-600">Dikirim dalam 1-2 hari kerja</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Spesifikasi Umum</h3>
-                            <ul class="space-y-2">
-                                <li class="flex justify-between pb-2 border-b border-gray-100">
-                                    <span class="text-gray-600">Merek</span>
-                                    <span class="font-medium text-gray-800">Apple</span>
-                                </li>
-                                <li class="flex justify-between pb-2 border-b border-gray-100">
-                                    <span class="text-gray-600">Model</span>
-                                    <span class="font-medium text-gray-800">iPhone 13 Pro Max</span>
-                                </li>
-                                <li class="flex justify-between pb-2 border-b border-gray-100">
-                                    <span class="text-gray-600">Kapasitas</span>
-                                    <span class="font-medium text-gray-800">256GB</span>
-                                </li>
-                                <li class="flex justify-between pb-2 border-b border-gray-100">
-                                    <span class="text-gray-600">Warna</span>
-                                    <span class="font-medium text-gray-800">Sierra Blue</span>
-                                </li>
-                                <li class="flex justify-between pb-2 border-b border-gray-100">
-                                    <span class="text-gray-600">Kondisi</span>
-                                    <span class="font-medium text-gray-800">Second (90%)</span>
-                                </li>
-                            </ul>
-                        </div>
-                        <div>
-                            <h3 class="text-lg font-semibold text-gray-800 mb-4">Layanan Tambahan</h3>
-                            <div class="space-y-3">
-                                <div class="flex items-center p-3 bg-gray-50 rounded-lg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-green-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                                    </svg>
-                                    <div>
-                                        <h4 class="font-medium text-gray-800">Garansi Personal 1 Bulan</h4>
-                                        <p class="text-sm text-gray-600">Berlaku untuk kerusakan fungsi utama</p>
-                                    </div>
+                    <!-- Spesifikasi Content (hidden by default) -->
+                    <div id="specs-content" class="bg-white rounded-xl shadow-md p-6 absolute top-0 left-0 w-full transition-all duration-300 transform translate-x-full">
+                        <div class="mb-8">
+                            <h3 class="text-xl font-semibold text-gray-800 mb-4">Cara Order</h3>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <h4 class="text-lg font-medium text-gray-800 mb-3">Pemesanan Online</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex justify-between pb-2 border-b border-gray-100">
+                                            <span class="text-gray-600">Website Resmi</span>
+                                            <span class="font-medium text-gray-800">www.tokokita.com</span>
+                                        </li>
+                                        <li class="flex justify-between pb-2 border-b border-gray-100">
+                                            <span class="text-gray-600">Aplikasi Mobile</span>
+                                            <span class="font-medium text-gray-800">Tokokita App (iOS/Android)</span>
+                                        </li>
+                                        <li class="flex justify-between pb-2 border-b border-gray-100">
+                                            <span class="text-gray-600">Marketplace</span>
+                                            <span class="font-medium text-gray-800">Shopee, Tokopedia, Lazada</span>
+                                        </li>
+                                    </ul>
                                 </div>
-
-                                <div class="flex items-center p-3 bg-gray-50 rounded-lg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-blue-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
-                                    </svg>
-                                    <div>
-                                        <h4 class="font-medium text-gray-800">Cicilan 0%</h4>
-                                        <p class="text-sm text-gray-600">Tersedia untuk kartu kredit tertentu</p>
-                                    </div>
+                                <div>
+                                    <h4 class="text-lg font-medium text-gray-800 mb-3">Pembayaran</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex justify-between pb-2 border-b border-gray-100">
+                                            <span class="text-gray-600">Transfer Bank</span>
+                                            <span class="font-medium text-gray-800">BCA, Mandiri, BNI, BRI</span>
+                                        </li>
+                                        <li class="flex justify-between pb-2 border-b border-gray-100">
+                                            <span class="text-gray-600">E-Wallet</span>
+                                            <span class="font-medium text-gray-800">OVO, Dana, Gopay, ShopeePay</span>
+                                        </li>
+                                        <li class="flex justify-between pb-2 border-b border-gray-100">
+                                            <span class="text-gray-600">Kredit</span>
+                                            <span class="font-medium text-gray-800">Kartu Kredit (0% cicilan)</span>
+                                        </li>
+                                    </ul>
                                 </div>
-
-                                <div class="flex items-center p-3 bg-gray-50 rounded-lg">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-indigo-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                                    </svg>
-                                    <div>
-                                        <h4 class="font-medium text-gray-800">Pengiriman Cepat</h4>
-                                        <p class="text-sm text-gray-600">Dikirim dalam 1-2 hari kerja</p>
-                                    </div>
+                                <div>
+                                    <h4 class="text-lg font-medium text-gray-800 mb-3">Pengiriman</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex justify-between pb-2 border-b border-gray-100">
+                                            <span class="text-gray-600">Kurir</span>
+                                            <span class="font-medium text-gray-800">JNE, J&T, SiCepat, Ninja</span>
+                                        </li>
+                                        <li class="flex justify-between pb-2 border-b border-gray-100">
+                                            <span class="text-gray-600">Pickup Store</span>
+                                            <span class="font-medium text-gray-800">Gratis biaya pengambilan</span>
+                                        </li>
+                                        <li class="flex justify-between pb-2 border-b border-gray-100">
+                                            <span class="text-gray-600">Same Day Delivery</span>
+                                            <span class="font-medium text-gray-800">Jakarta & Sekitarnya</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div>
+                                    <h4 class="text-lg font-medium text-gray-800 mb-3">Layanan Pelanggan</h4>
+                                    <ul class="space-y-2">
+                                        <li class="flex justify-between pb-2 border-b border-gray-100">
+                                            <span class="text-gray-600">WhatsApp</span>
+                                            <span class="font-medium text-gray-800">0812-3456-7890</span>
+                                        </li>
+                                        <li class="flex justify-between pb-2 border-b border-gray-100">
+                                            <span class="text-gray-600">Email</span>
+                                            <span class="font-medium text-gray-800">cs@tokokita.com</span>
+                                        </li>
+                                        <li class="flex justify-between pb-2 border-b border-gray-100">
+                                            <span class="text-gray-600">Jam Operasional</span>
+                                            <span class="font-medium text-gray-800">08:00 - 21:00 WIB</span>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <script>
+                const detailTab = document.getElementById('detail-tab');
+                const specsTab = document.getElementById('specs-tab');
+                const detailContent = document.getElementById('detail-content');
+                const specsContent = document.getElementById('specs-content');
+
+                detailTab.addEventListener('click', () => {
+                    // Update tab styles
+                    detailTab.classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
+                    detailTab.classList.remove('text-gray-500');
+                    specsTab.classList.add('text-gray-500');
+                    specsTab.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600');
+
+                    // Slide content
+                    detailContent.classList.remove('translate-x-full');
+                    specsContent.classList.add('translate-x-full');
+                });
+
+                specsTab.addEventListener('click', () => {
+                    // Update tab styles
+                    specsTab.classList.add('text-blue-600', 'border-b-2', 'border-blue-600');
+                    specsTab.classList.remove('text-gray-500');
+                    detailTab.classList.add('text-gray-500');
+                    detailTab.classList.remove('text-blue-600', 'border-b-2', 'border-blue-600');
+
+                    // Slide content
+                    detailContent.classList.add('translate-x-full');
+                    specsContent.classList.remove('translate-x-full');
+                });
+            </script>
 
             <!-- Related Products -->
             @if($related_produks->isNotEmpty())
