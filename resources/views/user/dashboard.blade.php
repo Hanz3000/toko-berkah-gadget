@@ -528,12 +528,13 @@
                                     </svg>
                                     Profil Saya
                                 </a>
-                                <a href="" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">
+                                <a href="{{ route('user.favorit') }}" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all rounded-lg">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                     </svg>
-                                    Pesanan
+                                    Favorit
                                 </a>
+
                                 @if(auth()->user()->role === 'admin' || auth()->user()->role === 'superadmin')
                                 <a href="{{ route('admin.produk.index') }}" class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1342,21 +1343,34 @@
 
                         <!-- Quick Actions Overlay -->
                         <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center gap-3">
+
                             <a href="{{ route('user.produk.detail', $item->id) }}"
                                 class="px-6 py-3 bg-white/90 text-primary-600 rounded-full font-medium transform -translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 hover:bg-primary-600 hover:text-white shadow-lg">
                                 <i class="fas fa-eye mr-2"></i>Lihat Detail
                             </a>
 
                             <div class="flex gap-3 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
-                                <button class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-primary-50 transition-all duration-300 shadow-md">
-                                    <i class="far fa-heart text-gray-700 hover:text-primary-600"></i>
-                                </button>
+
+                                <form action="{{ route('favorit.toggle', $item->id) }}" method="POST" class="w-10 h-10">
+                                    @csrf
+                                    <button type="submit"
+                                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-primary-50 transition-all duration-300 shadow-md">
+                                        @if(auth()->check() && auth()->user()->favorit->contains('id', $item->id))
+                                        <i class="fas fa-heart text-red-500"></i> <!-- hati terisi -->
+                                        @else
+                                        <i class="far fa-heart text-gray-700 hover:text-primary-600"></i> <!-- hati kosong -->
+                                        @endif
+                                    </button>
+                                </form>
+
+
                                 <button class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-primary-50 transition-all duration-300 shadow-md">
                                     <i class="fas fa-share-alt text-gray-700 hover:text-primary-600"></i>
                                 </button>
 
                             </div>
                         </div>
+
                         <!-- Overlay shadow for better text readability on image-->
                         <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
                     </div>

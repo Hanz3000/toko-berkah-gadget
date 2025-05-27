@@ -5,7 +5,9 @@ namespace App\Http\Controllers\User;
 use App\Models\Produk;
 use App\Http\Controllers\Controller;
 use App\Models\Carousel;
-use App\Models\Pesanan;
+use Illuminate\Support\Facades\Auth;
+use App\Models\User;
+
 
 
 class UserController extends Controller
@@ -38,5 +40,15 @@ class UserController extends Controller
         }
 
         return view('user.detail', compact('produk', 'related_produks'));
+    }
+
+    public function favorit()
+    {
+        $user = auth()->user();
+
+
+        $favorit_produk = $user->favorit()->latest()->get();
+
+        return view('user.favorit', compact('favorit_produk'));
     }
 }

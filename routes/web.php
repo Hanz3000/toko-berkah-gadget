@@ -9,7 +9,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\CarouselController;
 use App\Models\Carousel;
-use App\Http\Controllers\WishlistController;
+use App\Http\Controllers\FavoritController;
 
 Route::get('/', function () {
     return redirect()->route('user.dashboard');
@@ -27,6 +27,7 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(func
     Route::post('/admin/produk/tambah_admin', [ProdukController::class, 'storeAdmin'])->name('admin.produk.tambah_admin.store');
     Route::get('/users', [AdminController::class, 'userList'])->name('admin.users.index');
 
+    // Carousel routes
     Route::get('/admin/carousels', [CarouselController::class, 'index'])->name('admin.carousels.index');
     Route::get('/admin/carousels/create', [CarouselController::class, 'create'])->name('admin.carousels.create');
     Route::post('/admin/carousels', [CarouselController::class, 'store'])->name('admin.carousels.store');
@@ -35,15 +36,23 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(func
     Route::put('/admin/carousels/{carousel}', [CarouselController::class, 'update'])->name('admin.carousels.update');
 });
 
-
 // User routes
 Route::middleware(['auth'])->prefix('user')->group(function () {
     Route::get('/dashboard', [UserController::class, 'index'])->name('user.dashboard');
+    // Detail produk
     Route::get('/produk/{id}', [UserController::class, 'show'])->name('user.produk.detail');
+    // Halaman favorit user
+    Route::get('/favorit', [UserController::class, 'favorit'])->name('user.favorit');
+    // Toggle favorit (tambah/hapus)
+    Route::post('/favorit/{id}/toggle', [FavoritController::class, 'toggle'])->name('favorit.toggle');
 });
 
 
+Route::middleware(['auth'])->group(function () {
+    Route::post('/favorit/{id}/toggle', [FavoritController::class, 'toggle'])->name('favorit.toggle');
+});
 
+// Halaman dashboard user (dashboard utama)
 Route::get('/user/dashboard', function () {
     $produk = Produk::all();
     $carousels = Carousel::all();
@@ -57,5 +66,5 @@ Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/register', [LoginController::class, 'showRegisterForm'])->name('register');
 Route::post('/register', [LoginController::class, 'register']);
 
-Route::delete('/admin/produk/{id}', [ProdukController::class, 'destroy'])->name('admin.produk.destroy');
+// Search produk
 Route::get('/search', [ProdukController::class, 'search'])->name('produk.search');
