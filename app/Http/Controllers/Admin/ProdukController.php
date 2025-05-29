@@ -9,26 +9,29 @@ use Illuminate\Support\Facades\Storage;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Models\Carousel;
-use Carbon\Carbon;
 
 class ProdukController extends Controller
 {
+    // 🔵 Tampilkan semua produk untuk admin
     public function index()
     {
         $produk = Produk::all();
         return view('admin.produk.index', compact('produk'));
     }
 
+    // 🔵 Tampilkan form tambah produk
     public function create()
     {
         return view('admin.produk.create');
     }
 
-    public function tambah_admin()
+    // 🔵 Tampilkan form tambah admin
+    public function tambahAdmin()
     {
         return view('admin.produk.tambah_admin');
     }
 
+    // 🟢 Simpan data admin baru
     public function storeAdmin(Request $request)
     {
         $request->validate([
@@ -41,51 +44,58 @@ class ProdukController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'role' => 'admin', // role otomatis admin
+            'role' => 'admin',
         ]);
 
         return redirect()->route('admin.produk.index')->with('success', 'Admin baru berhasil ditambahkan!');
     }
 
+    // 🟢 Simpan data produk baru
     public function store(Request $request)
     {
         $request->validate([
-            'nama_produk' => 'required',
-            'kategori' => 'required',
-            'harga' => 'required|numeric',
-            'deskripsi' => 'required',
-            'kekurangan' => 'nullable',
-            'kelengkapan' => 'nullable',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'nama_produk'   => 'required',
+            'kategori'      => 'required',
+            'harga'         => 'required|numeric',
+            'deskripsi'     => 'required',
+            'kekurangan'    => 'nullable',
+            'kelengkapan'   => 'nullable',
+            'gambar'        => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'warna'         => 'nullable|string',  // tambahkan validasi warna
         ]);
 
-        $gambarPath = null;
-        if ($request->hasFile('gambar')) {
-            $gambarPath = $request->file('gambar')->store('produk', 'public');
-        }
+        $gambarPath = $request->hasFile('gambar')
+            ? $request->file('gambar')->store('produk', 'public')
+            : null;
 
         Produk::create([
-            'nama_produk' => $request->nama_produk,
-            'kategori' => $request->kategori,
-            'harga' => $request->harga,
-            'deskripsi' => $request->deskripsi,
-            'kekurangan' => $request->kekurangan,
-            'kelengkapan' => $request->kelengkapan,
-            'gambar' => $gambarPath,
+            'nama_produk'   => $request->nama_produk,
+            'kategori'      => $request->kategori,
+            'harga'         => $request->harga,
+            'deskripsi'     => $request->deskripsi,
+            'kekurangan'    => $request->kekurangan,
+            'kelengkapan'   => $request->kelengkapan,
+            'gambar'        => $gambarPath,
+            'warna'         => $request->warna,  // simpan warna
         ]);
-
-        session()->flash('success', 'Produk berhasil ditambahkan!');
-        return redirect()->route('admin.produk.index');
 
         return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil ditambahkan!');
     }
 
+
+    // 🟡 Tampilkan form edit produk
     public function edit($id)
     {
-        $produk = Produk::findOrFail($id);
+        $produk = Produk::find($id);
+
+        if (!$produk) {
+            return redirect()->route('admin.produk.index')->with('error', 'Produk tidak ditemukan.');
+        }
+
         return view('admin.produk.edit', compact('produk'));
     }
 
+    // 🟡 Update data produk
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -96,13 +106,13 @@ class ProdukController extends Controller
             'kekurangan' => 'nullable',
             'kelengkapan' => 'nullable',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'warna' => 'nullable|string',
         ]);
 
         $produk = Produk::findOrFail($id);
-        $gambarPath = $produk->gambar; // Simpan path gambar lama
+        $gambarPath = $produk->gambar; // simpan gambar lama
 
         if ($request->hasFile('gambar')) {
-            // Hapus gambar lama jika ada
             if ($gambarPath) {
                 Storage::delete('public/' . $gambarPath);
             }
@@ -117,46 +127,46 @@ class ProdukController extends Controller
             'kekurangan' => $request->kekurangan,
             'kelengkapan' => $request->kelengkapan,
             'gambar' => $gambarPath,
+            'warna' => $request->warna,
         ]);
 
         return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil diperbarui!');
     }
 
+
+    // 🔴 Hapus produk
     public function destroy($id)
     {
-        $produk = Produk::findOrFail($id);
+        $produk = Produk::find($id);
 
-        // Hapus gambar dari storage kalau ada
+        if (!$produk) {
+            return redirect()->route('admin.produk.index')->with('error', 'Produk tidak ditemukan.');
+        }
+
         if ($produk->gambar) {
             Storage::delete('public/' . $produk->gambar);
         }
 
-        // Hapus dari database
         $produk->delete();
 
         return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil dihapus.');
     }
 
+    // 🔍 Pencarian produk untuk dashboard user
     public function search(Request $request)
     {
         $query = $request->query('query');
         $kategori = $request->query('kategori');
-        $carousels = Carousel::all();
-
-
-        // Pisahkan kategori jika ada lebih dari satu, atau set kategori menjadi array kosong jika tidak ada kategori
         $kategoriArr = $kategori ? explode('|', $kategori) : [];
 
-        // Cari produk yang sesuai dengan query
         $produkQuery = Produk::where('nama_produk', 'like', '%' . $query . '%');
 
-        // Jika ada kategori, filter produk berdasarkan kategori
         if (!empty($kategoriArr)) {
             $produkQuery->whereIn('kategori', $kategoriArr);
         }
 
-        // Ambil produk yang sesuai
         $produk = $produkQuery->get();
+        $carousels = Carousel::all();
 
         return view('user.dashboard', [
             'carousels' => $carousels,
@@ -164,9 +174,17 @@ class ProdukController extends Controller
         ]);
     }
 
+    // 🟣 Dashboard user - tampilkan semua produk
     public function showDashboard()
     {
-        $produk = produk::all();
+        $produk = Produk::all();
         return view('user.dashboard', compact('produk'));
+    }
+
+    // 🟢 API: Ambil semua produk (JSON)
+    public function getAllProduk()
+    {
+        $produk = Produk::all();
+        return response()->json($produk);
     }
 }

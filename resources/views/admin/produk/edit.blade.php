@@ -79,6 +79,14 @@
                 </div>
 
                 <div class="mt-6">
+                    <label for="warna" class="block mb-2 text-sm font-medium text-gray-700">Warna</label>
+                    <input type="text" name="warna" id="warna" value="{{ $produk->warna }}" placeholder="Masukkan warna produk, contoh: black, red, #FF0000"
+                        class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500" />
+                    <p class="mt-1 text-xs text-gray-500">Masukkan nama warna (misal: black, red) atau kode warna hex (misal: #FF0000)</p>
+                </div>
+
+
+                <div class="mt-6">
                     <label for="deskripsi" class="block mb-2 text-sm font-medium text-gray-700">Deskripsi Produk</label>
                     <textarea name="deskripsi" id="deskripsi" rows="4"
                         class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500"

@@ -18,6 +18,8 @@
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <script src="//unpkg.com/alpinejs" defer></script>
     <script src="{{ asset('js/sidebar.js') }}" defer></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 </head>
 
 <body>
@@ -61,7 +63,7 @@
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                    document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
 

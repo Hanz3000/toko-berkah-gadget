@@ -10,6 +10,8 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
 
     <script>
         tailwind.config = {
@@ -95,6 +97,62 @@
             }
         }
     </script>
+
+    <style>
+        /* Your custom CSS for animations and effects */
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .modal-enter {
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .modal-content-enter {
+            animation: slideUp 0.3s ease-out;
+        }
+
+        .share-button {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .share-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .glass-effect {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Additional styles from your product card snippet */
+        .animate-slide-up {
+            animation: slideUp 0.5s ease-out forwards;
+        }
+    </style>
     <style>
         /* Custom scrollbar */
         ::-webkit-scrollbar {
@@ -358,7 +416,40 @@
         .navbar-glass {
             transition: transform 0.3s ease-in-out;
         }
+
+        .bg-pattern-dots {
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .bg-blob {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23F472B6' d='M48.4,-64.5C62.9,-55.4,74.8,-41.6,79.8,-25.9C84.8,-10.2,83,7.4,76.9,22.9C70.9,38.4,60.7,51.9,47.1,60.5C33.4,69.1,16.7,72.9,0,72.9C-16.7,72.9,-33.4,69.1,-47.7,60.4C-62,51.7,-73.8,38,-80.3,21.1C-86.8,4.3,-87.8,-15.8,-80.9,-32.3C-74,-48.9,-59.1,-61.8,-43.4,-70.4C-27.6,-79,-13.8,-83.2,1,-84.4C15.8,-85.7,31.5,-83,48.4,-64.5Z' transform='translate(100 100)'/%3E%3C/svg%3E");
+        }
+
+        @keyframes slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-slide-up {
+            animation: slide-up 0.6s ease forwards;
+        }
+
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
     </style>
+
 </head>
 
 <body class="font-sans bg-gray-50 text-gray-800 antialiased">
@@ -1277,7 +1368,6 @@
         </div>
     </section>
 
-
     <!-- Products Section -->
     <section id="produk" class="py-16 relative overflow-hidden">
         <!-- Background Elements -->
@@ -1294,46 +1384,39 @@
                     <span class="absolute -left-3 -top-3 w-12 h-12 rounded-lg bg-primary-100 opacity-50 transform rotate-12"></span>
                     <span class="absolute -right-2 bottom-0 w-8 h-8 rounded-full bg-accent-100 opacity-70"></span>
 
-                    <h2 class="text-4xl font-bold mb-3 relative z-10">
+                    <h3 class="text-3xl font-bold mb-3 relative z-10">
                         Katalog Produk
-                    </h2>
+                    </h3>
                 </div>
 
-                <!-- Filter & Sort Controls -->
-                <div class="flex flex-col sm:flex-row gap-4 mt-6 md:mt-0">
-
-                    <!-- View Button -->
-                    <a href="{{ route('user.dashboard') }}#produk" class="group flex items-center justify-center h-12 px-8 py-3 border-2 border-primary-600 text-primary-600 rounded-full hover:text-white transition-all duration-300 relative overflow-hidden font-medium shadow-sm hover:shadow-md">
-                        <span class="relative z-10 transition-transform duration-300 group-hover:transform flex items-center">
-                            Lihat Semua Produk
-                            <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
-                        </span>
-                        <div class="absolute inset-0 rounded-full bg-primary-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
-                    </a>
-                </div>
+                <!-- View Button -->
+                <a href="{{ route('user.dashboard') }}#produk"
+                    class="group flex items-center justify-center h-12 px-8 py-3 border-2 border-primary-600 text-primary-600 rounded-full hover:text-white transition-all duration-300 relative overflow-hidden font-medium shadow-sm hover:shadow-md">
+                    <span class="relative z-10 transition-transform duration-300 group-hover:transform flex items-center">
+                        Lihat Semua Produk
+                        <i class="fas fa-arrow-right ml-2 transform group-hover:translate-x-1 transition-transform duration-300"></i>
+                    </span>
+                    <div class="absolute inset-0 rounded-full bg-primary-600 transform -translate-x-full group-hover:translate-x-0 transition-transform duration-300 ease-out"></div>
+                </a>
             </div>
 
             <!-- Products Grid with Enhanced Animations -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+            <div id="produk-container" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
                 @foreach ($produk as $item)
-                <div class="group bg-white rounded-2xl overflow-hidden product-card relative opacity-0 animate-slide-up transform transition-all duration-500 hover:-translate-y-2 hover:shadow-xl shadow-md"
-                    data-aos="fade-up"
-                    data-aos-delay="{{ $loop->index * 100 }}">
+                <div class="group bg-gradient-to-br from-white via-gray-50 to-gray-100 rounded-2xl overflow-hidden product-card produk-item relative opacity-0 animate-slide-up transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl shadow-sm border border-gray-100"
+                    data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
 
-                    <!-- Ribbon (for special items) -->
                     @if($item->is_new)
-                    <div class="absolute -right-12 top-6 z-20 w-40 transform rotate-45">
+                    <div class="absolute -right-8 top-4 z-20 w-28 transform rotate-45">
                         <div class="py-1 bg-accent-500 text-white text-xs font-bold text-center shadow-md">
                             Baru!
                         </div>
                     </div>
                     @endif
 
-                    <!-- Enhanced Product Image Container -->
-                    <div class="relative h-64 overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
+                    <div class="relative h-48 overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
                         @if ($item->gambar)
-                        <img src="{{ asset('storage/' . $item->gambar) }}"
-                            alt="{{ $item->nama_produk }}"
+                        <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->nama_produk }}"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
                         @else
                         <div class="w-full h-full bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center">
@@ -1341,82 +1424,87 @@
                         </div>
                         @endif
 
-                        <!-- Quick Actions Overlay -->
-                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center gap-3">
-
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center gap-3">
                             <a href="{{ route('user.produk.detail', $item->id) }}"
-                                class="px-6 py-3 bg-white/90 text-primary-600 rounded-full font-medium transform -translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 hover:bg-primary-600 hover:text-white shadow-lg">
-                                <i class="fas fa-eye mr-2"></i>Lihat Detail
+                                class="px-4 py-2 bg-white/90 text-primary-600 rounded-full text-sm font-medium transform -translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 hover:bg-primary-600 hover:text-white shadow-lg">
+                                <i class="fas fa-eye mr-2"></i>Detail
                             </a>
-
-                            <div class="flex gap-3 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
-
-                                <form action="{{ route('favorit.toggle', $item->id) }}" method="POST" class="w-10 h-10">
-                                    @csrf
-                                    <button type="submit"
-                                        class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-primary-50 transition-all duration-300 shadow-md">
-                                        @if(auth()->check() && auth()->user()->favorit->contains('id', $item->id))
-                                        <i class="fas fa-heart text-red-500"></i> <!-- hati terisi -->
-                                        @else
-                                        <i class="far fa-heart text-gray-700 hover:text-primary-600"></i> <!-- hati kosong -->
-                                        @endif
-                                    </button>
-                                </form>
-
-
-                                <button class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-primary-50 transition-all duration-300 shadow-md">
-                                    <i class="fas fa-share-alt text-gray-700 hover:text-primary-600"></i>
+                            <div
+                                class="flex gap-3 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+                                <button type="button" data-url="{{ route('favorit.toggle', $item->id) }}"
+                                    class="toggle-favorit w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-primary-50 transition-all duration-300 shadow-md">
+                                    @if(auth()->check() && auth()->user()->favorit->contains('id', $item->id))
+                                    <i class="fas fa-heart text-red-500"></i>
+                                    @else
+                                    <i class="far fa-heart text-gray-700 hover:text-primary-600"></i>
+                                    @endif
                                 </button>
 
+                                <button onclick="openShareModal('{{ $item->nama_produk }}', '{{ number_format($item->harga, 0, ',', '.') }}', '{{ route('user.produk.detail', $item->id) }}')"
+                                    class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-primary-50 transition-all duration-300 shadow-md">
+                                    <i class="fas fa-share-alt text-gray-700 hover:text-primary-600"></i>
+                                </button>
                             </div>
                         </div>
 
-                        <!-- Overlay shadow for better text readability on image-->
                         <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
                     </div>
 
-                    <!-- Enhanced Product Info -->
-                    <div class="p-6 bg-white border-t border-gray-50">
+                    <div class="p-4 bg-white/90 backdrop-blur-sm border-t border-gray-100">
                         <div class="flex justify-between items-start mb-2">
                             <div>
-                                <span class="inline-block text-xs text-primary-600 bg-primary-50 px-3 py-1 rounded-full font-medium hover:bg-primary-100 transition-colors duration-300 shadow-sm">
+                                <span class="inline-flex items-center text-[12px] text-primary-700 bg-gradient-to-r from-primary-50 to-primary-100 px-2 py-0.5 rounded-full font-medium hover:from-primary-100 hover:to-primary-200 transition-all duration-300 shadow-sm border border-primary-200/30">
+                                    <i class="fas fa-tag mr-1 text-primary-500"></i>
                                     {{ $item->kategori }}
                                 </span>
-                                <h3 class="font-bold text-lg mt-2 text-gray-800 group-hover:text-primary-600 transition-colors duration-300 line-clamp-2">
+                                <h3 class="font-semibold text-base mt-1.5 text-gray-800 group-hover:text-primary-600 transition-colors duration-300 line-clamp-2">
                                     {{ $item->nama_produk }}
                                 </h3>
+
+                                @if(!empty($item->warna))
+                                <div class="flex items-center gap-1.5 mt-1.5">
+                                    <span class="text-[14px] text-gray-500">Warna:</span>
+                                    <div class="flex items-center gap-1">
+                                        @foreach(explode(',', $item->warna) as $warna)
+                                        <span class="w-3 h-3 rounded-full border border-gray-300"
+                                            style="background-color: {{ trim(strtolower($warna)) }}"></span>
+                                        @endforeach
+                                    </div>
+                                </div>
+                                @else
+                                <div class="flex items-center gap-1.5 mt-1.5">
+                                    <span class="text-[14px] text-gray-500">Warna: -</span>
+                                </div>
+                                @endif
                             </div>
                         </div>
-
-
-                        <!-- Enhanced Price and Cart Section -->
-                        <div class="flex items-center justify-between mt-4">
-                            <div class="space-y-1">
-                                <p class="text-xl font-bold text-primary-600">
+                        <div class="flex items-center justify-between mt-0">
+                            <div class="space-y-0.5">
+                                <p class="text-base font-bold text-primary-600">
                                     Rp {{ number_format($item->harga, 0, ',', '.') }}
                                 </p>
                                 @if($item->harga_diskon)
-                                <div class="flex items-center">
-                                    <p class="text-sm text-gray-400 line-through">
+                                <div class="flex items-center gap-1">
+                                    <p class="text-[10px] text-gray-400 line-through">
                                         Rp {{ number_format($item->harga_diskon, 0, ',', '.') }}
                                     </p>
-                                    <span class="ml-2 text-xs font-bold bg-accent-500/10 text-accent-600 px-2 py-0.5 rounded">
+                                    <span class="text-[12px] font-bold bg-accent-500/10 text-accent-600 px-1.5 py-0.5 rounded">
                                         -{{ round((1 - $item->harga/$item->harga_diskon) * 100) }}%
                                     </span>
                                 </div>
                                 @endif
                             </div>
 
-                            <!-- Add to Cart Button -->
-                            <button class="flex items-center justify-center w-12 h-12 bg-primary-600 text-white rounded-full group/cart hover:bg-primary-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-primary-100/50">
+                            <button
+                                class="flex items-center justify-center w-11 h-11 bg-primary-600 text-white rounded-full group/cart hover:bg-primary-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-primary-100/50">
                                 <i class="fas fa-shopping-cart text-sm transform group-hover/cart:rotate-12 transition-transform duration-300"></i>
                             </button>
                         </div>
 
-                        <!-- Stock and Shipping Info -->
-                        <div class="mt-2 pt-2 border-t border-gray-100 flex justify-between text-xs text-gray-500">
+                        <div class="mt-2 pt-2 border-t border-gray-100 flex justify-between text-[12px] text-gray-500">
                             <div class="flex items-center">
-                                <span class="inline-block w-2 h-2 rounded-full bg-green-500 mr-2"></span>
+                                <span class="inline-block w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5"></span>
                                 <span>Stok Tersedia</span>
                             </div>
                         </div>
@@ -1425,28 +1513,54 @@
                 @endforeach
             </div>
 
-            <!-- Pagination / Load More -->
-            <div class="mt-16 text-center">
-                <button class="px-8 py-3 bg-white border border-gray-200 text-gray-600 rounded-full hover:bg-gray-50 hover:border-primary-100 hover:text-primary-600 transition-all duration-300 font-medium shadow-sm flex items-center mx-auto">
-                    <span>Tampilkan Lebih Banyak</span>
-                    <i class="fas fa-chevron-down ml-2"></i>
-                </button>
+            <div id="shareModal" class="hidden fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4 modal-enter">
+                <div class="glass-effect rounded-2xl max-w-xs w-full mx-4 overflow-hidden shadow-2xl modal-content-enter">
+                    <div class="gradient-bg p-4 text-white relative">
+                        <div class="flex items-center justify-between">
+                            <div>
+                                <h3 class="text-lg font-bold">Bagikan</h3>
+                                <p class="text-blue-100 text-xs mt-1" id="shareModalProductName">Produk berkah gadget</p>
+                            </div>
+                            <button onclick="closeShareModal()" class="w-7 h-7 rounded-full bg-white bg-opacity-20 flex items-center justify-center hover:bg-opacity-30 transition-all">
+                                <i class="fas fa-times text-white text-xs"></i>
+                            </button>
+                        </div>
 
-                <!-- Alternative Pagination -->
-                <div class="hidden mt-12 flex justify-center">
-                    <nav class="flex items-center space-x-2">
-                        <a href="#" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:border-primary-300 hover:text-primary-600 transition-all">
-                            <i class="fas fa-chevron-left text-sm"></i>
-                        </a>
-                        <a href="#" class="w-10 h-10 rounded-full bg-primary-600 flex items-center justify-center text-white font-medium">1</a>
-                        <a href="#" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:border-primary-300 hover:text-primary-600 transition-all">2</a>
-                        <a href="#" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:border-primary-300 hover:text-primary-600 transition-all">3</a>
-                        <span class="w-10 h-10 rounded-full flex items-center justify-center text-gray-400">...</span>
-                        <a href="#" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-600 hover:border-primary-300 hover:text-primary-600 transition-all">9</a>
-                        <a href="#" class="w-10 h-10 rounded-full border border-gray-200 flex items-center justify-center text-gray-500 hover:border-primary-300 hover:text-primary-600 transition-all">
-                            <i class="fas fa-chevron-right text-sm"></i>
-                        </a>
-                    </nav>
+                        <div class="absolute -top-2 -right-2 w-12 h-12 bg-white bg-opacity-10 rounded-full"></div>
+                        <div class="absolute -bottom-1 -left-1 w-8 h-8 bg-white bg-opacity-10 rounded-full"></div>
+                    </div>
+
+                    <div class="p-4">
+                        <div class="grid grid-cols-2 gap-3 mb-4">
+                            <button onclick="shareToWhatsApp()" class="share-button flex flex-col items-center p-3 rounded-xl border-2 border-gray-100 hover:border-green-200 hover:bg-green-50 group">
+                                <div class="w-10 h-10 bg-green-500 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                                    <i class="fab fa-whatsapp text-white text-lg"></i>
+                                </div>
+                                <span class="text-xs font-medium text-gray-700 group-hover:text-green-700">WhatsApp</span>
+                            </button>
+
+                            <button onclick="shareToFacebook()" class="share-button flex flex-col items-center p-3 rounded-xl border-2 border-gray-100 hover:border-blue-200 hover:bg-blue-50 group">
+                                <div class="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                                    <i class="fab fa-facebook-f text-white text-lg"></i>
+                                </div>
+                                <span class="text-xs font-medium text-gray-700 group-hover:text-blue-700">Facebook</span>
+                            </button>
+
+                            <button onclick="shareToInstagram()" class="share-button flex flex-col items-center p-3 rounded-xl border-2 border-gray-100 hover:border-purple-200 hover:bg-purple-50 group">
+                                <div class="w-10 h-10 bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                                    <i class="fab fa-instagram text-white text-lg"></i>
+                                </div>
+                                <span class="text-xs font-medium text-gray-700 group-hover:text-purple-700">Instagram</span>
+                            </button>
+
+                            <button onclick="shareToTelegram()" class="share-button flex flex-col items-center p-3 rounded-xl border-2 border-gray-100 hover:border-blue-200 hover:bg-blue-50 group">
+                                <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center mb-2 group-hover:scale-110 transition-transform">
+                                    <i class="fab fa-telegram-plane text-white text-lg"></i>
+                                </div>
+                                <span class="text-xs font-medium text-gray-700 group-hover:text-blue-700">Telegram</span>
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1461,41 +1575,6 @@
             </defs>
         </svg>
     </section>
-
-    <!-- CSS to inject into your stylesheet -->
-    <style>
-        .bg-pattern-dots {
-            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3C/g%3E%3C/svg%3E");
-        }
-
-        .bg-blob {
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23F472B6' d='M48.4,-64.5C62.9,-55.4,74.8,-41.6,79.8,-25.9C84.8,-10.2,83,7.4,76.9,22.9C70.9,38.4,60.7,51.9,47.1,60.5C33.4,69.1,16.7,72.9,0,72.9C-16.7,72.9,-33.4,69.1,-47.7,60.4C-62,51.7,-73.8,38,-80.3,21.1C-86.8,4.3,-87.8,-15.8,-80.9,-32.3C-74,-48.9,-59.1,-61.8,-43.4,-70.4C-27.6,-79,-13.8,-83.2,1,-84.4C15.8,-85.7,31.5,-83,48.4,-64.5Z' transform='translate(100 100)'/%3E%3C/svg%3E");
-        }
-
-        @keyframes slide-up {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-slide-up {
-            animation: slide-up 0.6s ease forwards;
-        }
-
-        .line-clamp-2 {
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-    </style>
-
 
     <!-- Features Section -->
     <section class="py-12 bg-white">
@@ -1526,78 +1605,6 @@
                     </div>
                     <h3 class="text-xl font-semibold text-center mb-2">Dukungan 24/7</h3>
                     <p class="text-gray-600 text-center">Tim support kami siap membantu kapan saja</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials -->
-    <section class="py-12 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-12 animate-fade-in">
-                <h2 class="text-3xl font-bold mb-4">Apa Kata Pelanggan Kami</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Testimoni dari pelanggan yang sudah berbelanja di toko kami</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 animate-slide-up">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-                            <img src="https://blog-cdn.kitalulus.com/blog/wp-content/uploads/2024/02/20100045/63e467f2aab1c1d3f867772f_customer-service-bank.webp" alt="Customer" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h4 class="font-semibold">Andi Wijaya</h4>
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">"Produknya original dan pengirimannya cepat. Harga juga lebih murah dibanding toko lain. Recommended banget!"</p>
-                </div>
-
-                <!-- Testimonial 2 -->
-                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 animate-slide-up animation-delay-200">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-                            <img src="https://media.licdn.com/dms/image/v2/D5603AQEWGmSi3HYpkg/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1703143300431?e=2147483647&v=beta&t=QA6hsAqYmiWr8iVpC3xIKSiaGnt8Xcw1uF0p8MZSE6Y" alt="Customer" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h4 class="font-semibold">Siti Rahma</h4>
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">"Pelayanannya ramah dan responsive. Barang sampai dengan aman dan sesuai pesanan. Akan belanja lagi di sini."</p>
-                </div>
-
-                <!-- Testimonial 3 -->
-                <div class="bg-white p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 animate-slide-up animation-delay-400">
-                    <div class="flex items-center mb-4">
-                        <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
-                            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRoW5LVaI68N3uT9JnHOMOf2ZAyQYEWiOBdHw&s" alt="Customer" class="w-full h-full object-cover">
-                        </div>
-                        <div>
-                            <h4 class="font-semibold">Budi Santoso</h4>
-                            <div class="flex text-yellow-400">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="far fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-gray-600">"Garansi resmi membuat belanja lebih tenang. Sudah beberapa kali beli gadget di sini dan selalu puas."</p>
                 </div>
             </div>
         </div>
@@ -2114,7 +2121,6 @@
                         });
                     </script>
 
-                    <!-- Inisialisasi Swiper -->
                     @push('scripts')
                     <script>
                         document.addEventListener('DOMContentLoaded', function() {
@@ -2135,6 +2141,115 @@
                         });
                     </script>
                     @endpush
+
+                    <script>
+                        document.querySelectorAll('.toggle-favorit').forEach(button => {
+                            button.addEventListener('click', async () => {
+                                const url = button.getAttribute('data-url');
+
+                                try {
+                                    const response = await fetch(url, {
+                                        method: 'POST',
+                                        headers: {
+                                            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                                            'Accept': 'application/json',
+                                        },
+                                    });
+
+                                    if (response.status === 401) {
+                                        const data = await response.json();
+                                        console.log('401 response:', data);
+                                        if (data.redirect) {
+                                            window.location.href = data.redirect;
+                                        } else {
+                                            window.location.href = '/login';
+                                        }
+                                        return;
+                                    }
+
+                                    const data = await response.json();
+                                    const icon = button.querySelector('i');
+                                    if (data.status === 'added') {
+                                        icon.className = 'fas fa-heart text-red-500';
+                                    } else if (data.status === 'removed') {
+                                        icon.className = 'far fa-heart text-gray-700 hover:text-primary-600';
+                                    }
+
+                                } catch (error) {
+                                    console.error(error);
+                                    alert('Gagal mengirim permintaan.');
+                                }
+                            });
+                        });
+
+                        // bagikan
+                        let currentShareProductName = '';
+                        let currentShareProductPrice = '';
+                        let currentShareProductUrl = '';
+
+                        function openShareModal(productName, productPrice, productUrl) {
+                            currentShareProductName = productName;
+                            currentShareProductPrice = productPrice;
+                            currentShareProductUrl = productUrl;
+
+                            const modal = document.getElementById('shareModal');
+                            document.getElementById('shareModalProductName').textContent = `Produk ${productName}`;
+                            modal.classList.remove('hidden');
+                        }
+
+                        function closeShareModal() {
+                            const modal = document.getElementById('shareModal');
+                            modal.classList.add('hidden');
+                        }
+
+                        function getShareText() {
+                            return encodeURIComponent(`Lihat produk ${currentShareProductName} dengan harga Rp ${currentShareProductPrice} di Berkah Gadget!`);
+                        }
+
+                        function getShareUrl() {
+                            return encodeURIComponent(currentShareProductUrl);
+                        }
+
+                        function shareToWhatsApp() {
+                            window.open(`https://wa.me/?text=${getShareText()}%20${getShareUrl()}`, '_blank');
+                            closeShareModal();
+                            showToast('Membuka WhatsApp...');
+                        }
+
+                        function shareToFacebook() {
+                            window.open(`https://www.facebook.com/sharer/sharer.php?u=${getShareUrl()}`, '_blank');
+                            closeShareModal();
+                            showToast('Membuka Facebook...');
+                        }
+
+                        function shareToInstagram() {
+                            window.open(`https://www.instagram.com/`, '_blank'); // Opens Instagram website
+                            showToast('Buka Instagram dan tempel tautan produk secara manual.');
+                            closeShareModal();
+                        }
+
+
+                        function shareToTelegram() {
+                            window.open(`https://t.me/share/url?url=${getShareUrl()}&text=${getShareText()}`, '_blank');
+                            closeShareModal();
+                            showToast('Membuka Telegram...');
+                        }
+
+                        // Close modal when clicking outside
+                        document.getElementById('shareModal').addEventListener('click', function(e) {
+                            if (e.target === this) {
+                                closeShareModal();
+                            }
+                        });
+
+                        // Close modal with Escape key
+                        document.addEventListener('keydown', function(e) {
+                            if (e.key === 'Escape') {
+                                closeShareModal();
+                            }
+                        });
+                    </script>
+
 </body>
 
 </html>

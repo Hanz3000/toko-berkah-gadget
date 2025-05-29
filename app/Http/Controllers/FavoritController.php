@@ -2,24 +2,29 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Produk;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Http\Request;
-use App\Models\User;
-
 
 class FavoritController extends Controller
 {
-    public function toggle($produkId)
+    public function toggle($id)
     {
         $user = Auth::user();
-
-        if ($user->favorit()->where('produk_id', $produkId)->exists()) {
-            $user->favorit()->detach($produkId);
-        } else {
-            $user->favorit()->attach($produkId);
+        if (!$user) {
+            return response()->json([
+                'redirect' => route('login')
+            ], 401);
         }
 
-        return back();
+        $produk = Produk::findOrFail($id);
+
+        if ($user->favorit->contains($produk->id)) {
+            $user->favorit()->detach($produk->id);
+            return response()->json(['status' => 'removed']);
+        } else {
+            $user->favorit()->attach($produk->id);
+            return response()->json(['status' => 'added']);
+        }
     }
 }

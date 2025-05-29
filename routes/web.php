@@ -11,6 +11,8 @@ use App\Http\Controllers\CarouselController;
 use App\Models\Carousel;
 use App\Http\Controllers\FavoritController;
 
+
+
 Route::get('/', function () {
     return redirect()->route('user.dashboard');
 });
@@ -48,9 +50,6 @@ Route::middleware(['auth'])->prefix('user')->group(function () {
 });
 
 
-Route::middleware(['auth'])->group(function () {
-    Route::post('/favorit/{id}/toggle', [FavoritController::class, 'toggle'])->name('favorit.toggle');
-});
 
 // Halaman dashboard user (dashboard utama)
 Route::get('/user/dashboard', function () {
@@ -58,6 +57,8 @@ Route::get('/user/dashboard', function () {
     $carousels = Carousel::all();
     return view('user.dashboard', compact('produk', 'carousels'));
 })->name('user.dashboard');
+
+Route::get('/api/produk/all', [ProdukController::class, 'getAllProduk'])->name('api.produk.all');
 
 // Auth routes
 Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');

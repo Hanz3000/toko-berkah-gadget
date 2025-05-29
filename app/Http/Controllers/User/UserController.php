@@ -46,9 +46,14 @@ class UserController extends Controller
     {
         $user = auth()->user();
 
-
+        // Produk favorit (untuk ditampilkan)
         $favorit_produk = $user->favorit()->latest()->get();
 
-        return view('user.favorit', compact('favorit_produk'));
+        // ID produk favorit (untuk pengecekan tombol hati aktif/tidak)
+        $favorit = $favorit_produk->pluck('id')->toArray();
+        // Ambil produk favorit user (misal relasi many-to-many)
+        $produkFavorit = $user->favorit()->get();
+
+        return view('user.favorit', compact('favorit_produk', 'favorit'));
     }
 }

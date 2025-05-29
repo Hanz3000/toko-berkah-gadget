@@ -19,8 +19,10 @@ class Produk extends Model
         'deskripsi',
         'kekurangan',
         'kelengkapan',
-        'gambar'
+        'gambar',
+        'warna' // tambahkan ini
     ];
+
 
     public function favoritOleh()
     {

@@ -230,7 +230,7 @@
                         <th class="py-4 px-6 font-medium text-left">Produk</th>
                         <th class="py-4 px-6 font-medium text-left">Kategori</th>
                         <th class="py-4 px-6 font-medium text-left">Harga</th>
-                        <th class="py-4 px-6 font-medium text-left">Status</th>
+                        <th class="py-4 px-6 font-medium text-left">Warna</th>
                         <th class="py-4 px-6 font-medium text-right">Aksi</th>
                     </tr>
                 </thead>
@@ -256,12 +256,25 @@
                             <span class="px-3 py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-medium shadow-sm">{{ $item->kategori }}</span>
                         </td>
                         <td class="py-4 px-6 font-medium text-indigo-900">Rp {{ number_format($item->harga, 0, ',', '.') }}</td>
-                        <td class="py-4 px-6">
-                            <span class="px-3 py-1.5 bg-green-100 text-green-700 rounded-full text-xs font-medium flex items-center w-fit space-x-1 shadow-sm">
-                                <span class="h-1.5 w-1.5 rounded-full bg-green-500"></span>
-                                <span>Tersedia</span>
-                            </span>
+                        <td class="py-4 px-6 text-center align-middle">
+                            <div class="flex justify-center items-center gap-1">
+                                @php
+                                $warnaList = explode(',', $item->warna ?? '');
+                                @endphp
+
+                                @foreach ($warnaList as $warna)
+                                @php $warnaClean = trim($warna); @endphp
+                                <span
+                                    class="inline-block w-5 h-5 rounded-full border border-gray-300"
+                                    style="background-color: {{ $warnaClean ?: '#ccc' }}"
+                                    title="{{ $warnaClean ?: 'Tidak ada warna' }}">
+                                </span>
+                                @endforeach
+                            </div>
                         </td>
+
+
+
                         <td class="py-4 px-6 text-right">
                             <div class="flex items-center justify-end space-x-3">
                                 <a href="{{ route('admin.produk.edit', $item->id) }}"
