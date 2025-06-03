@@ -11,7 +11,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 
     <script>
         tailwind.config = {
@@ -403,7 +403,6 @@
             touch-action: pan-y;
         }
 
-        /* Custom scrollbar */
         /* Navbar hide on scroll */
         .nav-scroll-up {
             transform: translateY(-100%);
@@ -561,7 +560,7 @@
                         <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-green-500 transition-all duration-300 group-hover:w-4/5"></span>
                     </a>
 
-                    <a href="#promo" class="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-all relative group rounded-md hover:bg-gray-50/80">
+                    <a href="#carousel" class="px-4 py-2 text-gray-700 hover:text-blue-600 font-medium transition-all relative group rounded-md hover:bg-gray-50/80">
                         Promo
                         <span class="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-gradient-to-r from-blue-600 to-green-500 transition-all duration-300 group-hover:w-4/5"></span>
                     </a>
@@ -899,7 +898,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
                             </svg>
                         </a>
-                        <a href="#promo" class="px-8 py-4 border-2 border-white/80 backdrop-blur-sm bg-white/10 text-white font-medium rounded-full hover:bg-white hover:text-primary-600 transition-all transform hover:-translate-y-1 duration-300">
+                        <a href="#carousel" class="px-8 py-4 border-2 border-white/80 backdrop-blur-sm bg-white/10 text-white font-medium rounded-full hover:bg-white hover:text-primary-600 transition-all transform hover:-translate-y-1 duration-300">
                             Lihat Promo
                         </a>
                     </div>
@@ -928,15 +927,15 @@
                 </div>
 
                 <!-- Right Content - Enhanced Dynamic Product Showcase -->
-                <div class="lg:w-1/3 relative z-10 transform translate-x-16">
+                <div class="lg:w-1/3 w-full px-12 sm:px-3 relative z-10 transform lg:translate-x-16">
                     <!-- Decorative Background Elements animasi -->
                     <div class="absolute -z-10 top-0 right-0 w-64 h-64 bg-gradient-to-br from-accent-400/30 to-primary-500/20 rounded-full filter blur-3xl animate-pulse-slow"></div>
                     <div class="absolute -z-10 bottom-20 left-10 w-40 h-40 bg-gradient-to-tr from-secondary-500/30 to-primary-400/20 rounded-full filter blur-3xl animate-pulse-slow" style="animation-delay: 1.5s"></div>
 
                     <!-- 3D Perspective Container dengan efek lebih halus -->
-                    <div class="relative perspective-1000 transform-gpu">
+                    <div class="relative lg:perspective-1000 transform-gpu">
                         <!-- Floating Card dengan Glass Effect yang ditingkatkan -->
-                        <div class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-4 shadow-2xl hover:shadow-primary-500/30 transition-all duration-700 ease-in-out transform hover:-rotate-2 hover:scale-105 hover:translate-y-[-10px]">
+                        <div class="bg-white/10 backdrop-blur-lg border border-white/20 rounded-3xl p-2 sm:p-4 shadow-2xl hover:shadow-primary-500/30 transition-all duration-700 ease-in-out transform hover:-rotate-2 hover:scale-105 hover:translate-y-[-10px]">
                             <!-- Carousel Container dengan Styling yang Ditingkatkan -->
                             <div class="carousel-container overflow-hidden relative rounded-2xl">
                                 <!-- Progress Bar -->
@@ -945,12 +944,12 @@
                                 </div>
 
                                 <!-- Slides Container dengan Transisi yang Lebih Halus -->
-                                <div class="slides-container flex transition-all duration-1000 ease-[cubic-bezier(0.45,0.05,0.55,0.95)]">
+                                <div id="carousel" class="slides-container flex transition-all duration-1000 ease-[cubic-bezier(0.45,0.05,0.55,0.95)]">
                                     @foreach($carousels as $key => $carousel)
-                                    <div class="slide min-w-full p-8 h-[550px] flex items-center justify-center transition-opacity duration-500">
+                                    <div class="slide min-w-full p-4 sm:p-8 h-[400px] sm:h-[550px] flex items-center justify-center transition-opacity duration-500">
                                         <div class="relative z-10 transform-gpu max-w-xs w-full transition-all duration-500 ease-out">
                                             <!-- Product Image dengan Tag New dan Promo -->
-                                            <div class="relative group h-72 flex items-center justify-center overflow-hidden">
+                                            <div class="relative group h-56 sm:h-72 flex items-center justify-center overflow-hidden">
                                                 <!-- Tag New -->
                                                 <div class="absolute top-0 left-0 z-20">
                                                     <div class="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-br-lg rounded-tl-lg shadow-lg animate-pulse">
@@ -959,28 +958,28 @@
                                                 </div>
                                                 <!-- Poduct Image dengan Enhanced Effects -->
                                                 <img src="{{ asset('storage/' . $carousel->gambar) }}" alt="{{ $carousel->judul }}"
-                                                    class="max-h-64 max-w-xs mx-auto drop-shadow-2xl transition-all duration-700 ease-out transform group-hover:scale-110 group-hover:rotate-1 object-contain">
+                                                    class="max-h-48 sm:max-h-64 max-w-xs mx-auto drop-shadow-2xl transition-all duration-700 ease-out transform group-hover:scale-110 group-hover:rotate-1 object-contain">
                                             </div>
 
                                             <!-- Product Info dengan Animasi yang Lebih Halus -->
                                             <div class="mt-4 text-center transform transition-all duration-500 ease-out">
-                                                <h3 class="text-white font-bold text-xl hover:text-primary-300 transition-colors duration-300">{{ $carousel->judul }}</h3>
+                                                <h3 class="text-white font-bold text-lg sm:text-xl hover:text-primary-300 transition-colors duration-300">{{ $carousel->judul }}</h3>
 
                                                 <!-- Rating Stars dengan Efek Hover -->
                                                 <div class="flex items-center justify-center mt-2">
-                                                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                                                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                                     </svg>
-                                                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                                                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                                     </svg>
-                                                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                                                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                                     </svg>
-                                                    <svg class="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                                                    <svg class="w-4 h-4 sm:w-5 sm:h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
                                                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                                                     </svg>
-                                                    <span class="ml-2 text-white text-sm">(400 reviews)</span>
+                                                    <span class="ml-2 text-white text-xs sm:text-sm">(400 reviews)</span>
                                                 </div>
 
                                                 <!-- Price dengan Animasi dan Tag Diskon -->
@@ -989,29 +988,31 @@
                                                     <div class="absolute -top-3 -right-2 bg-gradient-to-r from-pink-500 to-red-500 text-white text-xs font-bold px-2 py-1 rounded-full transform rotate-12 shadow-lg">
                                                         -{{ round((($carousel->harga_normal - $carousel->harga_diskon) / $carousel->harga_normal) * 100) }}%
                                                     </div>
-                                                    <span class="text-gray-300 line-through text-sm">Rp{{ number_format($carousel->harga_normal, 0, ',', '.') }}</span>
-                                                    <span class="text-white font-bold text-xl ml-2 bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">Rp{{ number_format($carousel->harga_diskon, 0, ',', '.') }}</span>
+                                                    <span class="text-gray-300 line-through text-xs sm:text-sm">Rp{{ number_format($carousel->harga_normal, 0, ',', '.') }}</span>
+                                                    <span class="text-white font-bold text-lg sm:text-xl ml-2 bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">Rp{{ number_format($carousel->harga_diskon, 0, ',', '.') }}</span>
                                                 </div>
 
                                                 <!-- Action Buttons for each slide -->
-                                                <div class="flex items-center justify-center space-x-3 mt-4">
+                                                <div class="flex items-center justify-center space-x-2 sm:space-x-3 mt-4">
                                                     <!-- Wishlist Button -->
-                                                    <button class="min-w-[100px] px-4 py-2 bg-primary-500 hover:bg-primary-600 rounded-full text-white text-sm flex items-center justify-center space-x-1 transition-all duration-300 shadow-lg hover:shadow-primary-500/50">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <button class="min-w-[80px] sm:min-w-[100px] px-3 py-1 sm:px-4 sm:py-2 bg-primary-500 hover:bg-primary-600 rounded-full text-white text-xs sm:text-sm flex items-center justify-center space-x-1 transition-all duration-300 shadow-lg hover:shadow-primary-500/50">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 sm:h-4 sm:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                                         </svg>
                                                         <span>Wishlist</span>
                                                     </button>
 
-                                                    <!-- Share Button -->
-                                                    <button class="min-w-[100px] px-4 py-2 bg-white/10 hover:bg-white/20 rounded-full text-white text-sm flex items-center justify-center space-x-1 backdrop-blur-sm transition-all duration-300 border border-white/10 hover:border-white/30 shadow-lg">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
+                                                    <!-- Tombol Share dengan fungsi modal -->
+                                                    <button onclick="openShareModal('{{ $carousel->judul }}', '{{ url()->current() }}')"
+                                                        class="min-w-[80px] sm:min-w-[100px] px-3 py-1 sm:px-4 sm:py-2 bg-white/10 hover:bg-white/20 rounded-full text-white text-xs sm:text-sm flex items-center justify-center space-x-1 backdrop-blur-sm transition-all duration-300 border border-white/10 hover:border-white/30 shadow-lg">
+                                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-3 w-3 sm:h-4 sm:w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                                d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
                                                         </svg>
                                                         <span>Share</span>
                                                     </button>
-                                                </div>
 
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -1019,115 +1020,127 @@
                                 </div>
 
                                 <!-- Enhanced Navigation Arrows -->
-                                <button class="carousel-arrow prev absolute top-1/2 left-2 transform -translate-y-1/2 bg-white/10 hover:bg-white/90 text-primary-600 rounded-full p-3 shadow-lg z-20 transition-all duration-300 backdrop-blur-sm hover:scale-110 border border-white/30">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <button class="carousel-arrow prev absolute top-1/2 left-1 sm:left-2 transform -translate-y-1/2 bg-white/10 hover:bg-white/90 text-primary-600 rounded-full p-2 sm:p-3 shadow-lg z-20 transition-all duration-300 backdrop-blur-sm hover:scale-110 border border-white/30">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
                                     </svg>
                                 </button>
-                                <button class="carousel-arrow next absolute top-1/2 right-2 transform -translate-y-1/2 bg-white/10 hover:bg-white/90 text-primary-600 rounded-full p-3 shadow-lg z-20 transition-all duration-300 backdrop-blur-sm hover:scale-110 border border-white/30">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <button class="carousel-arrow next absolute top-1/2 right-1 sm:right-2 transform -translate-y-1/2 bg-white/10 hover:bg-white/90 text-primary-600 rounded-full p-2 sm:p-3 shadow-lg z-20 transition-all duration-300 backdrop-blur-sm hover:scale-110 border border-white/30">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 sm:h-5 sm:w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                                     </svg>
                                 </button>
                             </div>
                         </div>
                     </div>
-
-                    <script>
-                        document.addEventListener('DOMContentLoaded', function() {
-                            let currentSlide = 0;
-                            const slides = document.querySelectorAll('.slide');
-                            const totalSlides = slides.length;
-                            const slidesContainer = document.querySelector('.slides-container');
-                            const progressBar = document.querySelector('.carousel-progress');
-                            const prevButton = document.querySelector('.carousel-arrow.prev');
-                            const nextButton = document.querySelector('.carousel-arrow.next');
-                            let slidingDirection = 1; // 1 for forward, -1 for backward
-                            let autoSlideInterval;
-
-                            function updateSlidePosition() {
-                                slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-                                progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
-                            }
-
-                            function moveSlide(direction) {
-                                // Store the current direction
-                                slidingDirection = direction;
-
-                                // Update current slide with direction
-                                currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-
-                                // Update UI
-                                updateSlidePosition();
-                            }
-
-                            function startAutoSlide() {
-                                // Clear any existing interval
-                                clearInterval(autoSlideInterval);
-
-                                // Set new interval - goes through all slides from start to end, then back to start
-                                autoSlideInterval = setInterval(() => {
-                                    // If we're at the last slide and going forward, change direction
-                                    if (currentSlide === totalSlides - 1 && slidingDirection === 1) {
-                                        slidingDirection = -1;
-                                    }
-                                    // If we're at the first slide and going backward, change direction
-                                    else if (currentSlide === 0 && slidingDirection === -1) {
-                                        slidingDirection = 1;
-                                    }
-
-                                    // Move in the current direction
-                                    moveSlide(slidingDirection);
-                                }, 7000); // Longer interval (7 seconds) for better viewing experience
-                            }
-
-                            // Add event listeners to arrows
-                            prevButton.addEventListener('click', function() {
-                                moveSlide(-1);
-                                slidingDirection = -1; // Update direction when manually clicked
-                            });
-
-                            nextButton.addEventListener('click', function() {
-                                moveSlide(1);
-                                slidingDirection = 1; // Update direction when manually clicked
-                            });
-
-                            // Start the auto-slide
-                            startAutoSlide();
-
-                            // Pause auto-slide when interacting with arrows
-                            prevButton.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
-                            nextButton.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
-
-                            // Resume auto-slide when mouse leaves
-                            prevButton.addEventListener('mouseleave', startAutoSlide);
-                            nextButton.addEventListener('mouseleave', startAutoSlide);
-
-                            // Touch events for mobile
-                            let touchStartX = 0;
-                            let touchEndX = 0;
-
-                            slidesContainer.addEventListener('touchstart', e => {
-                                touchStartX = e.changedTouches[0].screenX;
-                                // Pause auto-slide on touch
-                                clearInterval(autoSlideInterval);
-                            });
-
-                            slidesContainer.addEventListener('touchend', e => {
-                                touchEndX = e.changedTouches[0].screenX;
-                                if (touchStartX - touchEndX > 50) {
-                                    moveSlide(1); // Slide right
-                                    slidingDirection = 1; // Update direction
-                                } else if (touchEndX - touchStartX > 50) {
-                                    moveSlide(-1); // Slide left
-                                    slidingDirection = -1; // Update direction
-                                }
-                                // Resume auto-slide after touch
-                                startAutoSlide();
-                            });
-                        });
-                    </script>
                 </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        let currentSlide = 0;
+                        const slides = document.querySelectorAll('.slide');
+                        const totalSlides = slides.length;
+                        const slidesContainer = document.querySelector('.slides-container');
+                        const progressBar = document.querySelector('.carousel-progress');
+                        const prevButton = document.querySelector('.carousel-arrow.prev');
+                        const nextButton = document.querySelector('.carousel-arrow.next');
+                        let slidingDirection = 1; // 1 for forward, -1 for backward
+                        let autoSlideInterval;
+                        let touchStartX = 0;
+                        let touchEndX = 0;
+
+                        function updateSlidePosition() {
+                            slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+                            progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
+                        }
+
+                        function moveSlide(direction) {
+                            // Store the current direction
+                            slidingDirection = direction;
+
+                            // Update current slide with direction
+                            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+
+                            // Update UI
+                            updateSlidePosition();
+                        }
+
+                        function startAutoSlide() {
+                            // Clear any existing interval
+                            clearInterval(autoSlideInterval);
+
+                            // Set new interval - goes through all slides from start to end, then back to start
+                            autoSlideInterval = setInterval(() => {
+                                // If we're at the last slide and going forward, change direction
+                                if (currentSlide === totalSlides - 1 && slidingDirection === 1) {
+                                    slidingDirection = -1;
+                                }
+                                // If we're at the first slide and going backward, change direction
+                                else if (currentSlide === 0 && slidingDirection === -1) {
+                                    slidingDirection = 1;
+                                }
+
+                                // Move in the current direction
+                                moveSlide(slidingDirection);
+                            }, 7000); // Longer interval (7 seconds) for better viewing experience
+                        }
+
+                        // Add event listeners to arrows
+                        prevButton.addEventListener('click', function() {
+                            moveSlide(-1);
+                            slidingDirection = -1; // Update direction when manually clicked
+                        });
+
+                        nextButton.addEventListener('click', function() {
+                            moveSlide(1);
+                            slidingDirection = 1; // Update direction when manually clicked
+                        });
+
+                        // Start the auto-slide
+                        startAutoSlide();
+
+                        // Pause auto-slide when interacting with arrows
+                        prevButton.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+                        nextButton.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+
+                        // Resume auto-slide when mouse leaves
+                        prevButton.addEventListener('mouseleave', startAutoSlide);
+                        nextButton.addEventListener('mouseleave', startAutoSlide);
+
+                        // Touch events for mobile
+                        slidesContainer.addEventListener('touchstart', e => {
+                            touchStartX = e.changedTouches[0].screenX;
+                            // Pause auto-slide on touch
+                            clearInterval(autoSlideInterval);
+                        }, {
+                            passive: true
+                        });
+
+                        slidesContainer.addEventListener('touchmove', e => {
+                            // Prevent scrolling while swiping
+                            if (Math.abs(e.changedTouches[0].screenX - touchStartX) > 10) {
+                                e.preventDefault();
+                            }
+                        }, {
+                            passive: false
+                        });
+
+                        slidesContainer.addEventListener('touchend', e => {
+                            touchEndX = e.changedTouches[0].screenX;
+                            if (touchStartX - touchEndX > 50) {
+                                moveSlide(1); // Slide right
+                                slidingDirection = 1; // Update direction
+                            } else if (touchEndX - touchStartX > 50) {
+                                moveSlide(-1); // Slide left
+                                slidingDirection = -1; // Update direction
+                            }
+                            // Resume auto-slide after touch
+                            startAutoSlide();
+                        }, {
+                            passive: true
+                        });
+                    });
+                </script>
     </section>
 
     <!-- Add Particles.js script -->
@@ -1403,9 +1416,7 @@
             <!-- Products Grid with Enhanced Animations -->
             <div id="produk-container" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
                 @foreach ($produk as $item)
-                <div class="group bg-gradient-to-br from-white via-gray-50 to-gray-100 rounded-2xl overflow-hidden product-card produk-item relative opacity-0 animate-slide-up transform transition-all duration-500 hover:-translate-y-2 hover:shadow-2xl shadow-sm border border-gray-100"
-                    data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
-
+                <div class="group bg-gradient-to-br from-white via-gray-50 to-gray-100 rounded-2xl overflow-hidden product-card produk-item relative opacity-0 animate-slide-up transform transition-transform duration-500 hover:-translate-y-2 hover:rotate-[0.5deg] hover:scale-[1.03] border-2 border-gray-200 hover:border-primary-500" data-aos="fade-up" data-aos-delay="{{ $loop->index * 100 }}">
                     @if($item->is_new)
                     <div class="absolute -right-8 top-4 z-20 w-28 transform rotate-45">
                         <div class="py-1 bg-accent-500 text-white text-xs font-bold text-center shadow-md">
@@ -1414,7 +1425,7 @@
                     </div>
                     @endif
 
-                    <div class="relative h-48 overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
+                    <div class="relative h-41 overflow-hidden bg-gradient-to-br from-gray-50 to-gray-100">
                         @if ($item->gambar)
                         <img src="{{ asset('storage/' . $item->gambar) }}" alt="{{ $item->nama_produk }}"
                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
@@ -1425,15 +1436,15 @@
                         @endif
 
                         <div
-                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center gap-3">
+                            class="absolute inset-0 bg-gradient-to-t from-black/40 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center gap-3">
                             <a href="{{ route('user.produk.detail', $item->id) }}"
-                                class="px-4 py-2 bg-white/90 text-primary-600 rounded-full text-sm font-medium transform -translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 hover:bg-primary-600 hover:text-white shadow-lg">
+                                class="px-4 py-2 bg-white/90 text-primary-600 rounded-full text-sm font-medium transform -translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 hover:bg-primary-600 hover:text-white border border-primary-100"> {{-- ✅ ubah shadow-lg jadi border --}}
                                 <i class="fas fa-eye mr-2"></i>Detail
                             </a>
-                            <div
-                                class="flex gap-3 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
+
+                            <div class="flex gap-3 transform translate-y-4 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500 delay-100">
                                 <button type="button" data-url="{{ route('favorit.toggle', $item->id) }}"
-                                    class="toggle-favorit w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-primary-50 transition-all duration-300 shadow-md">
+                                    class="toggle-favorit w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-primary-50 transition-all duration-300 border border-gray-300"> {{-- ✅ ubah shadow-md jadi border --}}
                                     @if(auth()->check() && auth()->user()->favorit->contains('id', $item->id))
                                     <i class="fas fa-heart text-red-500"></i>
                                     @else
@@ -1442,13 +1453,12 @@
                                 </button>
 
                                 <button onclick="openShareModal('{{ $item->nama_produk }}', '{{ number_format($item->harga, 0, ',', '.') }}', '{{ route('user.produk.detail', $item->id) }}')"
-                                    class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-primary-50 transition-all duration-300 shadow-md">
+                                    class="w-10 h-10 rounded-full bg-white flex items-center justify-center hover:bg-primary-50 transition-all duration-300 border border-gray-300"> {{-- ✅ ubah shadow-md jadi border --}}
                                     <i class="fas fa-share-alt text-gray-700 hover:text-primary-600"></i>
                                 </button>
                             </div>
                         </div>
-
-                        <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/50 to-transparent pointer-events-none"></div>
+                        <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-black/30 to-transparent pointer-events-none"></div>
                     </div>
 
                     <div class="p-4 bg-white/90 backdrop-blur-sm border-t border-gray-100">
@@ -1497,7 +1507,7 @@
                             </div>
 
                             <button
-                                class="flex items-center justify-center w-11 h-11 bg-primary-600 text-white rounded-full group/cart hover:bg-primary-700 transition-all duration-300 transform hover:scale-105 shadow-lg shadow-primary-100/50">
+                                class="flex items-center justify-center w-11 h-11 bg-primary-600 text-white rounded-full group/cart hover:bg-primary-700 transition-all duration-300 transform hover:scale-105 border-2 border-primary-500"> {{-- ✅ ubah shadow-lg jadi border --}}
                                 <i class="fas fa-shopping-cart text-sm transform group-hover/cart:rotate-12 transition-transform duration-300"></i>
                             </button>
                         </div>
@@ -1577,83 +1587,9 @@
     </section>
 
     <!-- Features Section -->
-    <section class="py-12 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 animate-fade-in">
-                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-                        <i class="fas fa-shipping-fast text-primary-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-center mb-2">Gratis Ongkir</h3>
-                    <p class="text-gray-600 text-center">Gratis pengiriman untuk semua pesanan di atas Rp 500.000</p>
-                </div>
 
-                <!-- Feature 2 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 animate-fade-in animation-delay-200">
-                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-                        <i class="fas fa-shield-alt text-primary-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-center mb-2">Garansi Resmi</h3>
-                    <p class="text-gray-600 text-center">Semua produk kami bergaransi resmi dari distributor</p>
-                </div>
 
-                <!-- Feature 3 -->
-                <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 animate-fade-in animation-delay-400">
-                    <div class="w-16 h-16 bg-primary-100 rounded-full flex items-center justify-center mb-4 mx-auto">
-                        <i class="fas fa-headset text-primary-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-semibold text-center mb-2">Dukungan 24/7</h3>
-                    <p class="text-gray-600 text-center">Tim support kami siap membantu kapan saja</p>
-                </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- About Section -->
-    <section id="tentang" class="py-12 bg-white">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-8 md:mb-0 animate-fade-in">
-                    <img src="{{ asset('storage/images/slide3.jpg') }}" alt="About Us" class="rounded-xl shadow-lg w-full max-w-lg mx-auto">
-                </div>
-                <div class="md:w-1/2 md:pl-12 animate-slide-up">
-                    <h2 class="text-3xl font-bold mb-6">Tentang Toko Berkah Gadget</h2>
-                    <p class="text-gray-600 mb-4">Toko Berkah Gadget Madiun adalah pusat penjualan gadget terpercaya di Madiun. Kami menyediakan berbagai produk berkualitas mulai dari smartphone, tablet, aksesoris, hingga kebutuhan teknologi lainnya.</p>
-                    <p class="text-gray-600 mb-6">Dengan pelayanan yang ramah, harga bersaing, dan garansi resmi, kami berkomitmen untuk memberikan pengalaman belanja terbaik bagi pelanggan.</p>
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <div class="bg-primary-100 p-2 rounded-full mr-4">
-                                <i class="fas fa-check text-primary-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800">Produk Berkualitas</h4>
-                                <p class="text-gray-600">Semua produk kami original dengan garansi resmi</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="bg-primary-100 p-2 rounded-full mr-4">
-                                <i class="fas fa-check text-primary-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800">Harga Terbaik</h4>
-                                <p class="text-gray-600">Harga kompetitif dengan promo menarik setiap minggu</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="bg-primary-100 p-2 rounded-full mr-4">
-                                <i class="fas fa-check text-primary-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800">Layanan Profesional</h4>
-                                <p class="text-gray-600">Tim kami siap membantu Anda dengan ramah dan profesional</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- CTA Section -->
     <section class="py-16 bg-primary-600 text-white">
@@ -1763,6 +1699,108 @@
             </div>
         </div>
     </section>
+
+    <!-- About Section -->
+    <section id="tentang" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row items-center">
+                <div class="md:w-1/2 mb-8 md:mb-0 animate-fade-in">
+
+                    <!-- Judul lokasi dinamis -->
+                    <h3 id="location-title" class="text-2xl font-semibold mb-4 text-center">
+                        Lokasi Toko Utama
+                    </h3>
+
+                    <!-- Swiper -->
+                    <div class="swiper mySwiper rounded-xl overflow-hidden shadow-lg">
+                        <div class="swiper-wrapper">
+                            <!-- Slide 1: Toko Utama -->
+                            <div class="swiper-slide">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.3833824570593!2d111.51923421431623!3d-7.633422994363497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e79aefd94bc1f63%3A0x4c7b8d3d9b7fa55d!2sToko%20Berkah%20Gadget%20Madiun!5e0!3m2!1sen!2sid!4v1685794846427!5m2!1sen!2sid"
+                                    width="100%"
+                                    height="350"
+                                    style="border:0;"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    title="Lokasi Toko Utama"></iframe>
+                            </div>
+
+                            <!-- Slide 2: Cabang 1 -->
+                            <div class="swiper-slide">
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.1234567890!2d111.5300000000!3d-7.6400000000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e79ae1234567890%3A0x123456789abcdef0!2sToko%20Berkah%20Gadget%20Cabang%201!5e0!3m2!1sen!2sid!4v0000000000000!5m2!1sen!2sid"
+                                    width="100%"
+                                    height="350"
+                                    style="border:0;"
+                                    allowfullscreen=""
+                                    loading="lazy"
+                                    referrerpolicy="no-referrer-when-downgrade"
+                                    title="Lokasi Toko Cabang 1"></iframe>
+                            </div>
+
+
+                        </div>
+
+                        <!-- Navigation -->
+                        <div class="swiper-button-next text-primary-600" style="color: #2563eb;"></div>
+                        <div class="swiper-button-prev text-primary-600" style="color: #2563eb;"></div>
+
+                        <!-- Pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+
+                </div>
+
+                <div class="md:w-1/2 md:pl-12 animate-slide-up">
+                    <h2 class="text-3xl font-bold mb-6">Tentang Toko Berkah Gadget</h2>
+                    <p class="text-gray-600 mb-4">
+                        Toko Berkah Gadget Madiun adalah pusat penjualan gadget terpercaya di
+                        Madiun. Kami menyediakan berbagai produk berkualitas mulai dari
+                        smartphone, tablet, aksesoris, hingga kebutuhan teknologi lainnya.
+                    </p>
+                    <p class="text-gray-600 mb-6">
+                        Dengan pelayanan yang ramah, harga bersaing, dan garansi resmi, kami
+                        berkomitmen untuk memberikan pengalaman belanja terbaik bagi
+                        pelanggan.
+                    </p>
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="bg-primary-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-check text-primary-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Produk Berkualitas</h4>
+                                <p class="text-gray-600">Semua produk kami original dengan garansi resmi</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-primary-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-check text-primary-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Harga Terbaik</h4>
+                                <p class="text-gray-600">Harga kompetitif dengan promo menarik setiap minggu</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="bg-primary-100 p-2 rounded-full mr-4">
+                                <i class="fas fa-check text-primary-600"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-semibold text-gray-800">Layanan Profesional</h4>
+                                <p class="text-gray-600">Tim kami siap membantu Anda dengan ramah dan profesional</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+    </section>
+
 
 
     <!-- Footer Baru dengan Peningkatan UI dan UX -->
@@ -2247,6 +2285,35 @@
                             if (e.key === 'Escape') {
                                 closeShareModal();
                             }
+                        });
+                    </script>
+                    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+                    <script>
+                        const locationTitle = document.getElementById("location-title");
+
+                        const titles = [
+                            "Lokasi Toko Utama",
+                            "Lokasi Toko Cabang ",
+
+                        ];
+
+                        var swiper = new Swiper(".mySwiper", {
+                            navigation: {
+                                nextEl: ".swiper-button-next",
+                                prevEl: ".swiper-button-prev",
+                            },
+                            pagination: {
+                                el: ".swiper-pagination",
+                                clickable: true,
+                            },
+                            on: {
+                                slideChange: function() {
+                                    // Update judul sesuai index slide aktif
+                                    const currentIndex = this.activeIndex;
+                                    locationTitle.textContent = titles[currentIndex] || "Lokasi Toko";
+                                },
+                            },
                         });
                     </script>
 

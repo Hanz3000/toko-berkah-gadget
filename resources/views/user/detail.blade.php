@@ -379,27 +379,15 @@
                             <div class="space-y-3 mb-6 flex-grow">
                                 <div class="feature-badge">
                                     <h2 class="font-semibold text-gray-700 mb-1">Deskripsi</h2>
-                                    <p class="text-gray-600">{{ $produk->deskripsi }}</p>
+                                    <p class="text-gray-600 text-justify">{{ $produk->deskripsi }}</p>
                                 </div>
-
-                                <!-- <div class="feature-badge">
-                                    <h2 class="font-semibold text-gray-700 mb-1">Kelengkapan</h2>
-                                    <p class="text-gray-600">{{ $produk->kelengkapan }}</p>
-                                </div>
-
-                                @if($produk->kekurangan)
-                                <div class="feature-badge">
-                                    <h2 class="font-semibold text-gray-700 mb-1">Kekurangan</h2>
-                                    <p class="text-gray-600">{{ $produk->kekurangan }}</p>
-                                </div>
-                                @endif -->
                             </div>
 
                             <!-- Action Buttons -->
                             <div class="grid grid-cols-12 gap-2">
-                                <a href="https://wa.me/62881036357795?text=Halo,%20saya%20tertarik%20dengan%20produk%20iPhone%2013%20Pro%20Max%20dengan%20harga%20Rp%2015.000.000.%20Mohon%20informasi%20lebih%20lanjut." class="col-span-8 bg-gradient-to-r from-green-500 to-green-600 text-white text-center py-3 px-4 rounded-lg hover:shadow-lg transition-all font-semibold flex items-center justify-center pulse-animation">
+                                <a href="https://wa.me/62881036357795?text=Halo%20Berkah%20Gadget,%20saya%20ingin%20memesan%20produk:%20{{ urlencode($produk->nama_produk) }}%20dengan%20harga%20Rp%20{{ number_format($produk->harga, 0, ',', '.') }}.%20Apakah%20produk%20ini%20tersedia?" class="col-span-8 bg-gradient-to-r from-green-500 to-green-600 text-white text-center py-3 px-4 rounded-lg hover:shadow-lg transition-all font-semibold flex items-center justify-center pulse-animation">
                                     <i class="fab fa-whatsapp mr-2 text-xl"></i>
-                                    <span>Hubungi via WhatsApp</span>
+                                    <span>Pesan Sekarang</span>
                                 </a>
                                 <button class="col-span-4 bg-indigo-100 text-indigo-600 border border-indigo-200 py-3 px-4 rounded-lg hover:bg-indigo-200 transition-all font-semibold flex items-center justify-center">
                                     <i class="fas fa-shopping-cart mr-2"></i>
