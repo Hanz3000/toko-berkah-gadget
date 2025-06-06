@@ -10,13 +10,17 @@ use App\Http\Middleware\AdminMiddleware;
 use App\Http\Controllers\CarouselController;
 use App\Models\Carousel;
 use App\Http\Controllers\FavoritController;
-
+use App\Http\Controllers\KontakController;
 
 
 Route::get('/', function () {
     return redirect()->route('user.dashboard');
 });
 
+//kontak kontroller
+Route::get('/dashboard', [KontakController::class, 'index'])->name('dashboard');
+Route::get('/kontak', [KontakController::class, 'index']);
+Route::post('/kontak', [KontakController::class, 'store'])->name('kontak.store');
 // Admin routes (dilindungi oleh middleware)
 Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(function () {
     Route::get('/produk', [AdminController::class, 'index'])->name('admin.produk.index');

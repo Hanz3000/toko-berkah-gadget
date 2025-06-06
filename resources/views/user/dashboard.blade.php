@@ -1614,92 +1614,96 @@
                 <h2 class="text-3xl font-bold mb-4">Hubungi Kami</h2>
                 <p class="text-gray-600 max-w-2xl mx-auto">Punya pertanyaan atau butuh bantuan? Tim kami siap membantu Anda</p>
             </div>
-
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="bg-white p-8 rounded-xl shadow-sm animate-slide-up">
-                    <h3 class="text-xl font-semibold mb-6">Kirim Pesan</h3>
-                    <form>
-                        <div class="mb-4">
-                            <label for="name" class="block text-gray-700 mb-2">Nama Lengkap</label>
-                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
-                        </div>
-                        <div class="mb-4">
-                            <label for="email" class="block text-gray-700 mb-2">Email</label>
-                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent">
-                        </div>
-                        <div class="mb-4">
-                            <label for="message" class="block text-gray-700 mb-2">Pesan</label>
-                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-transparent"></textarea>
-                        </div>
-                        <button type="submit" class="btn-loading w-full px-6 py-3 bg-primary-600 text-white rounded-lg hover:bg-primary-700 transition-all btn-hover">
-                            Kirim Pesan
-                        </button>
-                    </form>
-                </div>
+            <!-- Form Kirim Pesan -->
+            <div class="bg-white p-8 rounded-xl shadow-sm animate-slide-up">
+                <h3 class="text-xl font-semibold mb-6">Kirim Pesan</h3>
+                <form action="{{ route('kontak.store') }}" method="POST">
+                    @csrf
+                    <div class="mb-4">
+                        <label for="nama" class="block text-gray-700 mb-2">Nama Lengkap</label>
+                        <input type="text" id="nama" name="nama" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        @error('nama') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 mb-2">Email</label>
+                        <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        @error('email') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
+                    </div>
+                    <div class="mb-4">
+                        <label for="pesan" class="block text-gray-700 mb-2">Pesan</label>
+                        <textarea id="pesan" name="pesan" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
+                        @error('pesan') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
+                    </div>
+                    <button type="submit" class="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all">
+                        Kirim Pesan
+                    </button>
+                </form>
+            </div>
 
-                <div class="bg-white p-8 rounded-xl shadow-sm animate-slide-up animation-delay-200">
-                    <h3 class="text-xl font-semibold mb-6">Informasi Kontak</h3>
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <div class="bg-primary-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-map-marker-alt text-primary-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800">Alamat</h4>
-                                <p class="text-gray-600">Jl. Gadget No. 123, Madiun, Jawa Timur</p>
-                            </div>
+            <!-- Informasi Kontak -->
+            <div class="bg-white p-8 rounded-xl shadow-sm animate-slide-up">
+                <h3 class="text-xl font-semibold mb-6">Informasi Kontak</h3>
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-map-marker-alt text-blue-600"></i>
                         </div>
-                        <div class="flex items-start">
-                            <div class="bg-primary-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-phone-alt text-primary-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800">Telepon</h4>
-                                <p class="text-gray-600">+62 812-3456-7890</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="bg-primary-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-envelope text-primary-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800">Email</h4>
-                                <p class="text-gray-600">info@berkahgadget.com</p>
-                            </div>
-                        </div>
-                        <div class="flex items-start">
-                            <div class="bg-primary-100 p-3 rounded-full mr-4">
-                                <i class="fas fa-clock text-primary-600"></i>
-                            </div>
-                            <div>
-                                <h4 class="font-semibold text-gray-800">Jam Operasional</h4>
-                                <p class="text-gray-600">Senin - Sabtu: 08.00 - 21.00 WIB</p>
-                            </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Alamat</h4>
+                            <p class="text-gray-600">Jl. Gadget No. 123, Madiun, Jawa Timur</p>
                         </div>
                     </div>
-
-                    <div class="mt-8">
-                        <h4 class="font-semibold text-gray-800 mb-4">Ikuti Kami</h4>
-                        <div class="flex space-x-4">
-                            <a href="#" class="w-10 h-10 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center hover:bg-primary-600 hover:text-white transition-all">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center hover:bg-primary-600 hover:text-white transition-all">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center hover:bg-primary-600 hover:text-white transition-all">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 bg-primary-100 text-primary-600 rounded-full flex items-center justify-center hover:bg-primary-600 hover:text-white transition-all">
-                                <i class="fab fa-whatsapp"></i>
-                            </a>
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-phone-alt text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Telepon</h4>
+                            <p class="text-gray-600">+62 812-3456-7890</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-envelope text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Email</h4>
+                            <p class="text-gray-600">info@berkahgadget.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="bg-blue-100 p-3 rounded-full mr-4">
+                            <i class="fas fa-clock text-blue-600"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-gray-800">Jam Operasional</h4>
+                            <p class="text-gray-600">Senin - Sabtu: 08.00 - 21.00 WIB</p>
                         </div>
                     </div>
                 </div>
+
+                <div class="mt-8">
+                    <h4 class="font-semibold text-gray-800 mb-4">Ikuti Kami</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
             </div>
         </div>
     </section>
-
     <!-- About Section -->
     <section id="tentang" class="py-12 bg-white">
         <div class="container mx-auto px-4">
