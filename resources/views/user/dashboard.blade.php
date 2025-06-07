@@ -1716,68 +1716,68 @@
         <div class="absolute bottom-0 right-0 w-48 h-48 bg-blue-200 rounded-full filter blur-xl opacity-10 animate-float"></div>
     </div>
 
-    <div class="max-w-7xl mx-auto relative z-10">
-        <!-- Compact header that disappears when no messages -->
-        @if($pesans->count())
-        <div class="text-center mb-8">
-            <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
-                <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-800">Pesan Pengunjung</span>
-            </h2>
-            <div class="w-20 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600 mx-auto rounded-full mb-4"></div>
-        </div>
-        @endif
+        <div class="max-w-7xl mx-auto relative z-10">
+            <!-- Compact header that disappears when no messages -->
+            @if($pesans->count())
+            <div class="text-center mb-8">
+                <h2 class="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+                    <span class="bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-blue-800">Pesan Pengunjung</span>
+                </h2>
+                <div class="w-20 h-0.5 bg-gradient-to-r from-blue-400 to-blue-600 mx-auto rounded-full mb-4"></div>
+            </div>
+            @endif
 
-        @if($pesans->count())
-        <!-- Perfect 3-column grid -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            @foreach($pesans as $index => $pesan)
-            <div 
-                class="bg-white rounded-lg shadow-xs border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-sm hover:border-blue-100 transform hover:-translate-y-0.5"
-                x-data="{ show: false }"
-                x-init="setTimeout(() => show = true, {{ $index * 50 }})"
-                x-show="show"
-                x-transition:enter="transition ease-out duration-300"
-                x-transition:enter-start="opacity-0 translate-y-4"
-                x-transition:enter-end="opacity-100 translate-y-0"
-            >
-                <div class="p-3">
-                    <div class="flex items-center justify-between mb-1">
-                        <div class="flex items-center">
-                            <div class="relative flex-shrink-0">
-                                <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-sm font-bold">
-                                    {{ strtoupper(substr($pesan->nama, 0, 1)) }}
+            @if($pesans->count())
+            <!-- Perfect 3-column grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                @foreach($pesans as $index => $pesan)
+                <div 
+                    class="bg-white rounded-lg shadow-xs border border-gray-100 overflow-hidden transition-all duration-300 hover:shadow-sm hover:border-blue-100 transform hover:-translate-y-0.5"
+                    x-data="{ show: false }"
+                    x-init="setTimeout(() => show = true, {{ $index * 50 }})"
+                    x-show="show"
+                    x-transition:enter="transition ease-out duration-300"
+                    x-transition:enter-start="opacity-0 translate-y-4"
+                    x-transition:enter-end="opacity-100 translate-y-0"
+                >
+                    <div class="p-3">
+                        <div class="flex items-center justify-between mb-1">
+                            <div class="flex items-center">
+                                <div class="relative flex-shrink-0">
+                                    <div class="w-9 h-9 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-sm font-bold">
+                                        {{ strtoupper(substr($pesan->nama, 0, 1)) }}
+                                    </div>
+                                </div>
+                                <div class="ml-3">
+                                    <h3 class="text-sm font-semibold text-gray-800 truncate max-w-[140px]">{{ $pesan->nama }}</h3>
+                                    <p class="text-xs text-gray-400">{{ \Carbon\Carbon::parse($pesan->created_at)->diffForHumans() }}</p>
                                 </div>
                             </div>
-                            <div class="ml-3">
-                                <h3 class="text-sm font-semibold text-gray-800 truncate max-w-[140px]">{{ $pesan->nama }}</h3>
-                                <p class="text-xs text-gray-400">{{ \Carbon\Carbon::parse($pesan->created_at)->diffForHumans() }}</p>
-                            </div>
+                        </div>
+                        
+                        <div class="pl-12">
+                            <p class="text-gray-700 text-sm line-clamp-2 leading-snug">{{ $pesan->pesan }}</p>
                         </div>
                     </div>
-                    
-                    <div class="pl-12">
-                        <p class="text-gray-700 text-sm line-clamp-2 leading-snug">{{ $pesan->pesan }}</p>
-                    </div>
                 </div>
+                @endforeach
             </div>
-            @endforeach
-        </div>
-        @else
-        <!-- Zero-space empty state -->
-        <div class="text-center py-8 px-4">
-            <div class="inline-flex h-12 w-12 bg-blue-50 rounded-full items-center justify-center mb-3">
-                <svg class="h-6 w-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
-                </svg>
+            @else
+            <!-- Zero-space empty state -->
+            <div class="text-center py-8 px-4">
+                <div class="inline-flex h-12 w-12 bg-blue-50 rounded-full items-center justify-center mb-3">
+                    <svg class="h-6 w-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+                    </svg>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-1">Belum ada pesan</h3>
+                <a href="/kontak" class="inline-block mt-2 px-4 py-2 text-xs font-medium rounded-md text-white bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-colors">
+                    Kirim Pesan Pertama
+                </a>
             </div>
-            <h3 class="text-lg font-semibold text-gray-900 mb-1">Belum ada pesan</h3>
-            <a href="/kontak" class="inline-block mt-2 px-4 py-2 text-xs font-medium rounded-md text-white bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 transition-colors">
-                Kirim Pesan Pertama
-            </a>
+            @endif
         </div>
-        @endif
     </div>
-</div>
 
 <!-- Floating animation -->
 <style>
