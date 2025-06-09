@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\Produk;
+use App\Models\Keranjang;
 use App\Http\Controllers\Controller;
 use App\Models\Carousel;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,13 @@ class UserController extends Controller
     {
         $produk = Produk::all();
         $carousels = Carousel::all();
-        return view('user.dashboard', compact('produk', 'carousels'));
+
+        $jumlahKeranjang = 0;
+        if ($user = Auth::user()) {
+            $jumlahKeranjang = Keranjang::where('user_id', $user->id)->sum('jumlah');
+        }
+
+        return view('user.dashboard', compact('produk', 'carousels', 'jumlahKeranjang'));
     }
 
 
