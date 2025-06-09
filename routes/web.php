@@ -11,6 +11,7 @@ use App\Http\Controllers\CarouselController;
 use App\Models\Carousel;
 use App\Http\Controllers\FavoritController;
 use App\Http\Controllers\KontakController;
+use App\Http\Controllers\User\KeranjangController;
 
 
 Route::get('/', function () {
@@ -51,6 +52,8 @@ Route::middleware(['auth'])->prefix('user')->group(function () {
     Route::get('/favorit', [UserController::class, 'favorit'])->name('user.favorit');
     // Toggle favorit (tambah/hapus)
     Route::post('/favorit/{id}/toggle', [FavoritController::class, 'toggle'])->name('favorit.toggle');
+
+    Route::post('/keranjang/tambah', [KeranjangController::class, 'tambah'])->name('keranjang.tambah');
 });
 
 
