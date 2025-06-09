@@ -747,15 +747,8 @@
                                     </svg>
                                 </div>
                             </div>
-<<<<<<< HEAD
                             <span
                                 class="absolute -top-1 -right-1 bg-gradient-to-r from-green-500 to-green-400 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center shadow-sm">3</span>
-=======
-                            <span class="absolute -top-1 -right-1 bg-gradient-to-r from-green-500 to-green-400 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center shadow-sm">
-                                {{ $jumlahKeranjang ?? 0 }}
-                            </span>
-
->>>>>>> f16af7fab5e1350f90465359389e4333fc1cb164
                         </a>
 
                         <!-- Mobile menu button -->
@@ -1742,25 +1735,12 @@
                                 @endif
                             </div>
 
-<<<<<<< HEAD
                             <button
                                 class="flex items-center justify-center w-11 h-11 bg-primary-600 text-white rounded-full group/cart hover:bg-primary-700 transition-all duration-300 transform hover:scale-105 border-2 border-primary-500">
                                 {{-- ✅ ubah shadow-lg jadi border --}}
                                 <i
                                     class="fas fa-shopping-cart text-sm transform group-hover/cart:rotate-12 transition-transform duration-300"></i>
                             </button>
-=======
-                            <form action="{{ route('keranjang.tambah') }}" method="POST" class="inline">
-                                @csrf
-                                <input type="hidden" name="produk_id" value="{{ $item->id }}">
-                                <button type="submit"
-                                    class="flex items-center justify-center w-11 h-11 bg-primary-600 text-white rounded-full group/cart hover:bg-primary-700 transition-all duration-300 transform hover:scale-105 border-2 border-primary-500">
-                                    <i class="fas fa-shopping-cart text-sm transform group-hover/cart:rotate-12 transition-transform duration-300"></i>
-                                </button>
-                            </form>
-
-
->>>>>>> f16af7fab5e1350f90465359389e4333fc1cb164
                         </div>
 
                         <div class="mt-2 pt-2 border-t border-gray-100 flex justify-between text-[12px] text-gray-500">
@@ -1856,6 +1836,9 @@
 
     <!-- Features Section -->
 
+
+
+
     <!-- CTA Section -->
     <section class="py-16 bg-primary-600 text-white">
         <div class="container mx-auto px-4 text-center">
@@ -1892,39 +1875,24 @@
                         @csrf
                         <div class="mb-4">
                             <label for="nama" class="block text-gray-700 mb-2">Nama Lengkap</label>
-<<<<<<< HEAD
                             <input type="text" id="nama" name="nama"
                                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-=======
-                            <input type="text" id="nama" name="nama" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
->>>>>>> f16af7fab5e1350f90465359389e4333fc1cb164
                             @error('nama') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
                         </div>
                         <div class="mb-4">
                             <label for="email" class="block text-gray-700 mb-2">Email</label>
-<<<<<<< HEAD
                             <input type="email" id="email" name="email"
                                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
-=======
-                            <input type="email" id="email" name="email" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent">
->>>>>>> f16af7fab5e1350f90465359389e4333fc1cb164
                             @error('email') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
                         </div>
                         <div class="mb-4">
                             <label for="pesan" class="block text-gray-700 mb-2">Pesan</label>
-<<<<<<< HEAD
                             <textarea id="pesan" name="pesan" rows="4"
                                 class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
                             @error('pesan') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
                         </div>
                         <button type="submit"
                             class="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all">
-=======
-                            <textarea id="pesan" name="pesan" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"></textarea>
-                            @error('pesan') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
-                        </div>
-                        <button type="submit" class="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-all">
->>>>>>> f16af7fab5e1350f90465359389e4333fc1cb164
                             Kirim Pesan
                         </button>
                     </form>
@@ -1940,11 +1908,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold text-gray-800">Alamat</h4>
-<<<<<<< HEAD
                                 <p class="text-gray-600">Dekat Jl. Letkol Suwarno, Kanigoro, Kec. Kartoharjo, Kota Madiun, Jawa Timur 63118</p>
-=======
-                                <p class="text-gray-600">Jl. Gadget No. 123, Madiun, Jawa Timur</p>
->>>>>>> f16af7fab5e1350f90465359389e4333fc1cb164
                             </div>
                         </div>
                         <div class="flex items-start">
@@ -1979,7 +1943,6 @@
                     <div class="mt-8">
                         <h4 class="font-semibold text-gray-800 mb-4">Ikuti Kami</h4>
                         <div class="flex space-x-4">
-<<<<<<< HEAD
                             <a href="https://www.facebook.com" target="_blank"
                                 class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
                                 <i class="fab fa-facebook-f"></i>
@@ -1994,18 +1957,6 @@
                             </a>
                             <a href="https://wa.me/6281234567890" target="_blank"
                                 class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
-=======
-                            <a href="#" class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
-                                <i class="fab fa-twitter"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
-                                <i class="fab fa-instagram"></i>
-                            </a>
-                            <a href="#" class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
->>>>>>> f16af7fab5e1350f90465359389e4333fc1cb164
                                 <i class="fab fa-whatsapp"></i>
                             </a>
                         </div>
@@ -2023,17 +1974,12 @@
     <div class="relative py-20 px-4 sm:px-6 lg:px-8 bg-gray-50 overflow-hidden font-sans">
         <!-- Dynamic glowing animated background -->
         <div class="absolute inset-0 -z-10 overflow-hidden">
-<<<<<<< HEAD
             <div
                 class="absolute top-[-8rem] left-[-6rem] w-[30rem] h-[30rem] bg-blue-300 rounded-full opacity-20 blur-[160px] animate-pulse-slow">
             </div>
             <div
                 class="absolute bottom-[-8rem] right-[-6rem] w-[40rem] h-[40rem] bg-indigo-400 rounded-full opacity-25 blur-[180px] animate-float-slow">
             </div>
-=======
-            <div class="absolute top-[-8rem] left-[-6rem] w-[30rem] h-[30rem] bg-blue-300 rounded-full opacity-20 blur-[160px] animate-pulse-slow"></div>
-            <div class="absolute bottom-[-8rem] right-[-6rem] w-[40rem] h-[40rem] bg-indigo-400 rounded-full opacity-25 blur-[180px] animate-float-slow"></div>
->>>>>>> f16af7fab5e1350f90465359389e4333fc1cb164
         </div>
 
         <div class="max-w-7xl mx-auto relative z-10">
@@ -2052,40 +1998,23 @@
             @if($pesans->count())
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach($pesans as $index => $pesan)
-<<<<<<< HEAD
                 <div class="bg-white rounded-3xl p-5 border border-transparent shadow-lg transform transition duration-500 hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-200 group tilt-card"
                     x-data="{ show: false }" x-init="setTimeout(() => show = true, {{ $index * 150 }})" x-show="show"
-=======
-                <div
-                    class="bg-white rounded-3xl p-5 border border-transparent shadow-lg transform transition duration-500 hover:shadow-2xl hover:-translate-y-2 hover:scale-[1.02] hover:border-blue-200 group tilt-card"
-                    x-data="{ show: false }"
-                    x-init="setTimeout(() => show = true, {{ $index * 150 }})"
-                    x-show="show"
->>>>>>> f16af7fab5e1350f90465359389e4333fc1cb164
                     x-transition:enter="transition ease-out duration-700"
                     x-transition:enter-start="opacity-0 translate-y-6 scale-95"
                     x-transition:enter-end="opacity-100 translate-y-0 scale-100">
                     <div class="flex items-start space-x-4">
-<<<<<<< HEAD
                         <div
                             class="w-12 h-12 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 text-white flex items-center justify-center font-bold shadow-inner text-lg animate-pop">
-=======
-                        <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-blue-500 to-indigo-600 text-white flex items-center justify-center font-bold shadow-inner text-lg animate-pop">
->>>>>>> f16af7fab5e1350f90465359389e4333fc1cb164
                             {{ strtoupper(substr($pesan->nama, 0, 1)) }}
                         </div>
                         <div>
                             <h4 class="text-sm font-semibold text-gray-800">{{ $pesan->nama }}</h4>
-<<<<<<< HEAD
                             <p class="text-xs text-gray-400">
                                 {{ \Carbon\Carbon::parse($pesan->created_at)->diffForHumans() }}</p>
                             <p
                                 class="mt-2 text-sm text-gray-700 line-clamp-3 group-hover:text-gray-900 transition-all duration-300 ease-in-out">
                                 {{ $pesan->pesan }}</p>
-=======
-                            <p class="text-xs text-gray-400">{{ \Carbon\Carbon::parse($pesan->created_at)->diffForHumans() }}</p>
-                            <p class="mt-2 text-sm text-gray-700 line-clamp-3 group-hover:text-gray-900 transition-all duration-300 ease-in-out">{{ $pesan->pesan }}</p>
->>>>>>> f16af7fab5e1350f90465359389e4333fc1cb164
                         </div>
                     </div>
                 </div>
@@ -2096,12 +2025,8 @@
                 <div
                     class="inline-flex h-16 w-16 bg-blue-100 rounded-full items-center justify-center mb-4 shadow-md animate-pop">
                     <svg class="h-8 w-8 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-<<<<<<< HEAD
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"
                             d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
-=======
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
->>>>>>> f16af7fab5e1350f90465359389e4333fc1cb164
                     </svg>
                 </div>
                 <h3 class="text-lg font-semibold text-gray-800 mb-2">Belum ada pesan</h3>
@@ -2115,7 +2040,6 @@
     </div>
 
     <style>
-<<<<<<< HEAD
     @keyframes float {
 
         0%,
@@ -2189,124 +2113,42 @@
             opacity: 1;
         }
     }
-=======
-        @keyframes float {
 
-            0%,
-            100% {
-                transform: translateY(0);
-            }
+    .animate-float {
+        animation: float 10s ease-in-out infinite;
+    }
 
-            50% {
-                transform: translateY(-12px);
-            }
-        }
+    .animate-float-slow {
+        animation: float-slow 16s ease-in-out infinite;
+    }
 
-        @keyframes float-slow {
+    .animate-pulse-slow {
+        animation: pulse-slow 12s ease-in-out infinite;
+    }
 
-            0%,
-            100% {
-                transform: translateY(0);
-            }
+    .animate-fade-in-down {
+        animation: fadeInDown 1s ease-out both;
+    }
 
-            50% {
-                transform: translateY(-6px);
-            }
-        }
->>>>>>> f16af7fab5e1350f90465359389e4333fc1cb164
+    .animate-fade-in-up {
+        animation: fadeInUp 1s ease-out both;
+    }
 
-        @keyframes pulse-slow {
+    .animate-pop {
+        animation: pop 0.6s ease-out both;
+    }
 
-            0%,
-            100% {
-                opacity: 0.15;
-                transform: scale(1);
-            }
+    .line-clamp-3 {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
 
-            50% {
-                opacity: 0.25;
-                transform: scale(1.1);
-            }
-        }
-
-        @keyframes fadeInDown {
-            0% {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-<<<<<<< HEAD
     /* Tilt effect (opsional jika ingin efek 3D hover ringan) */
     .tilt-card:hover {
         transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02);
     }
-=======
-        @keyframes pop {
-            0% {
-                transform: scale(0.9);
-                opacity: 0;
-            }
-
-            100% {
-                transform: scale(1);
-                opacity: 1;
-            }
-        }
-
-        .animate-float {
-            animation: float 10s ease-in-out infinite;
-        }
-
-        .animate-float-slow {
-            animation: float-slow 16s ease-in-out infinite;
-        }
-
-        .animate-pulse-slow {
-            animation: pulse-slow 12s ease-in-out infinite;
-        }
-
-        .animate-fade-in-down {
-            animation: fadeInDown 1s ease-out both;
-        }
-
-        .animate-fade-in-up {
-            animation: fadeInUp 1s ease-out both;
-        }
-
-        .animate-pop {
-            animation: pop 0.6s ease-out both;
-        }
-
-        .line-clamp-3 {
-            display: -webkit-box;
-            -webkit-line-clamp: 3;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
-        }
-
-        /* Tilt effect (opsional jika ingin efek 3D hover ringan) */
-        .tilt-card:hover {
-            transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02);
-        }
->>>>>>> f16af7fab5e1350f90465359389e4333fc1cb164
     </style>
 
 
