@@ -9,8 +9,6 @@ use App\Models\Carousel;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 
-
-
 class UserController extends Controller
 {
     public function index()
@@ -26,6 +24,13 @@ class UserController extends Controller
         return view('user.dashboard', compact('produk', 'carousels', 'jumlahKeranjang'));
     }
 
+    public function katalogProduk()
+    {
+        $produks = Produk::all();
+        $jumlahProduk = $produks->count();
+
+        return view('user.katalog-produk', compact('produks', 'jumlahProduk'));
+    }
 
     public function show($id)
     {
@@ -52,13 +57,8 @@ class UserController extends Controller
     public function favorit()
     {
         $user = auth()->user();
-
-        // Produk favorit (untuk ditampilkan)
         $favorit_produk = $user->favorit()->latest()->get();
-
-        // ID produk favorit (untuk pengecekan tombol hati aktif/tidak)
         $favorit = $favorit_produk->pluck('id')->toArray();
-        // Ambil produk favorit user (misal relasi many-to-many)
         $produkFavorit = $user->favorit()->get();
 
         return view('user.favorit', compact('favorit_produk', 'favorit'));

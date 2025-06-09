@@ -52,15 +52,25 @@ Route::middleware(['auth'])->prefix('user')->group(function () {
     Route::get('/favorit', [UserController::class, 'favorit'])->name('user.favorit');
     // Toggle favorit (tambah/hapus)
     Route::post('/favorit/{id}/toggle', [FavoritController::class, 'toggle'])->name('favorit.toggle');
-
+    // halaman keranjang
     Route::post('/keranjang/tambah', [KeranjangController::class, 'tambah'])->name('keranjang.tambah');
-});
+    // Halaman katalog produk lengkap
+    Route::get('/katalog-produk', [UserController::class, 'katalogProduk'])->name('user.katalog-produk');
 
+<<<<<<< HEAD
 Route::get('/user/dashboard', function () {
     $produk = Produk::paginate(6); // <-- Ubah all() jadi paginate()
     $carousels = Carousel::all();
     return view('user.dashboard', compact('produk', 'carousels'));
 })->name('user.dashboard');
+=======
+    // ✅ Tambahkan ini:
+    Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang.index');
+    Route::post('/keranjang/tambah', [KeranjangController::class, 'tambah'])->name('keranjang.tambah');
+    Route::post('/keranjang/{id}/kurang', [KeranjangController::class, 'kurang'])->name('keranjang.kurang');
+    Route::delete('/keranjang/{id}/hapus', [KeranjangController::class, 'hapus'])->name('keranjang.hapus');
+});
+>>>>>>> 5ae9a59 (halaman keranjang)
 
 
 // Halaman dashboard user (dashboard utama)

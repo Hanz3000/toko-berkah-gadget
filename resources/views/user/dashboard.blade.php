@@ -736,7 +736,7 @@
                         </div>
                         @endif
 
-                        <a href="#" class="relative hover:scale-105 transition-transform">
+                        <a href="{{ route('user.katalog-produk') }}" target="_blank" class="relative hover:scale-105 transition-transform">
                             <div class="w-9 h-9 rounded-full bg-gradient-to-r from-blue-500 to-green-400 p-0.5">
                                 <div
                                     class="w-full h-full rounded-full bg-white flex items-center justify-center text-blue-600">
@@ -747,9 +747,16 @@
                                     </svg>
                                 </div>
                             </div>
+<<<<<<< HEAD
                             <span
                                 class="absolute -top-1 -right-1 bg-gradient-to-r from-green-500 to-green-400 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center shadow-sm">3</span>
+=======
+                            <span class="absolute -top-1 -right-1 bg-gradient-to-r from-green-500 to-green-400 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center shadow-sm">
+                                {{ $jumlahKeranjang ?? 0 }}
+                            </span>
+>>>>>>> 5ae9a59 (halaman keranjang)
                         </a>
+
 
                         <!-- Mobile menu button -->
                         <button class="lg:hidden focus:outline-none hover:scale-105 transition-transform">
@@ -1743,7 +1750,7 @@
                             </button>
                         </div>
 
-                        <div class="mt-2 pt-2 border-t border-gray-100 flex justify-between text-[12px] text-gray-500">
+                        <div class="mt-2 pt-0 border-t border-gray-100 flex justify-between text-[12px] text-gray-500">
                             <div class="flex items-center">
                                 <span class="inline-block w-1.5 h-1.5 rounded-full bg-green-500 mr-1.5"></span>
                                 <span>Stok Tersedia</span>
