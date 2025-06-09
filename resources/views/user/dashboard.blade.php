@@ -1925,7 +1925,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold text-gray-800">Alamat</h4>
-                                <p class="text-gray-600">Dekat Jl. Letkol Suwarno, Kanigoro, Kec. Kartoharjo, Kota Madiun, Jawa Timur 63118</p>
+                                <p class="text-gray-600">Jl. Imam Bonjol No.4, Rejomulyo, Kec. Kartoharjo, Kota Madiun, Jawa Timur 63111</p>
                             </div>
                         </div>
                         <div class="flex items-start">
@@ -1934,7 +1934,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold text-gray-800">Telepon</h4>
-                                <p class="text-gray-600">+62 812-3456-7890</p>
+                                <p class="text-gray-600">+62 878-6140-0744</p>
                             </div>
                         </div>
                         <div class="flex items-start">
@@ -1943,7 +1943,7 @@
                             </div>
                             <div>
                                 <h4 class="font-semibold text-gray-800">Email</h4>
-                                <p class="text-gray-600">info@berkahgadget.com</p>
+                                <p class="text-gray-600">@berkahgadget.com</p>
                             </div>
                         </div>
                         <div class="flex items-start">
@@ -1972,7 +1972,7 @@
                                 class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
                                 <i class="fab fa-instagram"></i>
                             </a>
-                            <a href="https://wa.me/6281234567890" target="_blank"
+                            <a href="https://wa.me/6287861400744" target="_blank"
                                 class="w-10 h-10 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center hover:bg-blue-600 hover:text-white transition-all">
                                 <i class="fab fa-whatsapp"></i>
                             </a>
@@ -2190,7 +2190,7 @@
                             <!-- Slide 1: Toko Utama -->
                             <div class="swiper-slide">
                                 <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.3833824570593!2d111.51923421431623!3d-7.633422994363497!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e79aefd94bc1f63%3A0x4c7b8d3d9b7fa55d!2sToko%20Berkah%20Gadget%20Madiun!5e0!3m2!1sen!2sid!4v1685794846427!5m2!1sen!2sid"
+                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5334.017326765421!2d111.53187418152658!3d-7.623280837223899!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e79beef9713438b%3A0x72f56853c798e62!2sberkahgadgetmadiun!5e0!3m2!1sid!2sid!4v1749464398988!5m2!1sid!2sid"
                                     width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
                                     referrerpolicy="no-referrer-when-downgrade" title="Lokasi Toko Utama"></iframe>
                             </div>
@@ -2198,7 +2198,7 @@
                             <!-- Slide 2: Cabang 1 -->
                             <div class="swiper-slide">
                                 <iframe
-                                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3958.1234567890!2d111.5300000000!3d-7.6400000000!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e79ae1234567890%3A0x123456789abcdef0!2sToko%20Berkah%20Gadget%20Cabang%201!5e0!3m2!1sen!2sid!4v0000000000000!5m2!1sen!2sid"
+                                    src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d428.7038214593567!2d111.54029691848268!3d-7.635403097720709!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1749464689679!5m2!1sid!2sid"
                                     width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
                                     referrerpolicy="no-referrer-when-downgrade" title="Lokasi Toko Cabang 1"></iframe>
                             </div>
@@ -2294,7 +2294,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
-                            <p>Dekat Jl. Letkol Suwarno, Kanigoro, Kec. Kartoharjo, Kota Madiun, Jawa Timur 63118</p>
+                            <p>Jl. Imam Bonjol No.4, Rejomulyo, Kec. Kartoharjo, Kota Madiun, Jawa Timur 63111</p>
                         </div>
                         <div class="flex items-start space-x-3">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-0.5 text-green-400" fill="none"
@@ -2302,7 +2302,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                             </svg>
-                            <p>+62 823-4567-8901</p>
+                            <p>+62 878-6140-0744</p>
                         </div>
                         <div class="flex items-start space-x-3">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-0.5 text-green-400" fill="none"
@@ -2310,7 +2310,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
-                            <p>info@berkahgadget.com</p>
+                            <p>@berkahgadget.com</p>
                         </div>
                     </div>
 
