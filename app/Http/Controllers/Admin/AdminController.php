@@ -17,20 +17,19 @@ class AdminController extends Controller
     public function index(Request $request)
     {
         $query = Produk::query();
-    
+
         if ($request->has('search') && $request->search != '') {
             $search = $request->search;
             $query->where('nama_produk', 'like', "%{$search}%")
-                  ->orWhere('kategori', 'like', "%{$search}%");
+                ->orWhere('kategori', 'like', "%{$search}%");
         }
-    
+
         $produk = $query->paginate(10)->appends($request->all());
-    
+
         $produkTerbaru = Produk::orderBy('updated_at', 'desc')->first();
         $carousels = Carousel::all();
         $jumlahUser = User::count();
         $jumlahCarousel = Carousel::count();
-    
         return view('admin.produk.index', compact(
             'produk',
             'carousels',
@@ -39,8 +38,10 @@ class AdminController extends Controller
             'produkTerbaru'
         ));
     }
-    
-    
+
+
+
+
 
 
 
@@ -104,36 +105,34 @@ class AdminController extends Controller
     public function deleteUser($id)
     {
         $user = User::findOrFail($id);
-    
+
         // Tidak bisa menghapus diri sendiri
         if (Auth::id() === $user->id) {
             return redirect()->back()
-                   ->with('error', 'Kamu tidak bisa menghapus akunmu sendiri.');
+                ->with('error', 'Kamu tidak bisa menghapus akunmu sendiri.');
         }
-    
+
         // Hanya superadmin yang boleh menghapus
         if (Auth::user()->role !== 'superadmin') {
             return redirect()->back()
-                   ->with('error', 'Akses ditolak. Hanya Superadmin yang dapat menghapus user.');
+                ->with('error', 'Akses ditolak. Hanya Superadmin yang dapat menghapus user.');
         }
-    
+
         try {
             $user->delete();
             return redirect()->back()
-                   ->with('success', 'User berhasil dihapus.');
+                ->with('success', 'User berhasil dihapus.');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Terjadi kesalahan saat menghapus user.');
-
-    }
+        }
     }
     public function destroy($id)
-{
-    try {
-        User::findOrFail($id)->delete();
-        return redirect()->back()->with('success', 'User berhasil dihapus!');
-    } catch (\Exception $e) {
-        return redirect()->back()->with('error', 'Gagal menghapus user!');
+    {
+        try {
+            User::findOrFail($id)->delete();
+            return redirect()->back()->with('success', 'User berhasil dihapus!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal menghapus user!');
+        }
     }
-}
-
 }

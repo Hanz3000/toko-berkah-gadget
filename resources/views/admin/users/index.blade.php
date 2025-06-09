@@ -81,7 +81,7 @@
                     <td class="py-4 px-6 text-indigo-800">{{ $user->created_at->format('d M Y') }}</td>
                     <td class="py-4 px-6 text-right">
                         <div class="flex items-center justify-end space-x-3">
-                          
+
                             @if(Auth::user()->role === 'superadmin' && Auth::id() !== $user->id)
                             <form id="delete-form-{{ $user->id }}" action="{{ route('admin.user.delete', $user->id) }}" method="POST" class="inline">
                                 @csrf
@@ -112,24 +112,26 @@
 <script>
     // Check for success message
     @if(session('success'))
-        Swal.fire({
-            icon: 'success',
-            title: 'Berhasil!',
-            text: '{{ session('success') }}',
-            showConfirmButton: false,
-            timer: 3000
-        });
+    Swal.fire({
+        icon: 'success',
+        title: 'Berhasil!',
+        text: '{{ session('
+        success ') }}',
+        showConfirmButton: false,
+        timer: 3000
+    });
     @endif
 
     // Check for error message
     @if(session('error'))
-        Swal.fire({
-            icon: 'error',
-            title: 'Gagal!',
-            text: '{{ session('error') }}',
-            showConfirmButton: false,
-            timer: 3000
-        });
+    Swal.fire({
+        icon: 'error',
+        title: 'Gagal!',
+        text: '{{ session('
+        error ') }}',
+        showConfirmButton: false,
+        timer: 3000
+    });
     @endif
 
     // Delete confirmation function

@@ -157,33 +157,32 @@ class ProdukController extends Controller
 
         return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil dihapus.');
     }
-// Di dalam ProdukController
 
-// Tampilkan form tambah admin
-public function tambah_admin()
-{
-    return view('admin.produk.tambah_admin'); // file blade kamu
-}
+    // Tampilkan form tambah admin
+    public function tambah_admin()
+    {
+        return view('admin.produk.tambah_admin'); // file blade kamu
+    }
 
-// Simpan data admin baru
-public function store_admin(Request $request)
-{
-    $validated = $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|unique:users,email',
-        'password' => 'required|min:6|confirmed',
-    ]);
+    // Simpan data admin baru
+    public function store_admin(Request $request)
+    {
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6|confirmed',
+        ]);
 
-    // Simpan admin ke tabel users (dengan role admin, misalnya)
-    User::create([
-        'name' => $validated['name'],
-        'email' => $validated['email'],
-        'password' => Hash::make($validated['password']),
-        'role' => 'admin', // pastikan ada kolom ini kalau pakai sistem role
-    ]);
+        // Simpan admin ke tabel users (dengan role admin, misalnya)
+        User::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'password' => Hash::make($validated['password']),
+            'role' => 'admin', // pastikan ada kolom ini kalau pakai sistem role
+        ]);
 
-    return redirect()->route('admin.produk.index')->with('success', 'Admin baru berhasil ditambahkan!');
-}
+        return redirect()->route('admin.produk.index')->with('success', 'Admin baru berhasil ditambahkan!');
+    }
 
     // 🔍 Pencarian produk untuk dashboard user
     public function search(Request $request)

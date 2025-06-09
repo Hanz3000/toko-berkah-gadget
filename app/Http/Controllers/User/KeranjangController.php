@@ -21,7 +21,11 @@ class KeranjangController extends Controller
 
         $jumlahProduk = $items->count();
 
-        return view('keranjang.index', compact('items', 'jumlahProduk'));
+        // Ubah ini untuk mengirim data items ke view keranjang
+        return view('user.keranjang', [
+            'produks' => $items,
+            'jumlahProduk' => $jumlahProduk
+        ]);
     }
 
     // Tambah produk ke keranjang

@@ -15,439 +15,439 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
 
     <script>
-    tailwind.config = {
-        theme: {
-            extend: {
-                colors: {
-                    primary: {
-                        50: '#f0f9ff',
-                        100: '#e0f2fe',
-                        200: '#bae6fd',
-                        300: '#7dd3fc',
-                        400: '#38bdf8',
-                        500: '#0ea5e9',
-                        600: '#0284c7',
-                        700: '#0369a1',
-                        800: '#075985',
-                        900: '#0c4a6e',
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            50: '#f0f9ff',
+                            100: '#e0f2fe',
+                            200: '#bae6fd',
+                            300: '#7dd3fc',
+                            400: '#38bdf8',
+                            500: '#0ea5e9',
+                            600: '#0284c7',
+                            700: '#0369a1',
+                            800: '#075985',
+                            900: '#0c4a6e',
+                        },
+                        secondary: {
+                            50: '#f5f3ff',
+                            100: '#ede9fe',
+                            200: '#ddd6fe',
+                            300: '#c4b5fd',
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            700: '#6d28d9',
+                            800: '#5b21b6',
+                            900: '#4c1d95',
+                        },
+                        accent: {
+                            50: '#fef2f2',
+                            100: '#fee2e2',
+                            200: '#fecaca',
+                            300: '#fca5a5',
+                            400: '#f87171',
+                            500: '#ef4444',
+                            600: '#dc2626',
+                            700: '#b91c1c',
+                            800: '#991b1b',
+                            900: '#7f1d1d',
+                        }
                     },
-                    secondary: {
-                        50: '#f5f3ff',
-                        100: '#ede9fe',
-                        200: '#ddd6fe',
-                        300: '#c4b5fd',
-                        400: '#a78bfa',
-                        500: '#8b5cf6',
-                        600: '#7c3aed',
-                        700: '#6d28d9',
-                        800: '#5b21b6',
-                        900: '#4c1d95',
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
                     },
-                    accent: {
-                        50: '#fef2f2',
-                        100: '#fee2e2',
-                        200: '#fecaca',
-                        300: '#fca5a5',
-                        400: '#f87171',
-                        500: '#ef4444',
-                        600: '#dc2626',
-                        700: '#b91c1c',
-                        800: '#991b1b',
-                        900: '#7f1d1d',
-                    }
-                },
-                fontFamily: {
-                    sans: ['Poppins', 'sans-serif'],
-                },
-                animation: {
-                    'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-                    'float': 'float 6s ease-in-out infinite',
-                    'fade-in': 'fadeIn 0.5s ease-out forwards',
-                    'slide-up': 'slideUp 0.6s ease-out forwards',
-                    'glow': 'glow 2s ease-in-out infinite alternate',
-                },
-                keyframes: {
-                    fadeIn: {
-                        '0%': {
-                            opacity: '0'
-                        },
-                        '100%': {
-                            opacity: '1'
-                        },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'float': 'float 6s ease-in-out infinite',
+                        'fade-in': 'fadeIn 0.5s ease-out forwards',
+                        'slide-up': 'slideUp 0.6s ease-out forwards',
+                        'glow': 'glow 2s ease-in-out infinite alternate',
                     },
-                    slideUp: {
-                        '0%': {
-                            opacity: '0',
-                            transform: 'translateY(20px)'
+                    keyframes: {
+                        fadeIn: {
+                            '0%': {
+                                opacity: '0'
+                            },
+                            '100%': {
+                                opacity: '1'
+                            },
                         },
-                        '100%': {
-                            opacity: '1',
-                            transform: 'translateY(0)'
+                        slideUp: {
+                            '0%': {
+                                opacity: '0',
+                                transform: 'translateY(20px)'
+                            },
+                            '100%': {
+                                opacity: '1',
+                                transform: 'translateY(0)'
+                            },
                         },
-                    },
-                    glow: {
-                        '0%': {
-                            'box-shadow': '0 0 0px rgba(59, 130, 246, 0.5)'
-                        },
-                        '100%': {
-                            'box-shadow': '0 0 20px rgba(59, 130, 246, 0.8)'
-                        },
+                        glow: {
+                            '0%': {
+                                'box-shadow': '0 0 0px rgba(59, 130, 246, 0.5)'
+                            },
+                            '100%': {
+                                'box-shadow': '0 0 20px rgba(59, 130, 246, 0.8)'
+                            },
+                        }
                     }
                 }
             }
         }
-    }
     </script>
 
     <style>
-    /* Your custom CSS for animations and effects */
-    @keyframes slideUp {
-        from {
-            transform: translateY(20px);
-            opacity: 0;
+        /* Your custom CSS for animations and effects */
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
-        to {
-            transform: translateY(0);
-            opacity: 1;
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
         }
-    }
 
-    @keyframes fadeIn {
-        from {
-            opacity: 0;
+        .modal-enter {
+            animation: fadeIn 0.3s ease-out;
         }
 
-        to {
-            opacity: 1;
+        .modal-content-enter {
+            animation: slideUp 0.3s ease-out;
         }
-    }
 
-    .modal-enter {
-        animation: fadeIn 0.3s ease-out;
-    }
+        .share-button {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-    .modal-content-enter {
-        animation: slideUp 0.3s ease-out;
-    }
+        .share-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
 
-    .share-button {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
 
-    .share-button:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-    }
+        .glass-effect {
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.9);
+        }
 
-    .gradient-bg {
-        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    }
-
-    .glass-effect {
-        backdrop-filter: blur(20px);
-        background: rgba(255, 255, 255, 0.9);
-    }
-
-    /* Additional styles from your product card snippet */
-    .animate-slide-up {
-        animation: slideUp 0.5s ease-out forwards;
-    }
+        /* Additional styles from your product card snippet */
+        .animate-slide-up {
+            animation: slideUp 0.5s ease-out forwards;
+        }
     </style>
     <style>
-    /* Custom scrollbar */
-    ::-webkit-scrollbar {
-        width: 8px;
-    }
-
-    /* Parallax effect */
-    .parallax {
-        background-attachment: fixed;
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        transform: translateZ(0);
-        -webkit-transform: translateZ(0);
-    }
-
-    /* Custom animation classes */
-    [data-aos="custom-fade-up"] {
-        opacity: 0;
-        transform: translateY(100px);
-        transition-property: transform, opacity;
-    }
-
-    [data-aos="custom-fade-up"].aos-animate {
-        opacity: 1;
-        transform: translateY(0);
-    }
-
-    /* Staggered animation helper classes */
-    .stagger-item:nth-child(1) {
-        transition-delay: 100ms;
-    }
-
-    .stagger-item:nth-child(2) {
-        transition-delay: 200ms;
-    }
-
-    .stagger-item:nth-child(3) {
-        transition-delay: 300ms;
-    }
-
-    .stagger-item:nth-child(4) {
-        transition-delay: 400ms;
-    }
-
-    .stagger-item:nth-child(5) {
-        transition-delay: 500ms;
-    }
-
-    /* Custom Shape Divider */
-    .custom-shape-divider-bottom-1591961042 {
-        position: absolute;
-        bottom: -2px;
-        left: 0;
-        width: 100%;
-        overflow: hidden;
-        line-height: 0;
-        transform: rotate(180deg);
-    }
-
-    /* gelombang */
-    .custom-shape-divider-bottom-1591961042 svg {
-        position: relative;
-        display: block;
-        width: calc(100% + 1.3px);
-        height: 90px;
-    }
-
-    .custom-shape-divider-bottom-1591961042 .shape-fill {
-        fill: #FFFFFF;
-    }
-
-    ::-webkit-scrollbar-track {
-        background: #f1f1f1;
-        border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
-        border-radius: 10px;
-    }
-
-    ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(to bottom, #2563eb, #7c3aed);
-    }
-
-    /* Smooth transitions */
-    .transition-all {
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    /* Gradient text */
-    .text-gradient {
-        background: linear-gradient(to right, #3b82f6, #8b5cf6);
-        -webkit-background-clip: text;
-        background-clip: text;
-        color: transparent;
-    }
-
-    .card-hover:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
-            0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    }
-
-    /* Button hover effect */
-    .btn-hover:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-    }
-
-    /* Loading button effect */
-    .btn-loading {
-        position: relative;
-        overflow: hidden;
-    }
-
-    .btn-loading::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-        animation: btn-loading 1.5s infinite;
-    }
-
-    /* Floating animation */
-    @keyframes float {
-
-        0%,
-        100% {
-            transform: translateY(0);
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
 
-        50% {
-            transform: translateY(-10px);
-        }
-    }
-
-    @keyframes shine {
-        0% {
-            background-position: -100% 0;
-        }
-
-        100% {
-            background-position: 100% 0;
-        }
-    }
-
-    @keyframes pulse-glow {
-
-        0%,
-        100% {
-            box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+        /* Parallax effect */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            transform: translateZ(0);
+            -webkit-transform: translateZ(0);
         }
 
-        50% {
-            box-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
-        }
-    }
-
-    @keyframes slide-in {
-        from {
+        /* Custom animation classes */
+        [data-aos="custom-fade-up"] {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(100px);
+            transition-property: transform, opacity;
         }
 
-        to {
+        [data-aos="custom-fade-up"].aos-animate {
             opacity: 1;
             transform: translateY(0);
         }
-    }
 
-    @keyframes btn-loading {
-        100% {
+        /* Staggered animation helper classes */
+        .stagger-item:nth-child(1) {
+            transition-delay: 100ms;
+        }
+
+        .stagger-item:nth-child(2) {
+            transition-delay: 200ms;
+        }
+
+        .stagger-item:nth-child(3) {
+            transition-delay: 300ms;
+        }
+
+        .stagger-item:nth-child(4) {
+            transition-delay: 400ms;
+        }
+
+        .stagger-item:nth-child(5) {
+            transition-delay: 500ms;
+        }
+
+        /* Custom Shape Divider */
+        .custom-shape-divider-bottom-1591961042 {
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+
+        /* gelombang */
+        .custom-shape-divider-bottom-1591961042 svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 90px;
+        }
+
+        .custom-shape-divider-bottom-1591961042 .shape-fill {
+            fill: #FFFFFF;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(to bottom, #2563eb, #7c3aed);
+        }
+
+        /* Smooth transitions */
+        .transition-all {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        /* Gradient text */
+        .text-gradient {
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1),
+                0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+
+        /* Button hover effect */
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* Loading button effect */
+        .btn-loading {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-loading::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            animation: btn-loading 1.5s infinite;
+        }
+
+        /* Floating animation */
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                background-position: -100% 0;
+            }
+
+            100% {
+                background-position: 100% 0;
+            }
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 15px rgba(59, 130, 246, 0.5);
+            }
+
+            50% {
+                box-shadow: 0 0 30px rgba(59, 130, 246, 0.8);
+            }
+        }
+
+        @keyframes slide-in {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes btn-loading {
+            100% {
+                left: 100%;
+            }
+        }
+
+        /* Hero section overlay */
+        .hero-overlay {
+            background: linear-gradient(to right, rgba(30, 64, 175, 0.8), rgba(109, 40, 217, 0.8));
+        }
+
+        /* Navbar glass effect */
+        .navbar-glass {
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* Product card shine effect */
+        .product-card::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
+            transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .product-card:hover::after {
             left: 100%;
         }
-    }
 
-    /* Hero section overlay */
-    .hero-overlay {
-        background: linear-gradient(to right, rgba(30, 64, 175, 0.8), rgba(109, 40, 217, 0.8));
-    }
-
-    /* Navbar glass effect */
-    .navbar-glass {
-        backdrop-filter: blur(10px);
-        -webkit-backdrop-filter: blur(10px);
-    }
-
-    /* Product card shine effect */
-    .product-card::after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: -100%;
-        width: 50%;
-        height: 100%;
-        background: linear-gradient(to right, transparent 0%, rgba(255, 255, 255, 0.1) 50%, transparent 100%);
-        transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
-    }
-
-    .product-card:hover::after {
-        left: 100%;
-    }
-
-    /* Carousel Styles */
-    .carousel-container {
-        position: relative;
-        overflow: hidden;
-        border-radius: 12px;
-    }
-
-    .slides-container {
-        display: flex;
-        transition: transform 0.5s ease-in-out;
-    }
-
-    .slide {
-        min-width: 100%;
-        padding: 1rem;
-    }
-
-    .carousel-arrow {
-        opacity: 0.7;
-        transition: all 0.3s ease;
-    }
-
-    .carousel-arrow:hover {
-        opacity: 1;
-        transform: translateY(-50%) scale(1.1);
-    }
-
-    .indicator {
-        transition: all 0.3s ease;
-    }
-
-    .indicator-active {
-        transform: scale(1.2);
-        background-color: rgb(14 165 233);
-        /* primary-500 color value */
-    }
-
-    /* Touch-friendly styles */
-    .carousel-container {
-        touch-action: pan-y;
-    }
-
-    /* Navbar hide on scroll */
-    .nav-scroll-up {
-        transform: translateY(-100%);
-    }
-
-    .nav-scroll-down {
-        transform: translateY(0);
-    }
-
-    .navbar-glass {
-        transition: transform 0.3s ease-in-out;
-    }
-
-    .bg-pattern-dots {
-        background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3C/g%3E%3C/svg%3E");
-    }
-
-    .bg-blob {
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23F472B6' d='M48.4,-64.5C62.9,-55.4,74.8,-41.6,79.8,-25.9C84.8,-10.2,83,7.4,76.9,22.9C70.9,38.4,60.7,51.9,47.1,60.5C33.4,69.1,16.7,72.9,0,72.9C-16.7,72.9,-33.4,69.1,-47.7,60.4C-62,51.7,-73.8,38,-80.3,21.1C-86.8,4.3,-87.8,-15.8,-80.9,-32.3C-74,-48.9,-59.1,-61.8,-43.4,-70.4C-27.6,-79,-13.8,-83.2,1,-84.4C15.8,-85.7,31.5,-83,48.4,-64.5Z' transform='translate(100 100)'/%3E%3C/svg%3E");
-    }
-
-    @keyframes slide-up {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
+        /* Carousel Styles */
+        .carousel-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
         }
 
-        to {
+        .slides-container {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .slide {
+            min-width: 100%;
+            padding: 1rem;
+        }
+
+        .carousel-arrow {
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-arrow:hover {
             opacity: 1;
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .indicator {
+            transition: all 0.3s ease;
+        }
+
+        .indicator-active {
+            transform: scale(1.2);
+            background-color: rgb(14 165 233);
+            /* primary-500 color value */
+        }
+
+        /* Touch-friendly styles */
+        .carousel-container {
+            touch-action: pan-y;
+        }
+
+        /* Navbar hide on scroll */
+        .nav-scroll-up {
+            transform: translateY(-100%);
+        }
+
+        .nav-scroll-down {
             transform: translateY(0);
         }
-    }
 
-    .animate-slide-up {
-        animation: slide-up 0.6s ease forwards;
-    }
+        .navbar-glass {
+            transition: transform 0.3s ease-in-out;
+        }
 
-    .line-clamp-2 {
-        display: -webkit-box;
-        -webkit-line-clamp: 2;
-        line-clamp: 2;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
+        .bg-pattern-dots {
+            background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239C92AC' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3C/g%3E%3C/svg%3E");
+        }
+
+        .bg-blob {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23F472B6' d='M48.4,-64.5C62.9,-55.4,74.8,-41.6,79.8,-25.9C84.8,-10.2,83,7.4,76.9,22.9C70.9,38.4,60.7,51.9,47.1,60.5C33.4,69.1,16.7,72.9,0,72.9C-16.7,72.9,-33.4,69.1,-47.7,60.4C-62,51.7,-73.8,38,-80.3,21.1C-86.8,4.3,-87.8,-15.8,-80.9,-32.3C-74,-48.9,-59.1,-61.8,-43.4,-70.4C-27.6,-79,-13.8,-83.2,1,-84.4C15.8,-85.7,31.5,-83,48.4,-64.5Z' transform='translate(100 100)'/%3E%3C/svg%3E");
+        }
+
+        @keyframes slide-up {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-slide-up {
+            animation: slide-up 0.6s ease forwards;
+        }
+
+        .line-clamp-2 {
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
     </style>
 
 </head>
@@ -689,7 +689,7 @@
                                     <p class="text-sm text-gray-500">Selamat datang,</p>
                                     <p class="font-medium text-gray-800 truncate">{{ Auth::user()->name }}</p>
                                 </div>
-                            
+
                                 <a href="{{ route('user.favorit') }}"
                                     class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all rounded-lg">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none"
@@ -747,14 +747,8 @@
                                     </svg>
                                 </div>
                             </div>
-<<<<<<< HEAD
                             <span
                                 class="absolute -top-1 -right-1 bg-gradient-to-r from-green-500 to-green-400 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center shadow-sm">3</span>
-=======
-                            <span class="absolute -top-1 -right-1 bg-gradient-to-r from-green-500 to-green-400 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center shadow-sm">
-                                {{ $jumlahKeranjang ?? 0 }}
-                            </span>
->>>>>>> 5ae9a59 (halaman keranjang)
                         </a>
 
 
@@ -903,67 +897,67 @@
 
     <!-- JavaScript for mobile menu -->
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Mobile menu toggle
-        const mobileMenu = document.getElementById('mobileMenu');
-        const mobileMenuButton = document.querySelector('.lg\\:hidden button');
-        const closeMobileMenu = document.getElementById('closeMobileMenu');
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const mobileMenu = document.getElementById('mobileMenu');
+            const mobileMenuButton = document.querySelector('.lg\\:hidden button');
+            const closeMobileMenu = document.getElementById('closeMobileMenu');
 
-        if (mobileMenuButton && mobileMenu && closeMobileMenu) {
-            mobileMenuButton.addEventListener('click', function() {
-                mobileMenu.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            });
+            if (mobileMenuButton && mobileMenu && closeMobileMenu) {
+                mobileMenuButton.addEventListener('click', function() {
+                    mobileMenu.classList.remove('hidden');
+                    document.body.style.overflow = 'hidden';
+                });
 
-            closeMobileMenu.addEventListener('click', function() {
-                mobileMenu.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            });
-        }
-
-        // For clicking outside to close
-        mobileMenu.addEventListener('click', function(e) {
-            if (e.target === mobileMenu) {
-                mobileMenu.classList.add('hidden');
-                document.body.style.overflow = 'auto';
+                closeMobileMenu.addEventListener('click', function() {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                });
             }
+
+            // For clicking outside to close
+            mobileMenu.addEventListener('click', function(e) {
+                if (e.target === mobileMenu) {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = 'auto';
+                }
+            });
         });
-    });
 
-    // Function to toggle mobile submenu
-    function toggleMobileSubmenu(id) {
-        const submenu = document.getElementById(id);
-        const chevron = document.getElementById(id.replace('Submenu', 'Chevron'));
+        // Function to toggle mobile submenu
+        function toggleMobileSubmenu(id) {
+            const submenu = document.getElementById(id);
+            const chevron = document.getElementById(id.replace('Submenu', 'Chevron'));
 
-        if (submenu.classList.contains('hidden')) {
-            submenu.classList.remove('hidden');
-            chevron.classList.add('rotate-180');
-        } else {
-            submenu.classList.add('hidden');
-            chevron.classList.remove('rotate-180');
+            if (submenu.classList.contains('hidden')) {
+                submenu.classList.remove('hidden');
+                chevron.classList.add('rotate-180');
+            } else {
+                submenu.classList.add('hidden');
+                chevron.classList.remove('rotate-180');
+            }
         }
-    }
-    let lastScroll = 0;
-    const navbar = document.getElementById('mainNav');
+        let lastScroll = 0;
+        const navbar = document.getElementById('mainNav');
 
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.pageYOffset;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
 
-        if (currentScroll <= 0) {
-            navbar.classList.remove('nav-scroll-up');
-            return;
-        }
+            if (currentScroll <= 0) {
+                navbar.classList.remove('nav-scroll-up');
+                return;
+            }
 
-        if (currentScroll > lastScroll && !navbar.classList.contains('nav-scroll-up')) {
-            // Scroll ke bawah
-            navbar.classList.add('nav-scroll-up');
-        } else if (currentScroll < lastScroll && navbar.classList.contains('nav-scroll-up')) {
-            // Scroll ke atas
-            navbar.classList.remove('nav-scroll-up');
-        }
+            if (currentScroll > lastScroll && !navbar.classList.contains('nav-scroll-up')) {
+                // Scroll ke bawah
+                navbar.classList.add('nav-scroll-up');
+            } else if (currentScroll < lastScroll && navbar.classList.contains('nav-scroll-up')) {
+                // Scroll ke atas
+                navbar.classList.remove('nav-scroll-up');
+            }
 
-        lastScroll = currentScroll;
-    });
+            lastScroll = currentScroll;
+        });
     </script>
 
 
@@ -1130,7 +1124,8 @@
                                                 class="mt-4 text-center transform transition-all duration-500 ease-out">
                                                 <h3
                                                     class="text-white font-bold text-lg sm:text-xl hover:text-primary-300 transition-colors duration-300">
-                                                    {{ $carousel->judul }}</h3>
+                                                    {{ $carousel->judul }}
+                                                </h3>
 
                                                 <!-- Rating Stars dengan Efek Hover -->
                                                 <div class="flex items-center justify-center mt-2">
@@ -1231,296 +1226,296 @@
                 </div>
 
                 <script>
-                document.addEventListener('DOMContentLoaded', function() {
-                    let currentSlide = 0;
-                    const slides = document.querySelectorAll('.slide');
-                    const totalSlides = slides.length;
-                    const slidesContainer = document.querySelector('.slides-container');
-                    const progressBar = document.querySelector('.carousel-progress');
-                    const prevButton = document.querySelector('.carousel-arrow.prev');
-                    const nextButton = document.querySelector('.carousel-arrow.next');
-                    let slidingDirection = 1; // 1 for forward, -1 for backward
-                    let autoSlideInterval;
-                    let touchStartX = 0;
-                    let touchEndX = 0;
+                    document.addEventListener('DOMContentLoaded', function() {
+                        let currentSlide = 0;
+                        const slides = document.querySelectorAll('.slide');
+                        const totalSlides = slides.length;
+                        const slidesContainer = document.querySelector('.slides-container');
+                        const progressBar = document.querySelector('.carousel-progress');
+                        const prevButton = document.querySelector('.carousel-arrow.prev');
+                        const nextButton = document.querySelector('.carousel-arrow.next');
+                        let slidingDirection = 1; // 1 for forward, -1 for backward
+                        let autoSlideInterval;
+                        let touchStartX = 0;
+                        let touchEndX = 0;
 
-                    function updateSlidePosition() {
-                        slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
-                        progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
-                    }
-
-                    function moveSlide(direction) {
-                        // Store the current direction
-                        slidingDirection = direction;
-
-                        // Update current slide with direction
-                        currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
-
-                        // Update UI
-                        updateSlidePosition();
-                    }
-
-                    function startAutoSlide() {
-                        // Clear any existing interval
-                        clearInterval(autoSlideInterval);
-
-                        // Set new interval - goes through all slides from start to end, then back to start
-                        autoSlideInterval = setInterval(() => {
-                            // If we're at the last slide and going forward, change direction
-                            if (currentSlide === totalSlides - 1 && slidingDirection === 1) {
-                                slidingDirection = -1;
-                            }
-                            // If we're at the first slide and going backward, change direction
-                            else if (currentSlide === 0 && slidingDirection === -1) {
-                                slidingDirection = 1;
-                            }
-
-                            // Move in the current direction
-                            moveSlide(slidingDirection);
-                        }, 7000); // Longer interval (7 seconds) for better viewing experience
-                    }
-
-                    // Add event listeners to arrows
-                    prevButton.addEventListener('click', function() {
-                        moveSlide(-1);
-                        slidingDirection = -1; // Update direction when manually clicked
-                    });
-
-                    nextButton.addEventListener('click', function() {
-                        moveSlide(1);
-                        slidingDirection = 1; // Update direction when manually clicked
-                    });
-
-                    // Start the auto-slide
-                    startAutoSlide();
-
-                    // Pause auto-slide when interacting with arrows
-                    prevButton.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
-                    nextButton.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
-
-                    // Resume auto-slide when mouse leaves
-                    prevButton.addEventListener('mouseleave', startAutoSlide);
-                    nextButton.addEventListener('mouseleave', startAutoSlide);
-
-                    // Touch events for mobile
-                    slidesContainer.addEventListener('touchstart', e => {
-                        touchStartX = e.changedTouches[0].screenX;
-                        // Pause auto-slide on touch
-                        clearInterval(autoSlideInterval);
-                    }, {
-                        passive: true
-                    });
-
-                    slidesContainer.addEventListener('touchmove', e => {
-                        // Prevent scrolling while swiping
-                        if (Math.abs(e.changedTouches[0].screenX - touchStartX) > 10) {
-                            e.preventDefault();
+                        function updateSlidePosition() {
+                            slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+                            progressBar.style.width = `${((currentSlide + 1) / totalSlides) * 100}%`;
                         }
-                    }, {
-                        passive: false
-                    });
 
-                    slidesContainer.addEventListener('touchend', e => {
-                        touchEndX = e.changedTouches[0].screenX;
-                        if (touchStartX - touchEndX > 50) {
-                            moveSlide(1); // Slide right
-                            slidingDirection = 1; // Update direction
-                        } else if (touchEndX - touchStartX > 50) {
-                            moveSlide(-1); // Slide left
-                            slidingDirection = -1; // Update direction
+                        function moveSlide(direction) {
+                            // Store the current direction
+                            slidingDirection = direction;
+
+                            // Update current slide with direction
+                            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+
+                            // Update UI
+                            updateSlidePosition();
                         }
-                        // Resume auto-slide after touch
+
+                        function startAutoSlide() {
+                            // Clear any existing interval
+                            clearInterval(autoSlideInterval);
+
+                            // Set new interval - goes through all slides from start to end, then back to start
+                            autoSlideInterval = setInterval(() => {
+                                // If we're at the last slide and going forward, change direction
+                                if (currentSlide === totalSlides - 1 && slidingDirection === 1) {
+                                    slidingDirection = -1;
+                                }
+                                // If we're at the first slide and going backward, change direction
+                                else if (currentSlide === 0 && slidingDirection === -1) {
+                                    slidingDirection = 1;
+                                }
+
+                                // Move in the current direction
+                                moveSlide(slidingDirection);
+                            }, 7000); // Longer interval (7 seconds) for better viewing experience
+                        }
+
+                        // Add event listeners to arrows
+                        prevButton.addEventListener('click', function() {
+                            moveSlide(-1);
+                            slidingDirection = -1; // Update direction when manually clicked
+                        });
+
+                        nextButton.addEventListener('click', function() {
+                            moveSlide(1);
+                            slidingDirection = 1; // Update direction when manually clicked
+                        });
+
+                        // Start the auto-slide
                         startAutoSlide();
-                    }, {
-                        passive: true
+
+                        // Pause auto-slide when interacting with arrows
+                        prevButton.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+                        nextButton.addEventListener('mouseenter', () => clearInterval(autoSlideInterval));
+
+                        // Resume auto-slide when mouse leaves
+                        prevButton.addEventListener('mouseleave', startAutoSlide);
+                        nextButton.addEventListener('mouseleave', startAutoSlide);
+
+                        // Touch events for mobile
+                        slidesContainer.addEventListener('touchstart', e => {
+                            touchStartX = e.changedTouches[0].screenX;
+                            // Pause auto-slide on touch
+                            clearInterval(autoSlideInterval);
+                        }, {
+                            passive: true
+                        });
+
+                        slidesContainer.addEventListener('touchmove', e => {
+                            // Prevent scrolling while swiping
+                            if (Math.abs(e.changedTouches[0].screenX - touchStartX) > 10) {
+                                e.preventDefault();
+                            }
+                        }, {
+                            passive: false
+                        });
+
+                        slidesContainer.addEventListener('touchend', e => {
+                            touchEndX = e.changedTouches[0].screenX;
+                            if (touchStartX - touchEndX > 50) {
+                                moveSlide(1); // Slide right
+                                slidingDirection = 1; // Update direction
+                            } else if (touchEndX - touchStartX > 50) {
+                                moveSlide(-1); // Slide left
+                                slidingDirection = -1; // Update direction
+                            }
+                            // Resume auto-slide after touch
+                            startAutoSlide();
+                        }, {
+                            passive: true
+                        });
                     });
-                });
                 </script>
     </section>
 
     <!-- Add Particles.js script -->
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Load particles.js script if it doesn't exist
-        if (typeof particlesJS === 'undefined') {
-            const script = document.createElement('script');
-            script.src = 'https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js';
-            script.onload = initParticles;
-            document.head.appendChild(script);
-        } else {
-            initParticles();
-        }
+        document.addEventListener('DOMContentLoaded', function() {
+            // Load particles.js script if it doesn't exist
+            if (typeof particlesJS === 'undefined') {
+                const script = document.createElement('script');
+                script.src = 'https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js';
+                script.onload = initParticles;
+                document.head.appendChild(script);
+            } else {
+                initParticles();
+            }
 
-        function initParticles() {
-            particlesJS('particles-js', {
-                particles: {
-                    number: {
-                        value: 80,
-                        density: {
-                            enable: true,
-                            value_area: 800
-                        }
-                    },
-                    color: {
-                        value: "#ffffff"
-                    },
-                    shape: {
-                        type: "circle"
-                    },
-                    opacity: {
-                        value: 0.5,
-                        random: true
-                    },
-                    size: {
-                        value: 3,
-                        random: true
-                    },
-                    line_linked: {
-                        enable: true,
-                        distance: 150,
-                        color: "#ffffff",
-                        opacity: 0.4,
-                        width: 1
-                    },
-                    move: {
-                        enable: true,
-                        speed: 2,
-                        direction: "none",
-                        random: true,
-                        straight: false,
-                        out_mode: "out",
-                        bounce: false
-                    }
-                },
-                interactivity: {
-                    detect_on: "canvas",
-                    events: {
-                        onhover: {
-                            enable: true,
-                            mode: "grab"
-                        },
-                        onclick: {
-                            enable: true,
-                            mode: "push"
-                        }
-                    },
-                    modes: {
-                        grab: {
-                            distance: 140,
-                            line_linked: {
-                                opacity: 1
+            function initParticles() {
+                particlesJS('particles-js', {
+                    particles: {
+                        number: {
+                            value: 80,
+                            density: {
+                                enable: true,
+                                value_area: 800
                             }
                         },
-                        push: {
-                            particles_nb: 4
+                        color: {
+                            value: "#ffffff"
+                        },
+                        shape: {
+                            type: "circle"
+                        },
+                        opacity: {
+                            value: 0.5,
+                            random: true
+                        },
+                        size: {
+                            value: 3,
+                            random: true
+                        },
+                        line_linked: {
+                            enable: true,
+                            distance: 150,
+                            color: "#ffffff",
+                            opacity: 0.4,
+                            width: 1
+                        },
+                        move: {
+                            enable: true,
+                            speed: 2,
+                            direction: "none",
+                            random: true,
+                            straight: false,
+                            out_mode: "out",
+                            bounce: false
                         }
-                    }
-                },
-                retina_detect: true
-            });
-        }
-    });
+                    },
+                    interactivity: {
+                        detect_on: "canvas",
+                        events: {
+                            onhover: {
+                                enable: true,
+                                mode: "grab"
+                            },
+                            onclick: {
+                                enable: true,
+                                mode: "push"
+                            }
+                        },
+                        modes: {
+                            grab: {
+                                distance: 140,
+                                line_linked: {
+                                    opacity: 1
+                                }
+                            },
+                            push: {
+                                particles_nb: 4
+                            }
+                        }
+                    },
+                    retina_detect: true
+                });
+            }
+        });
     </script>
 
     <!-- Carousel Script -->
     <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const slidesContainer = document.querySelector('.slides-container');
-        const slides = document.querySelectorAll('.slide');
-        const prevButton = document.querySelector('.carousel-arrow.prev');
-        const nextButton = document.querySelector('.carousel-arrow.next');
-        const indicators = document.querySelectorAll('.indicator');
+        document.addEventListener('DOMContentLoaded', function() {
+            const slidesContainer = document.querySelector('.slides-container');
+            const slides = document.querySelectorAll('.slide');
+            const prevButton = document.querySelector('.carousel-arrow.prev');
+            const nextButton = document.querySelector('.carousel-arrow.next');
+            const indicators = document.querySelectorAll('.indicator');
 
-        let currentSlide = 0;
-        const slideCount = slides.length;
+            let currentSlide = 0;
+            const slideCount = slides.length;
 
-        // Tambahkan class untuk indikator aktif
-        function updateIndicators() {
-            indicators.forEach((indicator, index) => {
-                if (index === currentSlide) {
-                    indicator.classList.add('bg-primary-500');
-                    indicator.classList.add('indicator-active');
-                } else {
-                    indicator.classList.remove('bg-primary-500');
-                    indicator.classList.remove('indicator-active');
-                }
-            });
-        }
-
-        // Fungsi untuk menggeser slide
-        function goToSlide(slideIndex) {
-            if (slideIndex < 0) {
-                slideIndex = slideCount - 1;
-            } else if (slideIndex >= slideCount) {
-                slideIndex = 0;
+            // Tambahkan class untuk indikator aktif
+            function updateIndicators() {
+                indicators.forEach((indicator, index) => {
+                    if (index === currentSlide) {
+                        indicator.classList.add('bg-primary-500');
+                        indicator.classList.add('indicator-active');
+                    } else {
+                        indicator.classList.remove('bg-primary-500');
+                        indicator.classList.remove('indicator-active');
+                    }
+                });
             }
 
-            currentSlide = slideIndex;
-            const translateValue = -currentSlide * 100 + '%';
-            slidesContainer.style.transform = `translateX(${translateValue})`;
-            updateIndicators();
-        }
+            // Fungsi untuk menggeser slide
+            function goToSlide(slideIndex) {
+                if (slideIndex < 0) {
+                    slideIndex = slideCount - 1;
+                } else if (slideIndex >= slideCount) {
+                    slideIndex = 0;
+                }
 
-        // Event listener untuk tombol navigasi
-        prevButton.addEventListener('click', () => {
-            goToSlide(currentSlide - 1);
-        });
+                currentSlide = slideIndex;
+                const translateValue = -currentSlide * 100 + '%';
+                slidesContainer.style.transform = `translateX(${translateValue})`;
+                updateIndicators();
+            }
 
-        nextButton.addEventListener('click', () => {
-            goToSlide(currentSlide + 1);
-        });
-
-        // Event listener untuk indikator
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                goToSlide(index);
+            // Event listener untuk tombol navigasi
+            prevButton.addEventListener('click', () => {
+                goToSlide(currentSlide - 1);
             });
-        });
 
-        // Auto slide setiap 5 detik
-        let autoSlideInterval = setInterval(() => {
-            goToSlide(currentSlide + 1);
-        }, 5000);
+            nextButton.addEventListener('click', () => {
+                goToSlide(currentSlide + 1);
+            });
 
-        // Hentikan auto slide saat user berinteraksi dengan carousel
-        const carouselContainer = document.querySelector('.carousel-container');
-        carouselContainer.addEventListener('mouseenter', () => {
-            clearInterval(autoSlideInterval);
-        });
+            // Event listener untuk indikator
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    goToSlide(index);
+                });
+            });
 
-        carouselContainer.addEventListener('mouseleave', () => {
-            autoSlideInterval = setInterval(() => {
+            // Auto slide setiap 5 detik
+            let autoSlideInterval = setInterval(() => {
                 goToSlide(currentSlide + 1);
             }, 5000);
-        });
 
-        // Tambahkan dukungan untuk swipe pada perangkat mobile
-        let touchStartX = 0;
-        let touchEndX = 0;
+            // Hentikan auto slide saat user berinteraksi dengan carousel
+            const carouselContainer = document.querySelector('.carousel-container');
+            carouselContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoSlideInterval);
+            });
 
-        carouselContainer.addEventListener('touchstart', (e) => {
-            touchStartX = e.changedTouches[0].screenX;
-        });
+            carouselContainer.addEventListener('mouseleave', () => {
+                autoSlideInterval = setInterval(() => {
+                    goToSlide(currentSlide + 1);
+                }, 5000);
+            });
 
-        carouselContainer.addEventListener('touchend', (e) => {
-            touchEndX = e.changedTouches[0].screenX;
-            handleSwipe();
-        });
+            // Tambahkan dukungan untuk swipe pada perangkat mobile
+            let touchStartX = 0;
+            let touchEndX = 0;
 
-        function handleSwipe() {
-            const swipeThreshold = 50;
-            if (touchEndX < touchStartX - swipeThreshold) {
-                // Swipe kiri
-                goToSlide(currentSlide + 1);
-            } else if (touchEndX > touchStartX + swipeThreshold) {
-                // Swipe kanan
-                goToSlide(currentSlide - 1);
+            carouselContainer.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            });
+
+            carouselContainer.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                if (touchEndX < touchStartX - swipeThreshold) {
+                    // Swipe kiri
+                    goToSlide(currentSlide + 1);
+                } else if (touchEndX > touchStartX + swipeThreshold) {
+                    // Swipe kanan
+                    goToSlide(currentSlide - 1);
+                }
             }
-        }
 
-        // Inisialisasi carousel
-        updateIndicators();
-    });
+            // Inisialisasi carousel
+            updateIndicators();
+        });
     </script>
 
 
@@ -1622,20 +1617,35 @@
                     </div>
                 </a>
             </div>
- <!-- Pesan jika produk tidak ditemukan -->
-@if(request()->has('query') && $produk->isEmpty())
-    <div class="text-center mt-16">
-        <p class="text-red-600 text-2xl font-bold tracking-wide animate-pulse">❌ Produk yang Anda cari tidak ditemukan.</p>
-    </div>
-@endif
+            <!-- Pesan jika produk tidak ditemukan -->
+            @if(request()->has('query') && $produk->isEmpty())
+            <div class="text-center mt-16">
+                <p class="text-red-600 text-2xl font-bold tracking-wide animate-pulse">❌ Produk yang Anda cari tidak ditemukan.</p>
+            </div>
+            @endif
 
-<!-- Hasil pencarian -->
-@if(!empty($query))
-    <div class="text-center mt-10">
-        <h3 class="text-gray-600 text-lg mb-1 tracking-wide">Hasil pencarian untuk:</h3>
-        <p class="text-2xl font-extrabold text-blue-700 italic">"{{ $query }}"</p>
-    </div>
-@endif
+            <!-- Hasil pencarian -->
+            @if(!empty($query))
+            <div class="text-center mt-10">
+                <h3 class="text-gray-600 text-lg mb-1 tracking-wide">Hasil pencarian untuk:</h3>
+                <p class="text-2xl font-extrabold text-blue-700 italic">"{{ $query }}"</p>
+            </div>
+            @endif
+
+            <!-- Pesan jika produk tidak ditemukan -->
+            @if(request()->has('query') && $produk->isEmpty())
+            <div class="text-center mt-16">
+                <p class="text-red-600 text-2xl font-bold tracking-wide animate-pulse">❌ Produk yang Anda cari tidak ditemukan.</p>
+            </div>
+            @endif
+
+            <!-- Hasil pencarian -->
+            @if(!empty($query))
+            <div class="text-center mt-10">
+                <h3 class="text-gray-600 text-lg mb-1 tracking-wide">Hasil pencarian untuk:</h3>
+                <p class="text-2xl font-extrabold text-blue-700 italic">"{{ $query }}"</p>
+            </div>
+            @endif
 
             <!-- Products Grid with Enhanced Animations -->
             <div id="produk-container" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
@@ -2018,10 +2028,12 @@
                         <div>
                             <h4 class="text-sm font-semibold text-gray-800">{{ $pesan->nama }}</h4>
                             <p class="text-xs text-gray-400">
-                                {{ \Carbon\Carbon::parse($pesan->created_at)->diffForHumans() }}</p>
+                                {{ \Carbon\Carbon::parse($pesan->created_at)->diffForHumans() }}
+                            </p>
                             <p
                                 class="mt-2 text-sm text-gray-700 line-clamp-3 group-hover:text-gray-900 transition-all duration-300 ease-in-out">
-                                {{ $pesan->pesan }}</p>
+                                {{ $pesan->pesan }}
+                            </p>
                         </div>
                     </div>
                 </div>
@@ -2047,115 +2059,115 @@
     </div>
 
     <style>
-    @keyframes float {
+        @keyframes float {
 
-        0%,
-        100% {
-            transform: translateY(0);
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-12px);
+            }
         }
 
-        50% {
-            transform: translateY(-12px);
-        }
-    }
+        @keyframes float-slow {
 
-    @keyframes float-slow {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
 
-        0%,
-        100% {
-            transform: translateY(0);
-        }
-
-        50% {
-            transform: translateY(-6px);
-        }
-    }
-
-    @keyframes pulse-slow {
-
-        0%,
-        100% {
-            opacity: 0.15;
-            transform: scale(1);
+            50% {
+                transform: translateY(-6px);
+            }
         }
 
-        50% {
-            opacity: 0.25;
-            transform: scale(1.1);
-        }
-    }
+        @keyframes pulse-slow {
 
-    @keyframes fadeInDown {
-        0% {
-            opacity: 0;
-            transform: translateY(-20px);
-        }
+            0%,
+            100% {
+                opacity: 0.15;
+                transform: scale(1);
+            }
 
-        100% {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-
-    @keyframes fadeInUp {
-        0% {
-            opacity: 0;
-            transform: translateY(20px);
+            50% {
+                opacity: 0.25;
+                transform: scale(1.1);
+            }
         }
 
-        100% {
-            opacity: 1;
-            transform: translateY(0);
+        @keyframes fadeInDown {
+            0% {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
-    }
 
-    @keyframes pop {
-        0% {
-            transform: scale(0.9);
-            opacity: 0;
+        @keyframes fadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        100% {
-            transform: scale(1);
-            opacity: 1;
+        @keyframes pop {
+            0% {
+                transform: scale(0.9);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
-    }
 
-    .animate-float {
-        animation: float 10s ease-in-out infinite;
-    }
+        .animate-float {
+            animation: float 10s ease-in-out infinite;
+        }
 
-    .animate-float-slow {
-        animation: float-slow 16s ease-in-out infinite;
-    }
+        .animate-float-slow {
+            animation: float-slow 16s ease-in-out infinite;
+        }
 
-    .animate-pulse-slow {
-        animation: pulse-slow 12s ease-in-out infinite;
-    }
+        .animate-pulse-slow {
+            animation: pulse-slow 12s ease-in-out infinite;
+        }
 
-    .animate-fade-in-down {
-        animation: fadeInDown 1s ease-out both;
-    }
+        .animate-fade-in-down {
+            animation: fadeInDown 1s ease-out both;
+        }
 
-    .animate-fade-in-up {
-        animation: fadeInUp 1s ease-out both;
-    }
+        .animate-fade-in-up {
+            animation: fadeInUp 1s ease-out both;
+        }
 
-    .animate-pop {
-        animation: pop 0.6s ease-out both;
-    }
+        .animate-pop {
+            animation: pop 0.6s ease-out both;
+        }
 
-    .line-clamp-3 {
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        overflow: hidden;
-    }
+        .line-clamp-3 {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
 
-    /* Tilt effect (opsional jika ingin efek 3D hover ringan) */
-    .tilt-card:hover {
-        transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02);
-    }
+        /* Tilt effect (opsional jika ingin efek 3D hover ringan) */
+        .tilt-card:hover {
+            transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02);
+        }
     </style>
 
 
@@ -2596,256 +2608,256 @@
 
 
                     <script>
-                    // Back to top button
-                    document.getElementById('back-to-top').addEventListener('click', function(e) {
-                        e.preventDefault();
-                        window.scrollTo({
-                            top: 0,
-                            behavior: 'smooth'
-                        });
-                    });
-
-                    // Show/hide back to top button based on scroll position
-                    window.addEventListener('scroll', function() {
-                        const backToTop = document.getElementById('back-to-top');
-                        if (window.pageYOffset > 300) {
-                            backToTop.classList.add('opacity-100', 'visible');
-                            backToTop.classList.remove('opacity-0', 'invisible');
-                        } else {
-                            backToTop.classList.add('opacity-0', 'invisible');
-                            backToTop.classList.remove('opacity-100', 'visible');
-                        }
-                    });
-
-                    // Smooth scrolling for anchor links
-                    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                        anchor.addEventListener('click', function(e) {
+                        // Back to top button
+                        document.getElementById('back-to-top').addEventListener('click', function(e) {
                             e.preventDefault();
+                            window.scrollTo({
+                                top: 0,
+                                behavior: 'smooth'
+                            });
+                        });
 
-                            const targetId = this.getAttribute('href');
-                            if (targetId === '#') return;
+                        // Show/hide back to top button based on scroll position
+                        window.addEventListener('scroll', function() {
+                            const backToTop = document.getElementById('back-to-top');
+                            if (window.pageYOffset > 300) {
+                                backToTop.classList.add('opacity-100', 'visible');
+                                backToTop.classList.remove('opacity-0', 'invisible');
+                            } else {
+                                backToTop.classList.add('opacity-0', 'invisible');
+                                backToTop.classList.remove('opacity-100', 'visible');
+                            }
+                        });
 
-                            const targetElement = document.querySelector(targetId);
-                            if (targetElement) {
-                                window.scrollTo({
-                                    top: targetElement.offsetTop - 80,
+                        // Smooth scrolling for anchor links
+                        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                            anchor.addEventListener('click', function(e) {
+                                e.preventDefault();
+
+                                const targetId = this.getAttribute('href');
+                                if (targetId === '#') return;
+
+                                const targetElement = document.querySelector(targetId);
+                                if (targetElement) {
+                                    window.scrollTo({
+                                        top: targetElement.offsetTop - 80,
+                                        behavior: 'smooth'
+                                    });
+                                }
+                            });
+                        });
+
+                        // Animation on scroll
+                        function animateOnScroll() {
+                            const elements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
+
+                            elements.forEach(element => {
+                                const elementPosition = element.getBoundingClientRect().top;
+                                const screenPosition = window.innerHeight / 1.2;
+
+                                if (elementPosition < screenPosition) {
+                                    element.style.opacity = '1';
+                                    element.style.transform = 'translateY(0)';
+                                }
+                            });
+                        }
+
+                        // Initialize animations
+                        window.addEventListener('load', animateOnScroll);
+                        window.addEventListener('scroll', animateOnScroll);
+
+                        // Dropdown menu for mobile
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const mobileMenuButton = document.querySelector('.lg\\:hidden');
+                            const mobileMenu = document.querySelector('.mobile-menu');
+
+                            if (mobileMenuButton && mobileMenu) {
+                                mobileMenuButton.addEventListener('click', function() {
+                                    mobileMenu.classList.toggle('hidden');
+                                });
+                            }
+                        });
+                    </script>
+                    <script>
+                        AOS.init({
+                            duration: 1000,
+                            once: true,
+                            offset: 100,
+                            delay: 100
+                        });
+                    </script>
+
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            if (document.getElementById('search-results')) {
+                                document.getElementById('search-results').scrollIntoView({
                                     behavior: 'smooth'
                                 });
                             }
                         });
-                    });
-
-                    // Animation on scroll
-                    function animateOnScroll() {
-                        const elements = document.querySelectorAll('.animate-fade-in, .animate-slide-up');
-
-                        elements.forEach(element => {
-                            const elementPosition = element.getBoundingClientRect().top;
-                            const screenPosition = window.innerHeight / 1.2;
-
-                            if (elementPosition < screenPosition) {
-                                element.style.opacity = '1';
-                                element.style.transform = 'translateY(0)';
-                            }
-                        });
-                    }
-
-                    // Initialize animations
-                    window.addEventListener('load', animateOnScroll);
-                    window.addEventListener('scroll', animateOnScroll);
-
-                    // Dropdown menu for mobile
-                    document.addEventListener('DOMContentLoaded', function() {
-                        const mobileMenuButton = document.querySelector('.lg\\:hidden');
-                        const mobileMenu = document.querySelector('.mobile-menu');
-
-                        if (mobileMenuButton && mobileMenu) {
-                            mobileMenuButton.addEventListener('click', function() {
-                                mobileMenu.classList.toggle('hidden');
-                            });
-                        }
-                    });
-                    </script>
-                    <script>
-                    AOS.init({
-                        duration: 1000,
-                        once: true,
-                        offset: 100,
-                        delay: 100
-                    });
-                    </script>
-
-                    <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        if (document.getElementById('search-results')) {
-                            document.getElementById('search-results').scrollIntoView({
-                                behavior: 'smooth'
-                            });
-                        }
-                    });
                     </script>
 
                     @push('scripts')
                     <script>
-                    document.addEventListener('DOMContentLoaded', function() {
-                        new Swiper('.swiper-container', {
-                            loop: true,
-                            autoplay: {
-                                delay: 5000,
-                            },
-                            pagination: {
-                                el: '.swiper-pagination',
-                                clickable: true,
-                            },
-                            navigation: {
-                                nextEl: '.swiper-button-next',
-                                prevEl: '.swiper-button-prev',
-                            },
+                        document.addEventListener('DOMContentLoaded', function() {
+                            new Swiper('.swiper-container', {
+                                loop: true,
+                                autoplay: {
+                                    delay: 5000,
+                                },
+                                pagination: {
+                                    el: '.swiper-pagination',
+                                    clickable: true,
+                                },
+                                navigation: {
+                                    nextEl: '.swiper-button-next',
+                                    prevEl: '.swiper-button-prev',
+                                },
+                            });
                         });
-                    });
                     </script>
                     @endpush
 
                     <script>
-                    document.querySelectorAll('.toggle-favorit').forEach(button => {
-                        button.addEventListener('click', async () => {
-                            const url = button.getAttribute('data-url');
+                        document.querySelectorAll('.toggle-favorit').forEach(button => {
+                            button.addEventListener('click', async () => {
+                                const url = button.getAttribute('data-url');
 
-                            try {
-                                const response = await fetch(url, {
-                                    method: 'POST',
-                                    headers: {
-                                        'X-CSRF-TOKEN': document.querySelector(
-                                            'meta[name="csrf-token"]').getAttribute(
-                                            'content'),
-                                        'Accept': 'application/json',
-                                    },
-                                });
+                                try {
+                                    const response = await fetch(url, {
+                                        method: 'POST',
+                                        headers: {
+                                            'X-CSRF-TOKEN': document.querySelector(
+                                                'meta[name="csrf-token"]').getAttribute(
+                                                'content'),
+                                            'Accept': 'application/json',
+                                        },
+                                    });
 
-                                if (response.status === 401) {
-                                    const data = await response.json();
-                                    console.log('401 response:', data);
-                                    if (data.redirect) {
-                                        window.location.href = data.redirect;
-                                    } else {
-                                        window.location.href = '/login';
+                                    if (response.status === 401) {
+                                        const data = await response.json();
+                                        console.log('401 response:', data);
+                                        if (data.redirect) {
+                                            window.location.href = data.redirect;
+                                        } else {
+                                            window.location.href = '/login';
+                                        }
+                                        return;
                                     }
-                                    return;
-                                }
 
-                                const data = await response.json();
-                                const icon = button.querySelector('i');
-                                if (data.status === 'added') {
-                                    icon.className = 'fas fa-heart text-red-500';
-                                } else if (data.status === 'removed') {
-                                    icon.className =
-                                        'far fa-heart text-gray-700 hover:text-primary-600';
-                                }
+                                    const data = await response.json();
+                                    const icon = button.querySelector('i');
+                                    if (data.status === 'added') {
+                                        icon.className = 'fas fa-heart text-red-500';
+                                    } else if (data.status === 'removed') {
+                                        icon.className =
+                                            'far fa-heart text-gray-700 hover:text-primary-600';
+                                    }
 
-                            } catch (error) {
-                                console.error(error);
-                                alert('Gagal mengirim permintaan.');
+                                } catch (error) {
+                                    console.error(error);
+                                    alert('Gagal mengirim permintaan.');
+                                }
+                            });
+                        });
+
+                        // bagikan
+                        let currentShareProductName = '';
+                        let currentShareProductPrice = '';
+                        let currentShareProductUrl = '';
+
+                        function openShareModal(productName, productPrice, productUrl) {
+                            currentShareProductName = productName;
+                            currentShareProductPrice = productPrice;
+                            currentShareProductUrl = productUrl;
+
+                            const modal = document.getElementById('shareModal');
+                            document.getElementById('shareModalProductName').textContent = `Produk ${productName}`;
+                            modal.classList.remove('hidden');
+                        }
+
+                        function closeShareModal() {
+                            const modal = document.getElementById('shareModal');
+                            modal.classList.add('hidden');
+                        }
+
+                        function getShareText() {
+                            return encodeURIComponent(
+                                `Lihat produk ${currentShareProductName} dengan harga Rp ${currentShareProductPrice} di Berkah Gadget!`
+                            );
+                        }
+
+                        function getShareUrl() {
+                            return encodeURIComponent(currentShareProductUrl);
+                        }
+
+                        function shareToWhatsApp() {
+                            window.open(`https://wa.me/?text=${getShareText()}%20${getShareUrl()}`, '_blank');
+                            closeShareModal();
+                            showToast('Membuka WhatsApp...');
+                        }
+
+                        function shareToFacebook() {
+                            window.open(`https://www.facebook.com/sharer/sharer.php?u=${getShareUrl()}`, '_blank');
+                            closeShareModal();
+                            showToast('Membuka Facebook...');
+                        }
+
+                        function shareToInstagram() {
+                            window.open(`https://www.instagram.com/`, '_blank'); // Opens Instagram website
+                            showToast('Buka Instagram dan tempel tautan produk secara manual.');
+                            closeShareModal();
+                        }
+
+
+                        function shareToTelegram() {
+                            window.open(`https://t.me/share/url?url=${getShareUrl()}&text=${getShareText()}`, '_blank');
+                            closeShareModal();
+                            showToast('Membuka Telegram...');
+                        }
+
+                        // Close modal when clicking outside
+                        document.getElementById('shareModal').addEventListener('click', function(e) {
+                            if (e.target === this) {
+                                closeShareModal();
                             }
                         });
-                    });
 
-                    // bagikan
-                    let currentShareProductName = '';
-                    let currentShareProductPrice = '';
-                    let currentShareProductUrl = '';
-
-                    function openShareModal(productName, productPrice, productUrl) {
-                        currentShareProductName = productName;
-                        currentShareProductPrice = productPrice;
-                        currentShareProductUrl = productUrl;
-
-                        const modal = document.getElementById('shareModal');
-                        document.getElementById('shareModalProductName').textContent = `Produk ${productName}`;
-                        modal.classList.remove('hidden');
-                    }
-
-                    function closeShareModal() {
-                        const modal = document.getElementById('shareModal');
-                        modal.classList.add('hidden');
-                    }
-
-                    function getShareText() {
-                        return encodeURIComponent(
-                            `Lihat produk ${currentShareProductName} dengan harga Rp ${currentShareProductPrice} di Berkah Gadget!`
-                            );
-                    }
-
-                    function getShareUrl() {
-                        return encodeURIComponent(currentShareProductUrl);
-                    }
-
-                    function shareToWhatsApp() {
-                        window.open(`https://wa.me/?text=${getShareText()}%20${getShareUrl()}`, '_blank');
-                        closeShareModal();
-                        showToast('Membuka WhatsApp...');
-                    }
-
-                    function shareToFacebook() {
-                        window.open(`https://www.facebook.com/sharer/sharer.php?u=${getShareUrl()}`, '_blank');
-                        closeShareModal();
-                        showToast('Membuka Facebook...');
-                    }
-
-                    function shareToInstagram() {
-                        window.open(`https://www.instagram.com/`, '_blank'); // Opens Instagram website
-                        showToast('Buka Instagram dan tempel tautan produk secara manual.');
-                        closeShareModal();
-                    }
-
-
-                    function shareToTelegram() {
-                        window.open(`https://t.me/share/url?url=${getShareUrl()}&text=${getShareText()}`, '_blank');
-                        closeShareModal();
-                        showToast('Membuka Telegram...');
-                    }
-
-                    // Close modal when clicking outside
-                    document.getElementById('shareModal').addEventListener('click', function(e) {
-                        if (e.target === this) {
-                            closeShareModal();
-                        }
-                    });
-
-                    // Close modal with Escape key
-                    document.addEventListener('keydown', function(e) {
-                        if (e.key === 'Escape') {
-                            closeShareModal();
-                        }
-                    });
+                        // Close modal with Escape key
+                        document.addEventListener('keydown', function(e) {
+                            if (e.key === 'Escape') {
+                                closeShareModal();
+                            }
+                        });
                     </script>
                     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
 
                     <script>
-                    const locationTitle = document.getElementById("location-title");
+                        const locationTitle = document.getElementById("location-title");
 
-                    const titles = [
-                        "Lokasi Toko Utama",
-                        "Lokasi Toko Cabang ",
+                        const titles = [
+                            "Lokasi Toko Utama",
+                            "Lokasi Toko Cabang ",
 
-                    ];
+                        ];
 
-                    var swiper = new Swiper(".mySwiper", {
-                        navigation: {
-                            nextEl: ".swiper-button-next",
-                            prevEl: ".swiper-button-prev",
-                        },
-                        pagination: {
-                            el: ".swiper-pagination",
-                            clickable: true,
-                        },
-                        on: {
-                            slideChange: function() {
-                                // Update judul sesuai index slide aktif
-                                const currentIndex = this.activeIndex;
-                                locationTitle.textContent = titles[currentIndex] || "Lokasi Toko";
+                        var swiper = new Swiper(".mySwiper", {
+                            navigation: {
+                                nextEl: ".swiper-button-next",
+                                prevEl: ".swiper-button-prev",
                             },
-                        },
-                    });
+                            pagination: {
+                                el: ".swiper-pagination",
+                                clickable: true,
+                            },
+                            on: {
+                                slideChange: function() {
+                                    // Update judul sesuai index slide aktif
+                                    const currentIndex = this.activeIndex;
+                                    locationTitle.textContent = titles[currentIndex] || "Lokasi Toko";
+                                },
+                            },
+                        });
                     </script>
 
 </body>

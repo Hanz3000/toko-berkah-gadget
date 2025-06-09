@@ -57,21 +57,27 @@ Route::middleware(['auth'])->prefix('user')->group(function () {
     // Halaman katalog produk lengkap
     Route::get('/katalog-produk', [UserController::class, 'katalogProduk'])->name('user.katalog-produk');
 
-<<<<<<< HEAD
-Route::get('/user/dashboard', function () {
-    $produk = Produk::paginate(6); // <-- Ubah all() jadi paginate()
-    $carousels = Carousel::all();
-    return view('user.dashboard', compact('produk', 'carousels'));
-})->name('user.dashboard');
-=======
     // ✅ Tambahkan ini:
     Route::get('/keranjang', [KeranjangController::class, 'index'])->name('keranjang.index');
     Route::post('/keranjang/tambah', [KeranjangController::class, 'tambah'])->name('keranjang.tambah');
     Route::post('/keranjang/{id}/kurang', [KeranjangController::class, 'kurang'])->name('keranjang.kurang');
     Route::delete('/keranjang/{id}/hapus', [KeranjangController::class, 'hapus'])->name('keranjang.hapus');
 });
->>>>>>> 5ae9a59 (halaman keranjang)
 
+
+// Search produk
+Route::get('/search', [ProdukController::class, 'search'])->name('produk.search');
+Route::delete('/admin/user/{id}', [AdminController::class, 'deleteUser'])->name('admin.user.delete');
+
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::delete('/user/{id}', [AdminController::class, 'deleteUser'])
+        ->name('admin.user.delete');
+});
+
+// Tampilkan form tambah admin
+Route::get('/admin/produk/tambah-admin', [ProdukController::class, 'tambah_admin'])->name('admin.produk.tambah_admin');
+// Proses penyimpanan admin baru
+Route::post('/admin/produk/tambah-admin', [ProdukController::class, 'store_admin'])->name('admin.produk.tambah_admin.store');
 
 // Halaman dashboard user (dashboard utama)
 Route::get('/user/dashboard', function () {
@@ -93,9 +99,9 @@ Route::post('/register', [LoginController::class, 'register']);
 Route::get('/search', [ProdukController::class, 'search'])->name('produk.search');
 Route::delete('/admin/user/{id}', [AdminController::class, 'deleteUser'])->name('admin.user.delete');
 
-Route::middleware(['auth', 'verified'])->group(function() {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/user/{id}', [AdminController::class, 'deleteUser'])
-         ->name('admin.user.delete');
+        ->name('admin.user.delete');
 });
 
 // Tampilkan form tambah admin
