@@ -5,18 +5,26 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Produk;
-use Illuminate\Support\Facades\Storage;
 use App\Models\User;
-use Illuminate\Support\Facades\Hash;
 use App\Models\Carousel;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class ProdukController extends Controller
 {
-    // 🔵 Tampilkan semua produk untuk admin
-    public function index()
+    // 🔵 Tampilkan semua produk untuk admin (dengan pencarian dan pagination)
+    public function index(Request $request)
     {
-        $produk = Produk::all();
-        return view('admin.produk.index', compact('produk'));
+        $search = $request->input('search');
+        $query = Produk::query();
+
+        if (!empty($search)) {
+            $query->where('nama_produk', 'like', '%' . $search . '%');
+        }
+
+        $produk = $query->paginate(10); // pagination
+
+        return view('admin.produk.index', compact('produk', 'search'));
     }
 
     // 🔵 Tampilkan form tambah produk
@@ -61,7 +69,7 @@ class ProdukController extends Controller
             'kekurangan'    => 'nullable',
             'kelengkapan'   => 'nullable',
             'gambar'        => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'warna'         => 'nullable|string',  // tambahkan validasi warna
+            'warna'         => 'nullable|string',
         ]);
 
         $gambarPath = $request->hasFile('gambar')
@@ -76,12 +84,11 @@ class ProdukController extends Controller
             'kekurangan'    => $request->kekurangan,
             'kelengkapan'   => $request->kelengkapan,
             'gambar'        => $gambarPath,
-            'warna'         => $request->warna,  // simpan warna
+            'warna'         => $request->warna,
         ]);
 
         return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil ditambahkan!');
     }
-
 
     // 🟡 Tampilkan form edit produk
     public function edit($id)
@@ -99,18 +106,18 @@ class ProdukController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nama_produk' => 'required',
-            'kategori' => 'required',
-            'harga' => 'required|numeric',
-            'deskripsi' => 'required',
-            'kekurangan' => 'nullable',
-            'kelengkapan' => 'nullable',
-            'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'warna' => 'nullable|string',
+            'nama_produk'   => 'required',
+            'kategori'      => 'required',
+            'harga'         => 'required|numeric',
+            'deskripsi'     => 'required',
+            'kekurangan'    => 'nullable',
+            'kelengkapan'   => 'nullable',
+            'gambar'        => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'warna'         => 'nullable|string',
         ]);
 
         $produk = Produk::findOrFail($id);
-        $gambarPath = $produk->gambar; // simpan gambar lama
+        $gambarPath = $produk->gambar;
 
         if ($request->hasFile('gambar')) {
             if ($gambarPath) {
@@ -120,19 +127,18 @@ class ProdukController extends Controller
         }
 
         $produk->update([
-            'nama_produk' => $request->nama_produk,
-            'kategori' => $request->kategori,
-            'harga' => $request->harga,
-            'deskripsi' => $request->deskripsi,
-            'kekurangan' => $request->kekurangan,
-            'kelengkapan' => $request->kelengkapan,
-            'gambar' => $gambarPath,
-            'warna' => $request->warna,
+            'nama_produk'   => $request->nama_produk,
+            'kategori'      => $request->kategori,
+            'harga'         => $request->harga,
+            'deskripsi'     => $request->deskripsi,
+            'kekurangan'    => $request->kekurangan,
+            'kelengkapan'   => $request->kelengkapan,
+            'gambar'        => $gambarPath,
+            'warna'         => $request->warna,
         ]);
 
         return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil diperbarui!');
     }
-
 
     // 🔴 Hapus produk
     public function destroy($id)
@@ -151,6 +157,33 @@ class ProdukController extends Controller
 
         return redirect()->route('admin.produk.index')->with('success', 'Produk berhasil dihapus.');
     }
+// Di dalam ProdukController
+
+// Tampilkan form tambah admin
+public function tambah_admin()
+{
+    return view('admin.produk.tambah_admin'); // file blade kamu
+}
+
+// Simpan data admin baru
+public function store_admin(Request $request)
+{
+    $validated = $request->validate([
+        'name' => 'required|string|max:255',
+        'email' => 'required|email|unique:users,email',
+        'password' => 'required|min:6|confirmed',
+    ]);
+
+    // Simpan admin ke tabel users (dengan role admin, misalnya)
+    User::create([
+        'name' => $validated['name'],
+        'email' => $validated['email'],
+        'password' => Hash::make($validated['password']),
+        'role' => 'admin', // pastikan ada kolom ini kalau pakai sistem role
+    ]);
+
+    return redirect()->route('admin.produk.index')->with('success', 'Admin baru berhasil ditambahkan!');
+}
 
     // 🔍 Pencarian produk untuk dashboard user
     public function search(Request $request)
@@ -171,6 +204,7 @@ class ProdukController extends Controller
         return view('user.dashboard', [
             'carousels' => $carousels,
             'produk' => $produk,
+            'query' => $query,
         ]);
     }
 

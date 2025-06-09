@@ -22,6 +22,11 @@
 
         <form action="{{ route('admin.produk.tambah_admin.store') }}" method="POST" class="space-y-6">
             @csrf
+            @if (session('success'))
+    <div class="bg-green-100 text-green-800 p-4 rounded mb-4">
+        {{ session('success') }}
+    </div>
+@endif
 
             <div class="p-6 border border-gray-100 rounded-xl bg-gray-50">
                 <h3 class="font-semibold text-lg text-gray-700 mb-4 flex items-center">

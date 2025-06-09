@@ -7,15 +7,18 @@
 
 @section('content')
 <!-- User Management Section -->
-<div class="bg-white rounded-xl shadow-md border border-indigo-100 overflow-hidden hover:shadow-lg transition-all duration-300">
-    <div class="flex items-center justify-between p-6 border-b border-indigo-100 bg-gradient-to-r from-indigo-50 to-white">
+<div
+    class="bg-white rounded-xl shadow-md border border-indigo-100 overflow-hidden hover:shadow-lg transition-all duration-300">
+    <div
+        class="flex items-center justify-between p-6 border-b border-indigo-100 bg-gradient-to-r from-indigo-50 to-white">
         <div>
             <h3 class="font-semibold text-indigo-900">Daftar User Terdaftar</h3>
             <p class="text-sm text-indigo-600 mt-1">Kelola dan monitor semua pengguna sistem</p>
         </div>
         <div class="flex items-center space-x-3">
             <div class="relative">
-                <select class="bg-indigo-50 text-sm rounded-lg pl-3 pr-8 py-2 border border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 appearance-none text-indigo-700">
+                <select
+                    class="bg-indigo-50 text-sm rounded-lg pl-3 pr-8 py-2 border border-indigo-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 appearance-none text-indigo-700">
                     <option>Semua Role</option>
                     <option>Admin</option>
                     <option>User</option>
@@ -24,7 +27,8 @@
                 <i class="fas fa-chevron-down text-xs absolute right-3 top-3 text-indigo-500 pointer-events-none"></i>
             </div>
             @if(Auth::user()->role === 'superadmin')
-            <a href="{{ route('admin.produk.tambah_admin') }}" class="px-4 py-2 bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm rounded-lg hover:from-indigo-700 hover:to-blue-700 btn-effect flex items-center space-x-1 shadow-md">
+            <a href="{{ route('admin.produk.tambah_admin') }}"
+                class="px-4 py-2 bg-gradient-to-r from-indigo-600 to-blue-600 text-white text-sm rounded-lg hover:from-indigo-700 hover:to-blue-700 btn-effect flex items-center space-x-1 shadow-md">
                 <i class="fas fa-user-plus"></i>
                 <span>Tambah Admin</span>
             </a>
@@ -51,7 +55,8 @@
                     <td class="py-4 px-6 text-sm text-indigo-600">{{ $loop->iteration }}</td>
                     <td class="py-4 px-6">
                         <div class="flex items-center">
-                            <div class="h-10 w-10 rounded-full bg-gradient-to-r from-indigo-500 to-blue-500 flex items-center justify-center text-white font-medium text-sm shadow-md mr-3">
+                            <div
+                                class="h-10 w-10 rounded-full bg-gradient-to-r from-indigo-500 to-blue-500 flex items-center justify-center text-white font-medium text-sm shadow-md mr-3">
                                 {{ substr($user->name, 0, 1) }}
                             </div>
                             <div>
@@ -59,27 +64,30 @@
                             </div>
                         </div>
                     </td>
+
                     <td class="py-4 px-6 text-indigo-800">{{ $user->email }}</td>
                     <td class="py-4 px-6">
                         @if($user->role === 'superadmin')
-                        <span class="px-3 py-1.5 bg-purple-100 text-purple-700 rounded-full text-xs font-medium shadow-sm">Superadmin</span>
+                        <span
+                            class="px-3 py-1.5 bg-purple-100 text-purple-700 rounded-full text-xs font-medium shadow-sm">Superadmin</span>
                         @elseif($user->role === 'admin')
-                        <span class="px-3 py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-medium shadow-sm">Admin</span>
+                        <span
+                            class="px-3 py-1.5 bg-blue-100 text-blue-700 rounded-full text-xs font-medium shadow-sm">Admin</span>
                         @else
-                        <span class="px-3 py-1.5 bg-green-100 text-green-700 rounded-full text-xs font-medium shadow-sm">User</span>
+                        <span
+                            class="px-3 py-1.5 bg-green-100 text-green-700 rounded-full text-xs font-medium shadow-sm">User</span>
                         @endif
                     </td>
                     <td class="py-4 px-6 text-indigo-800">{{ $user->created_at->format('d M Y') }}</td>
                     <td class="py-4 px-6 text-right">
                         <div class="flex items-center justify-end space-x-3">
-                            <a href="#" class="p-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors shadow-sm">
-                                <i class="fas fa-edit"></i>
-                            </a>
+                          
                             @if(Auth::user()->role === 'superadmin' && Auth::id() !== $user->id)
-                            <form action="#" method="POST" class="inline">
+                            <form id="delete-form-{{ $user->id }}" action="{{ route('admin.user.delete', $user->id) }}" method="POST" class="inline">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" onclick="return confirm('Yakin ingin menghapus user ini?')" class="p-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors shadow-sm">
+                                <button type="button" onclick="confirmDelete({{ $user->id }})"
+                                    class="p-2 bg-red-100 text-red-700 rounded-lg hover:bg-red-200 transition-colors shadow-sm">
                                     <i class="fas fa-trash"></i>
                                 </button>
                             </form>
@@ -96,4 +104,50 @@
         </table>
     </div>
 </div>
+
+<!-- SweetAlert2 CDN -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Notification Script -->
+<script>
+    // Check for success message
+    @if(session('success'))
+        Swal.fire({
+            icon: 'success',
+            title: 'Berhasil!',
+            text: '{{ session('success') }}',
+            showConfirmButton: false,
+            timer: 3000
+        });
+    @endif
+
+    // Check for error message
+    @if(session('error'))
+        Swal.fire({
+            icon: 'error',
+            title: 'Gagal!',
+            text: '{{ session('error') }}',
+            showConfirmButton: false,
+            timer: 3000
+        });
+    @endif
+
+    // Delete confirmation function
+    function confirmDelete(userId) {
+        Swal.fire({
+            title: 'Hapus User?',
+            text: "Data akan dihapus permanen!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#d33',
+            cancelButtonColor: '#3085d6',
+            confirmButtonText: 'Ya, Hapus!',
+            cancelButtonText: 'Batal'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                document.getElementById('delete-form-' + userId).submit();
+            }
+        });
+    }
+</script>
 @endsection

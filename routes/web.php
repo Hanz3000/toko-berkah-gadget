@@ -53,6 +53,11 @@ Route::middleware(['auth'])->prefix('user')->group(function () {
     Route::post('/favorit/{id}/toggle', [FavoritController::class, 'toggle'])->name('favorit.toggle');
 });
 
+Route::get('/user/dashboard', function () {
+    $produk = Produk::paginate(6); // <-- Ubah all() jadi paginate()
+    $carousels = Carousel::all();
+    return view('user.dashboard', compact('produk', 'carousels'));
+})->name('user.dashboard');
 
 
 // Halaman dashboard user (dashboard utama)
@@ -73,3 +78,15 @@ Route::post('/register', [LoginController::class, 'register']);
 
 // Search produk
 Route::get('/search', [ProdukController::class, 'search'])->name('produk.search');
+Route::delete('/admin/user/{id}', [AdminController::class, 'deleteUser'])->name('admin.user.delete');
+
+Route::middleware(['auth', 'verified'])->group(function() {
+    Route::delete('/user/{id}', [AdminController::class, 'deleteUser'])
+         ->name('admin.user.delete');
+});
+
+// Tampilkan form tambah admin
+Route::get('/admin/produk/tambah-admin', [ProdukController::class, 'tambah_admin'])->name('admin.produk.tambah_admin');
+
+// Proses penyimpanan admin baru
+Route::post('/admin/produk/tambah-admin', [ProdukController::class, 'store_admin'])->name('admin.produk.tambah_admin.store');

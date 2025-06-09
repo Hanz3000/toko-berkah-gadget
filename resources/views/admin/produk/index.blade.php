@@ -7,7 +7,7 @@
 
 
 @section('search-form')
-<form action="{{ route('admin.produk.index') }}" method="GET" class="relative">
+<form action="{{ route('admin.produk.index') }}" method="GET" class="relative mb-4">
     <input
         type="text"
         name="search"
@@ -16,7 +16,10 @@
         class="bg-indigo-800 bg-opacity-50 text-sm rounded-lg pl-10 pr-4 py-2 border border-indigo-700 focus:outline-none focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400 w-64 transition-all text-white placeholder-indigo-300">
     <i class="fas fa-search text-indigo-300 absolute left-3 top-2.5"></i>
 </form>
+
 @endsection
+
+
 
 @section('content')
 <!-- Toast Notification Container -->
@@ -30,6 +33,9 @@
                 <h3 class="text-xl font-bold text-indigo-900">Dashboard Overview</h3>
                 <p class="text-sm text-indigo-600 mt-1">Statistik dan ringkasan data terkini</p>
             </div>
+      
+
+
             {{-- Tampilkan info produk terbaru --}}
             @if($produkTerbaru)
             <div class="mb-4 p-4 bg-indigo-100 rounded-md text-indigo-700 flex items-center space-x-2">
@@ -234,7 +240,12 @@
                         <th class="py-4 px-6 font-medium text-right">Aksi</th>
                     </tr>
                 </thead>
-                <tbody>
+                @if($produk->isEmpty())
+    <div class="text-red-600 bg-red-100 border border-red-300 p-6 rounded-lg shadow text-center mt-6">
+        <p class="text-lg font-semibold">Barang yang Anda cari tidak ada.</p>
+    </div>
+@else
+<tbody>
                     @foreach ($produk as $item)
                     <tr class="border-b border-indigo-50 hover:bg-indigo-50 transition-colors">
                         <td class="py-4 px-6 text-sm text-indigo-600">{{ $loop->iteration }}</td>
@@ -299,6 +310,10 @@
     </div>
 </div>
 
+@endif
+    
+
+               
 <!-- Delete Confirmation Modal -->
 <div id="deleteModal" class="fixed inset-0 z-50 flex items-center justify-center hidden">
     <div class="absolute inset-0 bg-black bg-opacity-30 backdrop-blur-sm" onclick="closeDeleteModal()"></div>
