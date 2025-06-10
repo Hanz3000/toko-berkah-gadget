@@ -1,4 +1,33 @@
 <!-- Sidebar Admin yang Sudah Diperindah -->
+
+<style>
+    /* Custom scrollbar untuk sidebar */
+    .sidebar-scroll {
+        overflow-y: auto;
+        scrollbar-width: thin;
+        scrollbar-color: rgba(255, 255, 255, 0.2) rgba(255, 255, 255, 0.05);
+    }
+
+    /* Untuk Chrome, Edge, dan Safari */
+    .sidebar-scroll::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .sidebar-scroll::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 8px;
+    }
+
+    .sidebar-scroll::-webkit-scrollbar-thumb {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        transition: background-color 0.3s;
+    }
+
+    .sidebar-scroll::-webkit-scrollbar-thumb:hover {
+        background-color: rgba(255, 255, 255, 0.35);
+    }
+</style>
 <div
     x-transition:enter="transform transition-transform duration-300"
     x-transition:enter-start="-translate-x-full"
@@ -16,7 +45,7 @@
             d="M268.487 0H0V800H247.32C207.957 725 207.975 492.294 268.487 367.647C329 243 314.906 53.4314 268.487 0Z" />
     </svg>
 
-    <div class="z-10 flex flex-col flex-1 p-4">
+    <div class="z-10 flex flex-col flex-1 p-4 sidebar-scroll">
         <!-- Header -->
         <div class="flex items-center justify-between flex-shrink-0 p-2 mb-4">
             <a href="#" class="flex items-center space-x-3 group">
@@ -141,6 +170,24 @@
                     <span class="font-medium">Tambah Admin</span>
                 </a>
                 @endif
+
+                <a href="{{ route('admin.produk.pesan-pengunjung') }}"
+                    class="relative flex items-center space-x-3 p-3 rounded-lg transition-all duration-300
+    {{ request()->routeIs('admin.produk.pesan-pengunjung') ? 'bg-indigo-700/70 backdrop-blur-sm ring-1 ring-white/10 text-yellow-300 shadow-lg shadow-indigo-700/50' : 'text-white hover:bg-indigo-700/50 hover:text-yellow-300' }}">
+                    @if(request()->routeIs('admin.produk.pesan-pengunjung'))
+                    <span class="w-1 h-6 bg-yellow-400 rounded-full absolute left-0 top-1/2 -translate-y-1/2"></span>
+                    @endif
+                    <div
+                        class="w-8 h-8 flex items-center justify-center rounded-lg transform hover:scale-110 transition-transform duration-300
+        {{ request()->routeIs('admin.produk.pesan-pengunjung') ? 'bg-indigo-600' : 'bg-indigo-700/70' }}">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8h2a2 2 0 012 2v10a2 2 0 01-2 2H5a2 2 0 01-2-2V10a2 2 0 012-2h2M12 15l3-3m0 0l-3-3m3 3H9" />
+                        </svg>
+                    </div>
+                    <span class="font-medium">Pesan Pengunjung</span>
+                </a>
+
             </div>
         </nav>
 

@@ -323,10 +323,11 @@
 <body>
     <div class="container" id="container">
         <div class="blue-section">
-            <h2>Hello, Welcome!</h2>
+            <h2>Selamat Datang!</h2>
             <p>Masuk dan mulai belanja di Toko Berkah Gadget</p>
-            <button class="blue-btn" id="register-btn">Sign Up</button>
+            <button class="blue-btn" id="register-btn">Daftar</button>
         </div>
+
 
         <div class="form-section">
             <div class="login-form">
@@ -381,7 +382,7 @@
 
             <div class="register-form">
 
-                <h2>Registration</h2>
+                <h2>registrasi</h2>
 
                 <form method="POST" action="{{ route('register') }}">
                     @csrf
@@ -421,7 +422,7 @@
                         </div>
                     </div>
 
-                    <button type="submit">Register</button>
+                    <button type="submit">Registrasi Akun</button>
                 </form>
 
 
@@ -439,12 +440,12 @@
             // Ubah teks tombol dan konten berdasarkan mode dengan delay
             setTimeout(() => {
                 if (container.classList.contains('register-mode')) {
-                    registerBtn.textContent = 'Sign In';
-                    document.querySelector('.blue-section h2').textContent = 'Welcome Back!';
+                    registerBtn.textContent = 'Masuk';
+                    document.querySelector('.blue-section h2').textContent = 'Mulai Sekarang';
                     document.querySelector('.blue-section p').textContent = 'Sudah memiliki akun? Silakan login untuk melanjutkan';
                 } else {
-                    registerBtn.textContent = 'Sign Up';
-                    document.querySelector('.blue-section h2').textContent = 'Hello, Welcome!';
+                    registerBtn.textContent = 'Daftar';
+                    document.querySelector('.blue-section h2').textContent = 'Selamat Datang!';
                     document.querySelector('.blue-section p').textContent = 'Masuk dan mulai belanja di Toko Berkah Gadget';
                 }
             }, 400); // Delay untuk menunggu animasi selesai

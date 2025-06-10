@@ -11,7 +11,7 @@ use App\Http\Controllers\CarouselController;
 use App\Models\Carousel;
 use App\Http\Controllers\FavoritController;
 use App\Http\Controllers\KontakController;
-use App\Http\Controllers\User\KeranjangController;
+use App\Http\Controllers\KeranjangController;
 
 
 Route::get('/', function () {
@@ -33,6 +33,11 @@ Route::middleware(['auth', AdminMiddleware::class])->prefix('admin')->group(func
     Route::delete('/produk/{id}', [ProdukController::class, 'destroy'])->name('admin.produk.destroy');
     Route::post('/admin/produk/tambah_admin', [ProdukController::class, 'storeAdmin'])->name('admin.produk.tambah_admin.store');
     Route::get('/users', [AdminController::class, 'userList'])->name('admin.users.index');
+
+    Route::get('/admin/produk/pesan-pengunjung', [\App\Http\Controllers\Admin\ProdukController::class, 'pesanPengunjung'])->name('admin.produk.pesan-pengunjung');
+    Route::delete('/admin/pesan/{id}', [ProdukController::class, 'hapusPesan'])->name('pesan.hapus');
+
+
 
     // Carousel routes
     Route::get('/admin/carousels', [CarouselController::class, 'index'])->name('admin.carousels.index');

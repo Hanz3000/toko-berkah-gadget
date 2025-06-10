@@ -26,10 +26,15 @@ class UserController extends Controller
 
     public function katalogProduk()
     {
-        $produks = Produk::all();
-        $jumlahProduk = $produks->count();
+        $userId = Auth::id();
 
-        return view('user.katalog-produk', compact('produks', 'jumlahProduk'));
+        $keranjangItems = Keranjang::with('produk')
+            ->where('user_id', $userId)
+            ->get();
+
+        $jumlahProduk = $keranjangItems->count();
+
+        return view('user.katalog-produk', compact('keranjangItems', 'jumlahProduk'));
     }
 
     public function show($id)

@@ -9,6 +9,7 @@ use App\Models\User;
 use App\Models\Carousel;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Kontak;
 
 class ProdukController extends Controller
 {
@@ -219,5 +220,20 @@ class ProdukController extends Controller
     {
         $produk = Produk::all();
         return response()->json($produk);
+    }
+
+    public function pesanPengunjung()
+    {
+        $pesans = \App\Models\Kontak::latest()->get();
+
+        return view('admin.produk.pesan-pengunjung', compact('pesans'));
+    }
+
+    public function hapusPesan($id)
+    {
+        $pesan = \App\Models\Kontak::findOrFail($id);
+        $pesan->delete();
+
+        return redirect()->back()->with('success', 'Pesan berhasil dihapus.');
     }
 }

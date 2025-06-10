@@ -1170,7 +1170,7 @@
                                                 <div
                                                     class="flex items-center justify-center space-x-2 sm:space-x-3 mt-4">
                                                     <!-- Wishlist Button -->
-                                                    <button
+                                                    <!-- <button
                                                         class="min-w-[80px] sm:min-w-[100px] px-3 py-1 sm:px-4 sm:py-2 bg-primary-500 hover:bg-primary-600 rounded-full text-white text-xs sm:text-sm flex items-center justify-center space-x-1 transition-all duration-300 shadow-lg hover:shadow-primary-500/50">
                                                         <svg xmlns="http://www.w3.org/2000/svg"
                                                             class="h-3 w-3 sm:h-4 sm:w-4" fill="none"
@@ -1180,7 +1180,7 @@
                                                                 d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                                         </svg>
                                                         <span>Wishlist</span>
-                                                    </button>
+                                                    </button> -->
 
                                                     <!-- Tombol Share dengan fungsi modal -->
                                                     <button
@@ -1533,7 +1533,7 @@
                 <a href="#"
                     class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 card-hover animate-slide-up">
                     <div class="relative h-40 overflow-hidden">
-                        <img src="{{ asset('storage/images/slide3.jpg') }}" alt="Smartphone"
+                        <img src="https://thumb.viva.id/vivatechno/1265x711/2025/04/25/680b0641052cc-kumpulan-smartphone_techno.jpg" alt="Smartphone"
                             class="w-full h-full object-cover transition-all duration-500 hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
                             <h3 class="text-white font-semibold text-lg">Smartphone</h3>
@@ -1557,7 +1557,7 @@
                 <a href="#"
                     class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 card-hover animate-slide-up animation-delay-200">
                     <div class="relative h-40 overflow-hidden">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRXJLT8ZoJKE_vDN0SUlqV34jIsJQmQHBK6Kw&s"
+                        <img src="https://s.ek.ua/posts/files/1577/wide_pic.jpg"
                             alt="Tablet" class="w-full h-full object-cover transition-all duration-500 hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
                             <h3 class="text-white font-semibold text-lg">Tablet</h3>
@@ -1569,7 +1569,7 @@
                 <a href="#"
                     class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-lg transition-all duration-300 card-hover animate-slide-up animation-delay-300">
                     <div class="relative h-40 overflow-hidden">
-                        <img src="https://mirage-online.com/wp-content/uploads/2023/04/Spare-Part-Aksesoris-HP-Lengkap.jpg"
+                        <img src="https://assets.bolong.id/article/1657949658617-artikel-16579496581.png"
                             alt="Aksesoris"
                             class="w-full h-full object-cover transition-all duration-500 hover:scale-110">
                         <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-end p-4">
@@ -1619,8 +1619,8 @@
             </div>
             <!-- Pesan jika produk tidak ditemukan -->
             @if(request()->has('query') && $produk->isEmpty())
-            <div class="text-center mt-16">
-                <p class="text-red-600 text-2xl font-bold tracking-wide animate-pulse">❌ Produk yang Anda cari tidak ditemukan.</p>
+            <div class="text-center mt-12">
+                <p class="text-red-600 text-2xl font-bold tracking-wide animate-pulse">Produk yang Anda cari tidak ditemukan.</p>
             </div>
             @endif
 
@@ -1632,20 +1632,7 @@
             </div>
             @endif
 
-            <!-- Pesan jika produk tidak ditemukan -->
-            @if(request()->has('query') && $produk->isEmpty())
-            <div class="text-center mt-16">
-                <p class="text-red-600 text-2xl font-bold tracking-wide animate-pulse">❌ Produk yang Anda cari tidak ditemukan.</p>
-            </div>
-            @endif
 
-            <!-- Hasil pencarian -->
-            @if(!empty($query))
-            <div class="text-center mt-10">
-                <h3 class="text-gray-600 text-lg mb-1 tracking-wide">Hasil pencarian untuk:</h3>
-                <p class="text-2xl font-extrabold text-blue-700 italic">"{{ $query }}"</p>
-            </div>
-            @endif
 
             <!-- Products Grid with Enhanced Animations -->
             <div id="produk-container" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4 lg:gap-6">
@@ -1754,9 +1741,7 @@
 
                             <button
                                 class="flex items-center justify-center w-11 h-11 bg-primary-600 text-white rounded-full group/cart hover:bg-primary-700 transition-all duration-300 transform hover:scale-105 border-2 border-primary-500">
-                                {{-- ✅ ubah shadow-lg jadi border --}}
-                                <i
-                                    class="fas fa-shopping-cart text-sm transform group-hover/cart:rotate-12 transition-transform duration-300"></i>
+                                <i class="fas fa-shopping-cart text-sm transform group-hover/cart:rotate-12 transition-transform duration-300"></i>
                             </button>
                         </div>
 
@@ -2275,7 +2260,7 @@
                 <div class="lg:col-span-2">
                     <div class="flex items-center space-x-3 mb-6">
                         <div class="bg-white p-2 rounded-lg shadow-md">
-                            <img src="{{ asset('storage/images/LOGO.png') }}" alt="Berkah Gadget" class="w-10 h-10">
+                            <!-- <img src="{{ asset('storage/images/LOGO.png') }}" alt="Berkah Gadget" class="w-10 h-10"> -->
                         </div>
                         <span
                             class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-400">Berkah
