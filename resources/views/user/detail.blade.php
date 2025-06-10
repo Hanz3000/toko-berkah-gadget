@@ -267,16 +267,6 @@
                         </div>
                         @endif
 
-                        <a href="#" class="relative hover:scale-105 transition-transform">
-                            <div class="w-9 h-9 rounded-full bg-gradient-to-r from-blue-500 to-green-400 p-0.5">
-                                <div class="w-full h-full rounded-full bg-white flex items-center justify-center text-blue-600">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <span class="absolute -top-1 -right-1 bg-gradient-to-r from-green-500 to-green-400 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center shadow-sm">3</span>
-                        </a>
 
                         <!-- Mobile menu button -->
                         <button class="lg:hidden focus:outline-none hover:scale-105 transition-transform">
@@ -389,10 +379,7 @@
                                     <i class="fab fa-whatsapp mr-2 text-xl"></i>
                                     <span>Pesan Sekarang</span>
                                 </a>
-                                <button class="col-span-4 bg-indigo-100 text-indigo-600 border border-indigo-200 py-3 px-4 rounded-lg hover:bg-indigo-200 transition-all font-semibold flex items-center justify-center">
-                                    <i class="fas fa-shopping-cart mr-2"></i>
-                                    <span>Keranjang</span>
-                                </button>
+                               
                             </div>
                         </div>
                     </div>
@@ -677,13 +664,13 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
-                            <p>Jl. Pahlawan No. 123, Madiun, Jawa Timur</p>
+                            <p>Jl. Imam Bonjol No.4, Rejomulyo, Kec. Kartoharjo, Kota Madiun, Jawa Timur 63111</p>
                         </div>
                         <div class="flex items-start space-x-3">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-0.5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                             </svg>
-                            <p>+62 823-4567-8901</p>
+                            <p>+62 878-6140-0744</p>
                         </div>
                         <div class="flex items-start space-x-3">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-0.5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
