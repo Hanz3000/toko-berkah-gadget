@@ -374,7 +374,7 @@
                             </div>
 
                             <!-- Action Buttons -->
-                            <div class="grid grid-cols-12 gap-2">
+                            <div class="grid grid-cols-16 gap-2">
                                 <a href="https://wa.me/62881036357795?text=Halo%20Berkah%20Gadget,%20saya%20ingin%20memesan%20produk:%20{{ urlencode($produk->nama_produk) }}%20dengan%20harga%20Rp%20{{ number_format($produk->harga, 0, ',', '.') }}.%20Apakah%20produk%20ini%20tersedia?" class="col-span-8 bg-gradient-to-r from-green-500 to-green-600 text-white text-center py-3 px-4 rounded-lg hover:shadow-lg transition-all font-semibold flex items-center justify-center pulse-animation">
                                     <i class="fab fa-whatsapp mr-2 text-xl"></i>
                                     <span>Pesan Sekarang</span>
