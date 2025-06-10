@@ -248,7 +248,7 @@
                         </div>
                         @endif
 
-                        <a href="#" class="relative hover:scale-105 transition-transform">
+                        <!-- <a href="#" class="relative hover:scale-105 transition-transform">
                             <div class="w-9 h-9 rounded-full bg-gradient-to-r from-blue-500 to-green-400 p-0.5">
                                 <div class="w-full h-full rounded-full bg-white flex items-center justify-center text-blue-600">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -257,7 +257,7 @@
                                 </div>
                             </div>
                             <span class="absolute -top-1 -right-1 bg-gradient-to-r from-green-500 to-green-400 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center shadow-sm">3</span>
-                        </a>
+                        </a> -->
                         <button class="lg:hidden focus:outline-none hover:scale-105 transition-transform">
                             <div class="w-9 h-9 rounded-full bg-gradient-to-r from-blue-500 to-green-400 p-0.5">
                                 <div class="w-full h-full rounded-full bg-white flex items-center justify-center text-blue-600">
@@ -399,9 +399,9 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-12">
                 <div class="lg:col-span-2">
                     <div class="flex items-center space-x-3 mb-6">
-                        <div class="bg-white p-2 rounded-lg shadow-md">
+                        <!-- <div class="bg-white p-2 rounded-lg shadow-md">
                             <img src="{{ asset('storage/images/LOGO.png') }}" alt="Berkah Gadget" class="w-10 h-10">
-                        </div>
+                        </div> -->
                         <span class="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-green-400">Berkah Gadget</span>
                     </div>
                     <p class="mb-6 text-sm md:text-base">Toko gadget terpercaya di Madiun dengan produk berkualitas, harga bersaing, dan layanan pelanggan terbaik sejak 2020.</p>
@@ -412,7 +412,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
-                            <p>Jl. Pahlawan No. 123, Madiun, Jawa Timur</p>
+                            <p>Jl. Imam Bonjol No.4, Rejomulyo, Kec. Kartoharjo, Kota Madiun, Jawa Timur 63111</p>
                         </div>
                         <div class="flex items-start space-x-3">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mt-0.5 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">

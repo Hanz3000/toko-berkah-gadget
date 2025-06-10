@@ -736,9 +736,9 @@
                         </div>
                         @endif
 
-                        <a href="{{ route('user.katalog-produk') }}" target="_blank" class="relative hover:scale-105 transition-transform">
+                        <!-- <a href="{{ route('user.katalog-produk') }}" target="_blank" class="relative hover:scale-105 transition-transform">
                             <div class="w-9 h-9 rounded-full bg-gradient-to-r from-blue-500 to-green-400 p-0.5">
-                                <div
+                                 <div
                                     class="w-full h-full rounded-full bg-white flex items-center justify-center text-blue-600">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
@@ -747,9 +747,8 @@
                                     </svg>
                                 </div>
                             </div>
-                            <span
-                                class="absolute -top-1 -right-1 bg-gradient-to-r from-green-500 to-green-400 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center shadow-sm">3</span>
-                        </a>
+                             --> 
+                        <!-- </a> -->
 
 
                         <!-- Mobile menu button -->
@@ -830,7 +829,7 @@
                     <p class="font-medium text-gray-800">{{ Auth::user()->name }}</p>
                 </div>
                 <div class="mt-3 space-y-1">
-                    <a href="#"
+                    <!-- <a href="#"
                         class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all rounded-lg">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -838,7 +837,7 @@
                                 d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
                         Profil Saya
-                    </a>
+                    </a> -->
                     <a href="#"
                         class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all rounded-lg">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24"
@@ -848,7 +847,7 @@
                         </svg>
                         Pesanan
                     </a>
-                    <a href="#"
+                    <!-- <a href="#"
                         class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all rounded-lg">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
@@ -856,7 +855,7 @@
                                 d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                         </svg>
                         Keranjang Saya
-                    </a>
+                    </a> -->
                     @if(auth()->user()->role === 'admin' || auth()->user()->role === 'superadmin')
                     <a href="{{ route('admin.produk.index') }}"
                         class="flex items-center px-4 py-2.5 text-sm text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-all rounded-lg">
@@ -1517,6 +1516,16 @@
             updateIndicators();
         });
     </script>
+<!-- @foreach ($produk as $item)
+    <form action="{{ route('keranjang.tambah') }}" method="POST" class="inline">
+        @csrf
+        <input type="hidden" name="produk_id" value="{{ $item->id }}">
+        <button type="submit"
+            class="flex items-center justify-center w-11 h-11 bg-primary-600 text-white rounded-full group/cart hover:bg-primary-700 transition-all duration-300 transform hover:scale-105 border-2 border-primary-500">
+            <i class="fas fa-shopping-cart text-sm transform group-hover/cart:rotate-12 transition-transform duration-300"></i>
+        </button>
+    </form>
+@endforeach -->
 
 
     <!-- Categories Section -->
@@ -1739,10 +1748,7 @@
                                 @endif
                             </div>
 
-                            <button
-                                class="flex items-center justify-center w-11 h-11 bg-primary-600 text-white rounded-full group/cart hover:bg-primary-700 transition-all duration-300 transform hover:scale-105 border-2 border-primary-500">
-                                <i class="fas fa-shopping-cart text-sm transform group-hover/cart:rotate-12 transition-transform duration-300"></i>
-                            </button>
+                         
                         </div>
 
                         <div class="mt-2 pt-0 border-t border-gray-100 flex justify-between text-[12px] text-gray-500">
