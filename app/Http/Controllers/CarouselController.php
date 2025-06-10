@@ -69,7 +69,7 @@ class CarouselController extends Controller
         if ($request->hasFile('gambar')) {
             $gambar = $request->file('gambar');
             $namaGambar = time() . '_' . $gambar->getClientOriginalName();
-            $pathGambar = $gambar->storeAs('carousels', $namaGambar);
+            $pathGambar = $gambar->storeAs('carousels', $namaGambar, 'public');
         } else {
             $pathGambar = null;
         }
