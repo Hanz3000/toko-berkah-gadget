@@ -623,9 +623,9 @@
                                 @endif
 
                                 <div class="flex justify-between items-center mt-3">
-                                    <div class="text-sm text-gray-500">
+                                    <!-- <div class="text-sm text-gray-500">
                                         <i class="fas fa-eye mr-1"></i> {{ $item->views ?? 0 }}
-                                    </div>
+                                    </div> -->
                                     <button class="text-sm text-white bg-blue-600 hover:bg-blue-700 px-3 py-1 rounded transition">
                                         Lihat Detail
                                     </button>
