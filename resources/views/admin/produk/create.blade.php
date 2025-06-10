@@ -100,7 +100,7 @@
                     <div class="relative">
                         <input type="text" id="warna" name="warna"
                             class="w-full border border-gray-300 rounded-lg px-4 py-3 focus:outline-none focus:ring-2 focus:ring-indigo-500 pl-10"
-                            placeholder="Contoh: Hitam, Putih, Merah">
+                            placeholder="Contoh: Black, White, Red">
                         <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618V15.382a1 1 0 01-1.447.894L15 14M4 6h16M4 10h16M4 14h16M4 18h16" />
